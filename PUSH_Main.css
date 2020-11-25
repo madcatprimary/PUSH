@@ -33,6 +33,12 @@ input[type='number']::-webkit-outer-spin-button {
     margin: 0;
 }
 
+input[type='checkbox'] {
+	height: 13px;
+	width: 13px;
+	margin: 10px;
+}
+
 select {
 	display: inline-block;
 	width: 18%; text-align: left;
@@ -72,18 +78,49 @@ select {
   
 }
 
+/*Pacechart Formatting*/
+.sheet-pace {
+	display: inline-grid;
+	grid-template-columns: 80px 70px 50px 50px 80px;
+	grid-template-rows: 22px;
+}
+.sheet-pace > span{
+	width: 100%;
+	height: 22px;
+	padding-top: 10px;
+}
+.sheet-pacechart > div{
+	padding-left: 70px;
+}
+
+/*Main Div Formatting*/
+.sheet-main{
+	display: flex;
+	flex-wrap: wrap;
+}
+
 /*Stat Pool formatting start*/
 .sheet-pool-section{
   display: grid;
 	  grid-template-columns: 50px 75px 45px 75px 75px 200px;
-	  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	  
+	  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;	  
+}
+
+.sheet-pool-section > span {
+	width: 100%;
+	height: 22px;
+	padding-top: 10px;
 }
 
 /*Derived Attribues formatting start*/
 .sheet-derived-section{
   display: grid;
 	  grid-template-columns: 200px 1fr 1fr 1fr;
+}
+.sheet-derived-section > span {
+	width: 100%;
+	height: 22px;
+	padding-top: 10px;
 }
 
 /*Ranged Weapon formatting*/
@@ -124,10 +161,10 @@ input.rangedweapon{
 
 /*Skill Category Hide Formatting*/
 .sheet-cat-hide{
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+		grid-template-columns: 20% 20% 20% 20% 20%;
+		grid-row-template: 25px 25px;
 	flex-shrink: 2;
-	flex-wrap: nowrap;
 	font-size-adjust: 0.5; 
 }
 
@@ -135,10 +172,15 @@ input.rangedweapon{
 	display: flex;
 	border: solid black 1px;
 	background-color: cyan;
-	text-align: center;
+	text-align: left;
 	border-radius: 10px;
-	font-size: medium;
+	font-size: small;
+	padding-top: 10px;
+	padding-left: 10px;
+	width: 75%;
 }
+
+
 
 /*Skills formatting start*/
 .sheet-skills-section{
@@ -158,6 +200,12 @@ input[type="text"].sheet-skill-custom{
   border: 1px solid black;
   margin: 1px;
   width: 100%;
+}
+
+input[type="checkbox"]:checked.sheet-toggle ~ div.sheet-body div.sheet-skills-section > span.sheet-inputs-readonly {
+  display: inline-block;
+  align-self: center;
+  text-align: center;
 }
 
 /*Gear Page formatting start*/
@@ -234,13 +282,15 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 
 /*Configure the derived tab buttons*/
 .sheet-derivedstats,
-.sheet-hitchart {
+.sheet-hitchart,
+.sheet-pacechart {
 	display: none;
 }
 
 /* show the selected derived tab */
 .sheet-derivedtabstoggle[value="derivedstats"] ~ div.sheet-derivedstats,
-.sheet-derivedtabstoggle[value="hitchart"] ~ div.sheet-hitchart {
+.sheet-derivedtabstoggle[value="hitchart"] ~ div.sheet-hitchart,
+.sheet-derivedtabstoggle[value="pacechart"] ~ div.sheet-pacechart {
 	display: block;
 }
 
@@ -286,3 +336,4 @@ span.sheet-inputs-readonly{
 span.blue{
     color: blue;
 }
+
