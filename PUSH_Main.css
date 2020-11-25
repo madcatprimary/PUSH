@@ -1,0 +1,288 @@
+/* Set the min-width so that when the window is resized the look will stay consistant */
+
+.charsheet {
+	background-color: #ddd;
+	min-width: 600px;
+	max-width: 1550px;
+	
+}
+
+/* Universal styling applied to all elements of these types */
+
+label {
+	display: inline-flex;
+	width: 12%; text-align: left;
+	margin-right: 2px;
+}
+
+input {
+	display: inline-block;
+	width: 18%; text-align: left;
+	margin-right: 4px;
+}
+
+input[type="number"] {
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px;
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select {
+	display: inline-block;
+	width: 18%; text-align: left;
+	margin-right: 4px;
+}
+
+/*Vital Info formatting start*/
+.sheet-vitalinfo-section{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  border: 2px solid black; padding: 3px;
+  background-color: #CBCBCB;  
+}
+
+/*Hitchart formatting start*/
+.sheet-wounds{
+  display: inline-grid;
+	grid-template-columns: 120px 40px 35px 35px 190px;
+	grid-template-rows: 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px 18px;
+	grid-gap: 2px;
+}
+
+.sheet-wounds > input[type="number"]{
+	width: 35px;
+	height: 18px;
+}
+.sheet-wounds > input[type='text']{
+	width: 100%;
+}
+
+.sheet-wounds > div {
+  padding: 1px;
+  text-align: left;
+  border: 1px solid black;
+  margin:0 -1px -1px 0;
+  
+}
+
+/*Stat Pool formatting start*/
+.sheet-pool-section{
+  display: grid;
+	  grid-template-columns: 50px 75px 45px 75px 75px 200px;
+	  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	  
+}
+
+/*Derived Attribues formatting start*/
+.sheet-derived-section{
+  display: grid;
+	  grid-template-columns: 200px 1fr 1fr 1fr;
+}
+
+/*Ranged Weapon formatting*/
+.sheet-rangedweaponlabel{
+	display: grid;
+		grid-template-columns: 30px 150px 50px 50px 50px 75px 100px 50px 50px 50px 50px 150px;
+		grid-gap: 5px;
+}
+
+.sheet-rangedweapon-section{
+	display: grid;
+		grid-template-columns: 30px 150px 50px 50px 50px 75px 100px 50px 50px 50px 50px 150px;
+		grid-gap: 5px;
+}
+
+input.rangedweapon{
+	width: 100%;
+	margin: 1px;
+}	
+/*Melee Weapon Formatting*/
+.sheet-meleeweaponlabel{
+	display: grid;
+		grid-template-columns: 30px 45px 150px 40px 40px 40px 50px 100px 70px 50px 50px 200px;
+		grid-gap: 5px;
+}	
+
+.sheet-meleeweapon-section{
+	display: grid;
+		grid-template-columns: 30px 45px 150px 40px 40px 40px 50px 100px 70px 50px 50px 200px;
+		grid-gap: 5px;
+}
+
+/*Skill Column Formatting*/
+.sheet-skills-columns{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*Skill Category Hide Formatting*/
+.sheet-cat-hide{
+	display: flex;
+	justify-content: space-between;
+	flex-shrink: 2;
+	flex-wrap: nowrap;
+	font-size-adjust: 0.5; 
+}
+
+.sheet-cat-hide > label{
+	display: flex;
+	border: solid black 1px;
+	background-color: cyan;
+	text-align: center;
+	border-radius: 10px;
+	font-size: medium;
+}
+
+/*Skills formatting start*/
+.sheet-skills-section{
+	display: grid;
+		grid-template-columns: 35px 130px 40px 40px 40px;
+}
+
+input[type="text"].sheet-skill-total{
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px;
+  width: 100%;
+}
+
+input[type="text"].sheet-skill-custom{
+  text-align: left;
+  border: 1px solid black;
+  margin: 1px;
+  width: 100%;
+}
+
+/*Gear Page formatting start*/
+.sheet-gearpagelabel{
+	display: grid;
+		grid-template-columns: 30px 150px 50px 50px 50px 75px 100px 50px 50px 50px 50px 150px;
+		grid-gap: 5px;
+}
+
+.sheet-gearpage-section{
+	display: grid;
+		grid-template-columns: 30px 150px 50px 50px 50px 75px 100px 50px 50px 50px 50px 150px;
+		grid-gap: 5px;
+}
+
+input.gearpage{
+	width: 100%;
+	margin: 1px;
+}
+
+/*Spells formatting start*/
+.sheet-spellpagelabel{
+		grid-template-columns: 150px 1fr 1fr 1fr 300px; 
+		grid-template-rows: 24px;
+}
+
+.sheet-spells-section{
+	display: grid;
+		grid-template-columns: 150px 1fr 1fr 1fr 300px; 
+		grid-template-rows: 24px;
+}
+
+input.spellpage{
+	width: 100%;
+	margin: 1px;
+}
+
+/*Columns formatting start*/
+.sheet-columns {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+}
+.sheet-columns > * {
+  flex: 1;
+}
+
+/*Hidden section checkbox setup*/
+input.sheet-toggle-show:not(:checked) ~ div.sheet-body,
+input.sheet-toggle-hide:checked ~ div.sheet-body {
+    display: none;
+}
+
+
+
+/*Configure the tab buttons*/
+.sheet-skillpages,
+.sheet-combatpages,
+.sheet-gearpages,
+.sheet-notespages,
+.sheet-spellpages{
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="skillpages"] ~ div.sheet-skillpages,
+.sheet-tabstoggle[value="combatpages"] ~ div.sheet-combatpages,
+.sheet-tabstoggle[value="gearpages"] ~ div.sheet-gearpages,
+.sheet-tabstoggle[value="notespages"] ~ div.sheet-notespages,
+.sheet-tabstoggle[value="spellpages"] ~ div.sheet-spellpages{
+	display: block;
+}
+
+
+/*Configure the derived tab buttons*/
+.sheet-derivedstats,
+.sheet-hitchart {
+	display: none;
+}
+
+/* show the selected derived tab */
+.sheet-derivedtabstoggle[value="derivedstats"] ~ div.sheet-derivedstats,
+.sheet-derivedtabstoggle[value="hitchart"] ~ div.sheet-hitchart {
+	display: block;
+}
+
+/*Configure the Description Textarea Input*/
+body{
+    width:100%;
+    border:1px solid black;
+    border-radius:5px;
+}
+#left{
+    width:20%;
+	height:400px;
+    float:left;
+    border: 1px solid black;
+    display:block;
+}
+#content{
+    width:78%;
+    height:100px;
+    float:left;
+    border:1px solid black;
+    text-align:center;
+}
+textarea
+{
+   margin-top:10px;
+    width:98%;
+}
+
+/*Sheet Toggle Checkbox Settings*/
+input[type="number"].sheet-inputs-edit {display:none;}
+input[type="checkbox"]:checked.sheet-toggle ~ div.sheet-row > input[type="number"].sheet-inputs-edit {display:inline-block;}
+input[type="checkbox"]:checked.sheet-toggle ~ div.sheet-row > span.sheet-inputs-readonly {display:none;}
+
+/*Sheet-Inputs-Readonly*/
+span.sheet-inputs-readonly{
+	display: flex;
+	justify-content: center;
+	padding-top: 6px;
+	padding-left: 5px;
+}
+
+span.blue{
+    color: blue;
+}

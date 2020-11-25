@@ -1,0 +1,1826 @@
+<div title="Vital Statistics" class="vitalinfo-section">
+  <label>Name:</label><input type="text" name="attr_character_name"/>
+  <label>Aliases:</label><input type="text" name="attr_alias"/>
+  <label for "Race Selector">Race/Heritage:</label><select id="Race Selector" name="attr_Race"/>
+	<option title="Elves get +5% to a skill from the Empathy groups and one from the Presence groups, and -5% penalty to a skill from a Strength group" value="Elf" selected="selected">Elf</option>
+	<option title="Humans can assign a +5% bonus to any one skill at character creation" value="Human" selected="selected">Human</option>
+	</select>
+  <label>Profession:</label><input type="text" name="attr_profession"/>
+  <label>Height (m):</label><input type="text" name="attr_height"/>
+  <label>Weight (kg):</label><input type="text" name="attr_weight"/>
+  <label>Hair Color:</label><input type="text" name="attr_hair"/>
+  <label>Eye Color:</label><input type="text" name="attr_eyes"/>
+  <label>Gender:</label><input type="text" name="attr_gender"/>
+</div>
+
+
+
+<div style="border: 2px solid black; padding-left: 5px; margin-top: 3px;">
+	<label for="hidedesc" style="width: 250px; margin-top: 5px; margin-bottom: 0px;"><input id="hidedesc" name="attr_hidedesc" type="checkbox" class="sheet-toggle-hide"/>Description</label>
+	<input id="hidedesc"name="attr_hidedesc" type="checkbox" class="sheet-toggle-hide" style="display: none;"/>
+	<div title="Character Description" class="sheet-body">
+	<div id="left">	</div>
+		<div id="content" >
+			<textarea id="Description" name="attr_Description" style="max-width: 1500px; max-height: 150px; height: 24px; min-height: 22px;"></textarea>
+		</div>
+	</div>
+</div>
+	
+<div class="3colrow" title="Attribute and Derived Stats">
+		<div class="col" style="border: 2px solid black; min-width: 520px; margin-right: 5px; margin-top: 5px; padding: 5px;">
+		  <label style="width: 200px;" for="hidepools"><input type="checkbox" name="attr_hidepools" id="hidepools" class="sheet-toggle-hide"/>Attributes</label>
+			<input type="checkbox" name="attr_hidepools" id="hidepools" class="sheet-toggle-hide" style="display: none;"/>
+			<div title="Push Pools" class="sheet-body" style="padding: 3px; margin-top: 3px;">
+				<div class="sheet-pool-section" >
+				  <span>Prime</span>
+				  <span>Ability</span>
+				  <span>Abbr.</span>
+				  <span>Pool</span>
+				  <span>Used</span>
+				  <span>Groups</span>
+				  <input type="checkbox" value="1" name="attr_Ag_Prime" />
+				  <span>Agility</span>
+				  <span>Ag</span>
+				  <input type="number" name="attr_Ag" readonly value="0">
+				  <input type="number" name="attr_Ag_Spent" value="0">
+				  <span>Athletics, Expression, Ranged</span>
+				  <input type="checkbox" value="1" name="attr_Cr_Prime" />
+				  <span>Creativity</span>
+				  <span>Cr</span>
+				  <input type="number" name="attr_Cr" readonly value="0">
+				  <input type="number" name="attr_Cr_Spent" value="0">
+				  <span>Expression, Social, Technology</span>
+				  <input type="checkbox" value="1" name="attr_Di_Prime" />
+				  <span>Discipline</span>
+				  <span>Di</span>
+				  <input type="number" name="attr_Di" readonly value="0">
+				  <input type="number" name="attr_Di_Spent" value="0">
+				  <span>Business, Ranged, Science</span>
+				  <input type="checkbox" value="1" name="attr_Em_Prime" />
+				  <span>Empathy</span>
+				  <span>Em</span>
+				  <input type="number" name="attr_Em" readonly value="0">
+				  <input type="number" name="attr_Em_Spent" value="0">
+				  <span>Expression, Mystic, Social</span>
+				  <input type="checkbox" value="1" name="attr_En_Prime" />
+				  <span>Endurance</span>
+				  <span>En</span>
+				  <input type="number" name="attr_En" readonly value="0">
+				  <input type="number" name="attr_En_Spent" value="0">
+				  <span>Athletics, Close Combat, Mystic</span>
+				  <input type="checkbox" value="1" name="attr_Int_Prime" />
+				  <span>Intellect</span>
+				  <span>Int</span>
+				  <input type="number" name="attr_Int" readonly value="0">
+				  <input type="number" name="attr_Int_Spent" value="0">
+				  <span>Business, Science, Technology</span>
+				  <input type="checkbox" value="1" name="attr_In_Prime" />
+				  <span>Intuition</span>
+				  <span>In</span>
+				  <input type="number" name="attr_In" readonly value="0">
+				  <input type="number" name="attr_In_Spent" value="0">
+				  <span>Close Combat, Science, Survival</span>
+				  <input type="checkbox" value="1" name="attr_Pe_Prime" />
+				  <span>Perception</span>
+				  <span>Pe</span>
+				  <input type="number" name="attr_Pe" readonly value="0">
+				  <input type="number" name="attr_Pe_Spent" value="0">
+				  <span>Ranged, Survival, Technology</span>
+				  <input type="checkbox" value="1" name="attr_Pr_Prime" />
+				  <span>Presence</span>
+				  <span>Pr</span>
+				  <input type="number" name="attr_Pr" readonly value="0">
+				  <input type="number" name="attr_Pr_Spent" value="0">
+				  <span>Business, Mystic, Social</span>
+				  <input type="checkbox" value="1" name="attr_St_Prime" />
+				  <span>Strength</span>
+				  <span>St</span>
+				  <input type="number" name="attr_St" readonly value="0">
+				  <input type="number" name="attr_St_Spent" value="0">
+				  <span>Athletics, Close Combat, Survival</span>
+				</div>
+				<div style="padding: 4px">
+				  <span>Total Skill Ranks Spent</span>
+				  <em><b><span style="border: 1px black solid; padding: 2px; color: green;" name="attr_TotalSkillRanks" readonly value="0"></span></b></em>
+				</div>
+			</div>
+		</div>
+		<div class="col" style="border: 2px solid black; padding: 3px; max-width: 480px; min-width: 450px; margin-right: 0px; margin-left: 0px; margin-top: 5px;">
+			<div>
+				<button type="action" name="act_derivedstats" >Derived Stats</button>
+				<button type="action" name="act_hitchart" >Hit Chart</button>
+				<label style="width: 250px"><input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="sheet-toggle-hide"/>Derived Attributes</label>
+			<input type='hidden' class='sheet-derivedtabstoggle' name='attr_derivedsheetTab'  value='derivedstats'/>
+			<div class='sheet-derivedstats'>
+			 <input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="sheet-toggle-hide" style="display: none"/>
+		 		<div class="sheet-body">
+					<div class="derived-section" style="padding: 3px; margin-top: 3px;">
+						<span title="A character's encumbrance tolerance is how much weight he can carry without being overburdened.">Encumberance Tolerance (ET)</span>
+						<input type="number" name="attr_ET" readonly value="0" Style="width: 50px">
+						<span title="Winded characters suffer a -10 penalty to all skill checks while winded.">Winded</span>
+						<input type="checkbox" value="1" name="attr_Winded"/>
+						<span>Throw Limit</span>
+						<input type="number" readonly name="attr_ThrowLimit" value="0" Style="width: 50px">
+						<span title="A fatigued character can recover by resting for 1 hour.  While fatigued, a character takes a -10 to all skill checks.">Fatigued</span>
+						<input type="checkbox" value="1" name="attr_Fatigued"/>
+						<span>Lift Limit</span>
+						<input type="number" readonly name="attr_LiftLimit" value="0" Style="width: 50px">
+						<span title="Once exhausted, a character takes a long time to recover.  Resting one hour reduces the character to Winded for the rest of the day.  A character that is exhausted takes a -20 to all skill checks and may not run.">Exhausted</span>
+						<input type="checkbox" value="1" name="attr_Exhausted"/>
+						<span>Melee KO Bonus</span>
+						<input type="number" readonly name="attr_MKOB" value="0" Style="width: 50px">
+						<span title="An exhausted character becomes immobilized if further drained or wounded.  Immobilization quickly reduces to Exhausted if the character is not further injured.  After a minute of disorientation and nausea, an Immobilized character becomes Exhausted.  An immobilized character is incoherent and cannot associate with his surroundings, and cannot make any skill checks, including Refresh Body.  An immobilized character may even have hallucinations or seem to be unconscious.">Immobilized</span>
+						<input type="checkbox" value="1" name="attr_Immobilized"/>
+						<span>Ranged KO Bonus</span>
+						<input type="number" readonly name="attr_RKOB" value="0" Style="width: 50px">
+						<span title="A KO’d character can regain consciousness after 1d10 minutes, after which time he is considered Immobilized and can recover from there.  A character can make a Resist KO check when first KO’d, and if successful, remains conscious.">Knocked Out</span>
+						<input type="checkbox" value="1" name="attr_KnockedOut"/>
+						<span>Initiative</span>
+						<input type="number" readonly name="attr_Initiative" value="0" Style="width: 50px">
+						<span style="width: 100px">Universal Bonus</span>
+						<input type="number" name="attr_penaltybox" value="0" Style="width: 50px">
+					</div>
+				</div>	
+			</div>
+			<div class='sheet-hitchart'>
+				<input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="sheet-toggle-hide" style="display: none"/>
+				<div class='sheet-body'>
+				<div class='sheet-wounds'>
+					<span title="Roll 1d100 to see where you've been hit.">Wound Location</span>
+					<span>Roll</span>
+					<span>KOT</span>
+					<span>PV</span>
+					<span>Wounds and Healing Time</span>
+					
+					<div><span title="A lot of really sensitive stuff in here.">Head (-20)</span></div>
+					<div><span>1-10</span></div>
+					<div><span>25</span></div>
+					<input type="number" value="0" name="attr_headpv">
+					<input type="text" name="attr_headwound" style="width: 100%">
+					
+					<div><span title="Including the throat and spine">Neck (-50)</span></div>
+					<div><span>11-15</span></div>
+					<div><span>20</span></div>
+					<input type="number" value="0" name="attr_neckpv">
+					<input type="text" name="attr_neckwound" style="width: 100%">
+					
+					<div><span title="The torso from collarbones to bottom or ribs">Torso (0)</span></div>
+					<div><span>16-35</span></div>
+					<div><span>35</span></div>
+					<input type="number" value="0" name="attr_torsopv">
+					<input type="text" name="attr_torsowound" style="width: 100%">			
+					
+					<div><span title="Upper Left Arm or Shoulder">UL Arm (-10)</span></div>
+					<div><span>36-40</span></div>
+					<div><span>12</span></div>
+					<input type="number" value="0" name="attr_ulapv">
+					<input type="text" name="attr_ulawound" style="width: 100%">
+					
+					<div><span title="Upper Right Arm or Shoulder">UR Arm (-10)</span></div>
+					<div><span>41-45</span></div>
+					<div><span>12</span></div>
+					<input type="number" value="0" name="attr_urapv">
+					<input type="text" name="attr_urawound" style="width: 100%">
+					
+					<div><span title="Lower Left Arm or Elbow">L.L. Arm (-20)</span></div>
+					<div><span>46-50</span></div>
+					<div><span>10</span></div>
+					<input type="number" value="0" name="attr_llapv">
+					<input type="text" name="attr_llawound" style="width: 100%">
+					
+					<div><span title="Lower Right Arm or Elbow">L.R. Arm (-20)</span></div>
+					<div><span>51-55</span></div>
+					<div><span>10</span></div>
+					<input type="number" value="0" name="attr_lrapv">
+					<input type="text" name="attr_lrawound" style="width: 100%">
+					
+					<div><span title="Left hand or wrist.">Left Hand (-50)</span></div>
+					<div><span>56-58</span></div>
+					<div><span>8</span></div>
+					<input type="number" value="0" name="attr_lhandpv">
+					<input type="text" name="attr_lhandwound" style="width: 100%">
+
+					<div><span title="Right hand or wrist.">Right Hand (-50)</span></div>
+					<div><span>59-60</span></div>
+					<div><span>8</span></div>
+					<input type="number" value="0" name="attr_rhandpv">
+					<input type="text" name="attr_rhandwound" style="width: 100%">
+
+					<div><span title="From ribs to groin.">Abdomen (-20)</span></div>
+					<div><span>61-80</span></div>
+					<div><span>25</span></div>
+					<input type="number" value="0" name="attr_abspv">
+					<input type="text" name="attr_abswound" style="width: 100%">
+					
+					<div><span title="Upper left leg and hip.">U.Left Leg (-10)</span></div>
+					<div><span>81-85</span></div>
+					<div><span>20</span></div>
+					<input type="number" value="0" name="attr_ullegpv">
+					<input type="text" name="attr_ullegwound" style="width: 100%">
+					
+					<div><span title="Upper right leg and hip.">U.Right Leg (-10)</span></div>
+					<div><span>86-90</span></div>
+					<div><span>20</span></div>
+					<input type="number" value="0" name="attr_urlegpv">
+					<input type="text" name="attr_urlegwound" style="width: 100%">
+					
+					<div><span title="Lower left leg and knee.">L.Left Leg (-20)</span></div>
+					<div><span>91-93</span></div>
+					<div><span>15</span></div>
+					<input type="number" value="0" name="attr_lllegpv">
+					<input type="text" name="attr_lllegwound" style="width: 100%">	
+					
+					<div><span title="Lower right leg and knee.">L.Right Leg (-20)</span></div>
+					<div><span>94-96</span></div>
+					<div><span>15</span></div>
+					<input type="number" value="0" name="attr_lrlegpv">
+					<input type="text" name="attr_lrlegwound" style="width: 100%">
+
+					<div><span title="Left foot or ankle.">Left Foot (-50)</span></div>
+					<div><span>97-98</span></div>
+					<div><span>10</span></div>
+					<input type="number" value="0" name="attr_lfootpv">
+					<input type="text" name="attr_lfootwound" style="width: 100%">	
+					
+					<div><span title="Right foot or ankle.">Right Foot (-50)</span></div>
+					<div><span>99-00</span></div>
+					<div><span>10</span></div>
+					<input type="number" value="0" name="attr_rfootpv">
+					<input type="text" name="attr_rfootwound">		
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+</div>
+
+<div title="Page Buttons" class="col" style="padding: 10px">
+	</br>
+		<button type="action" name="act_skillpages">Skill Pages</button>
+		<button type="action" name="act_combatpages">Combat Pages</button>
+		<button type="action" name="act_gearpages">Gear</button>
+		<button type="action" name="act_notespages">Notes</button>
+		<button type="action" name="act_spellpages">Spells</button> <br />
+		
+</div>
+<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='skillpages'/>
+
+<div title="All Skills" class='sheet-skillpages' style="border: black solid 2px; padding: 5px">
+
+
+	<label for="SkillRankToggle" style="width: 200px; font-size: 85% margin: 0px; padding: 0px;">Edit Ranks:</label>
+	<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="height: 13px; width: 13px; margin-left: 10px;"/>
+	<div class="sheet-cat-hide">
+		<label for="HideAth">Athletics (Ag/En/St)</label>
+		<label for="HideBus">Business (Di/Int/Pr)</label>
+		<label for="HideCC">Close Combat (En/In/St)</label>
+		<label for="HideExp">Expression (Ag/Cr/Em)</label>
+		<label for="HideMys">Mystic (Em/En/Pr)</label>
+		<label for="HideRan">Ranged (Ag/Di/Pe)</label>
+		<label for="HideSoc">Social (Cr/Em/Pr)</label>
+		<label for="HideSci">Science (Di/Int/In)</label>
+		<label for="HideSur">Survival (In/Pe/St)</label>
+		<label for="HideTech">Technology (Cr/Int/Pe)</label>
+	</div>
+	<div class="sheet-skills-columns">
+		<div title="Athletic Skills (Ag/En/St)">
+		<input id="HideAth" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+					<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+					<Span>Roll</Span>
+					<label>Athletics</label>
+					<Span>Ranks</Span>
+					<Span>Bonus</Span>
+					<Span>Total</Span>
+					<button type='roll' name='roll_Climbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Climbing"}} {{result=[[({1d100}) + @{Climbing}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Climbing</span>
+					<div class="sheet-row"><input type="number" class="sheet-inputs-edit" value="0" name="attr_ClimbingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ClimbingRanks">-</span></div>
+					<input type="number" value="0" name="attr_ClimbingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Climbing"/>
+					<button type='roll' name='roll_Contortions' value='&{template:default} {{name=@{character_name}}} {{skillname="Contortions"}} {{result=[[({1d100}) + @{Contortions}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Contortions</span>
+					<div class="sheet-row"><input type="number" class="sheet-inputs-edit" value="0" name="attr_ContortionsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ContortionsRanks">-</span></div>
+					<input type="number" value="0" name="attr_ContortionsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Contortions"/>
+					<button type='roll' name='roll_EnduranceRunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Endurance Running"}} {{result=[[({1d100}) + @{EnduranceRunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Endurance Running</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EnduranceRunningRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EnduranceRanks">-</span></div>
+					<input type="number" value="0" name="attr_EnduranceRunningBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_EnduranceRunning"/>
+					<button type='roll' name='roll_Freefall' value='&{template:default} {{name=@{character_name}}} {{skillname="Freefall"}} {{result=[[({1d100}) + @{Freefall}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Freefall</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_FreefallRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_FreefallRanks">-</span></div>
+					<input type="number" value="0" name="attr_FreefallBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Freefall"/>
+					<button type='roll' name='roll_Freerunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Freerunning"}} {{result=[[({1d100}) + @{Freerunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Freerunning</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_FreerunningRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_FreerunningRanks">-</span></div>
+					<input type="number" value="0" name="attr_FreerunningBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Freerunning"/>
+					<button type='roll' name='roll_Jumping' value='&{template:default} {{name=@{character_name}}} {{skillname="Jumping"}} {{result=[[({1d100}) + @{Jumping}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Jumping</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_JumpingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_JumpingRanks">-</span></div>
+					<input type="number" value="0" name="attr_JumpingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Jumping"/>
+					<button type='roll' name='roll_Portage' value='&{template:default} {{name=@{character_name}}} {{skillname="Portage"}} {{result=[[({1d100}) + @{Portage}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Portage</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_PortageRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_PortageRanks">-</span></div>
+					<input type="number" value="0" name="attr_PortageBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Portage"/>
+					<button type='roll' name='roll_Sneaking' value='&{template:default} {{name=@{character_name}}} {{skillname="Sneaking"}} {{result=[[({1d100}) + @{Sneaking}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Sneaking</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SneakingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SneakingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SneakingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Sneaking"/>
+					<button type='roll' name='roll_Sports' value='&{template:default} {{name=@{character_name}}} {{skillname="Sports"}} {{result=[[({1d100}) + @{Sports}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Sports</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SportsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SportsRanks">-</span></div>
+					<input type="number" value="0" name="attr_SportsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Sports"/>
+					<button type='roll' name='roll_Sprinting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sprinting"}} {{result=[[({1d100}) + @{Sprinting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Sprinting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SprintingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SprintingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SprintingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Sprinting"/>
+					<button type='roll' name='roll_Swimming' value='&{template:default} {{name=@{character_name}}} {{skillname="Swimming"}} {{result=[[({1d100}) + @{Swimming}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Swimming</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SwimmingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SwimmingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SwimmingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Swimming"/>
+					<button type='roll' name='roll_Weightlifting' value='&{template:default} {{name=@{character_name}}} {{skillname="Weightlifting"}} {{result=[[({1d100}) + @{Weightlifting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<span>Weightlifting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_WeightliftingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_WeightliftingRanks">-</span></div>
+					<input type="number" value="0" name="attr_WeightliftingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Weightlifting"/>
+					<button type='roll' name='roll_CustomAth1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth1"}} {{result=[[({1d100}) + @{CustomAth1}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomAth1" name="attr_CustomAth1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomAth1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomAth1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomAth1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomAth1"/>
+					<button type='roll' name='roll_CustomAth2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth2"}} {{result=[[({1d100}) + @{CustomAth2}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomAth2" name="attr_CustomAth2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomAth2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomAth2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomAth2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomAth2"/>
+					<button type='roll' name='roll_CustomAth3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth3"}} {{result=[[({1d100}) + @{CustomAth3}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomAth3" name="attr_CustomAth3_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomAth3Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomAth3Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomAth3Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomAth3"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_AthTotal"/>
+				</div>
+			</div>
+		</div>	
+		<div title="Business Skills">
+		<input id="HideBus" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">	
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+					<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+					<Span>Roll</Span>
+					<label>Business</label>
+					<Span>Ranks</Span>
+					<span>Bonus</span>
+					<Span>Total</Span>
+					<button type='roll' name='roll_Accounting' value='&{template:default} {{name=@{character_name}}} {{skillname="Accounting"}} {{result=[[({1d100}) + @{Accounting}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Accounting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_AccountingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_AccountingRanks">-</span></div>
+					<input type="number" value="0" name="attr_AccountingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Accounting"/>
+					<button type='roll' name='roll_Advertising' value='&{template:default} {{name=@{character_name}}} {{skillname="Advertising"}} {{result=[[({1d100}) + @{Advertising}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Advertising</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_AdvertisingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_AdvertisingRanks">-</span></div>
+					<input type="number" value="0" name="attr_AdvertisingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Advertising"/>
+					<button type='roll' name='roll_Appraisal' value='&{template:default} {{name=@{character_name}}} {{skillname="Appraisal"}} {{result=[[({1d100}) + @{Appraisal}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Appraisal</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_AppraisalRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_AppraisalRanks">-</span></div>
+					<input type="number" value="0" name="attr_AppraisalBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Appraisal"/>
+					<button type='roll' name='roll_Bargain' value='&{template:default} {{name=@{character_name}}} {{skillname="Bargain"}} {{result=[[({1d100}) + @{Bargain}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Bargain</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BargainRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BargainRanks">-</span></div>
+					<input type="number" value="0" name="attr_BargainBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Bargain"/>
+					<button type='roll' name='roll_Barter' value='&{template:default} {{name=@{character_name}}} {{skillname="Barter"}} {{result=[[({1d100}) + @{Barter}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Barter</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BarterRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BarterRanks">-</span></div>
+					<input type="number" value="0" name="attr_BarterBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Barter"/>
+					<button type='roll' name='roll_Economics' value='&{template:default} {{name=@{character_name}}} {{skillname="Economics"}} {{result=[[({1d100}) + @{Economics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Economics</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EconomicsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EconomicsRanks">-</span></div>
+					<input type="number" value="0" name="attr_EconomicsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Economics"/>
+					<button type='roll' name='roll_Forgery' value='&{template:default} {{name=@{character_name}}} {{skillname="Forgery"}} {{result=[[({1d100}) + @{Forgery}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Forgery</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ForgeryRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ForgeryRanks">-</span></div>
+					<input type="number" value="0" name="attr_ForgeryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Forgery"/>
+					<button type='roll' name='roll_Gambling' value='&{template:default} {{name=@{character_name}}} {{skillname="Gambling"}} {{result=[[({1d100}) + @{Gambling}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Gambling</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_GamblingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_GamblingRanks">-</span></div>
+					<input type="number" value="0" name="attr_GamblingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Gambling"/>
+					<button type='roll' name='roll_Investment' value='&{template:default} {{name=@{character_name}}} {{skillname="Investment"}} {{result=[[({1d100}) + @{Investment}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Investment</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_InvestmentRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_InvestmentRanks">-</span></div>
+					<input type="number" value="0" name="attr_InvestmentBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Investment"/>
+					<button type='roll' name='roll_Logistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Logistics"}} {{result=[[({1d100}) + @{Logistics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Logistics</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_LogisticsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_LogisticsRanks">-</span></div>
+					<input type="number" value="0" name="attr_LogisticsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Logistics"/>
+					<button type='roll' name='roll_Procurement' value='&{template:default} {{name=@{character_name}}} {{skillname="Procurement"}} {{result=[[({1d100}) + @{Procurement}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Procurement</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ProcurementRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ProcurementRanks">-</span></div>
+					<input type="number" value="0" name="attr_ProcurementBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Procurement"/>
+					<button type='roll' name='roll_Racketeering' value='&{template:default} {{name=@{character_name}}} {{skillname="Racketeering"}} {{result=[[({1d100}) + @{Racketeering}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<span>Racketeering</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_RacketeeringRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_RacketeeringRanks">-</span></div>
+					<input type="number" value="0" name="attr_RacketeeringBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Racketeering"/>
+					<button type='roll' name='roll_CustomBus1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus1"}} {{result=[[({1d100}) + @{CustomBus1}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomBus1" name="attr_CustomBus1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomBus1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomBus1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomBus1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomBus1"/>
+					<button type='roll' name='roll_CustomBus2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus2"}} {{result=[[({1d100}) + @{CustomBus2}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomBus2" name="attr_CustomBus2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomBus2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomBus2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomBus2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomBus2"/>
+					<button type='roll' name='roll_CustomBus3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus3"}} {{result=[[({1d100}) + @{CustomBus3}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomBus3" name="attr_CustomBus3_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomBus3Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomBus3Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomBus3Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomBus3"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_BusTotal"/>
+				</div>
+			</div>
+		</div>	
+		<div title="Close Combat skills">
+		<input id="HideCC" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label style="width: 200px">Close Combat</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_ArmorTraining' value='&{template:default} {{name=@{character_name}}} {{skillname="Armor Training"}} {{result=[[({1d100}) + @{ArmorTraining}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Armor Training</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ArmorTrainingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ArmorTrainingRanks">-</span></div>
+					<input type="number" value="0" name="attr_ArmorTrainingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ArmorTraining"/>
+					<button type='roll' name='roll_Blades' value='&{template:default} {{name=@{character_name}}} {{skillname="Blades"}} {{result=[[({1d100}) + @{Blades}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Blades</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BladesRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BladesRanks">-</span></div>
+					<input type="number" value="0" name="attr_BladesBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Blades"/>
+					<button type='roll' name='roll_Block' value='&{template:default} {{name=@{character_name}}} {{skillname="Block"}} {{result=[[({1d100}) + @{Block}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Block</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BlockRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BlockRanks">-</span></div>
+					<input type="number" value="0" name="attr_BlockBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Block"/>
+					<button type='roll' name='roll_Brawl' value='&{template:default} {{name=@{character_name}}} {{skillname="Brawl"}} {{result=[[({1d100}) + @{Brawl}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Brawl</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BrawlRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BrawlRanks">-</span></div>
+					<input type="number" value="0" name="attr_BrawlBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Brawl"/>
+					<button type='roll' name='roll_Clubs' value='&{template:default} {{name=@{character_name}}} {{skillname="Clubs"}} {{result=[[({1d100}) + @{Clubs}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Clubs</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ClubsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ClubsRanks">-</span></div>
+					<input type="number" value="0" name="attr_ClubsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Clubs"/>
+					<button type='roll' name='roll_Counter' value='&{template:default} {{name=@{character_name}}} {{skillname="Counter"}} {{result=[[({1d100}) + @{Counter}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Counter</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CounterRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_CounterRanks">-</span></div>
+					<input type="number" value="0" name="attr_CounterBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Counter"/>
+					<button type='roll' name='roll_Escape' value='&{template:default} {{name=@{character_name}}} {{skillname="Escape"}} {{result=[[({1d100}) + @{Escape}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Escape</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EscapeRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EscapeRanks">-</span></div>
+					<input type="number" value="0" name="attr_EscapeBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Escape"/>
+					<button type='roll' name='roll_ExoticMelee' value='&{template:default} {{name=@{character_name}}} {{skillname=@{ExoticMelee_name}}} {{result=[[({1d100}) + @{ExoticMelee}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="Exotic Melee" name="attr_ExoticMelee_name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ExoticMeleeRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ExoticMeleeRanks">-</span></div>
+					<input type="number" value="0" name="attr_ExoticMeleeBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ExoticMelee"/>
+					<button type='roll' name='roll_Grapple' value='&{template:default} {{name=@{character_name}}} {{skillname="Grapple"}} {{result=[[({1d100}) + @{Grapple}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Grapple</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_GrappleRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_GrappleRanks">-</span></div>
+					<input type="number" value="0" name="attr_GrappleBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Grapple"/>
+					<button type='roll' name='roll_Parry' value='&{template:default} {{name=@{character_name}}} {{skillname="Parry"}} {{result=[[({1d100}) + @{Parry}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Parry</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ParryRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ParryRanks">-</span></div>
+					<input type="number" value="0" name="attr_ParryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Parry"/>
+					<button type='roll' name='roll_Polearms' value='&{template:default} {{name=@{character_name}}} {{skillname="Polearms"}} {{result=[[({1d100}) + @{Polearms}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span>Polearms</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_PolearmsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_PolearmsRanks">-</span></div>
+					<input type="number" value="0" name="attr_PolearmsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Polearms"/>
+					<button type='roll' name='roll_Striking' value='&{template:default} {{name=@{character_name}}} {{skillname="Striking"}} {{result=[[({1d100}) + @{Striking}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<span style="color: blue">Striking</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_StrikingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_StrikingRanks">-</span></div>
+					<input type="number" value="0" name="attr_StrikingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Striking"/>
+					<button type='roll' name='roll_CustomCC1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC1"}} {{result=[[({1d100}) + @{CustomCC1}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomCC1" name="CustomCC1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomCC1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomCC1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomCC1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomCC1"/>
+					<button type='roll' name='roll_CustomCC2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC2"}} {{result=[[({1d100}) + @{CustomCC2}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomCC2" name="CustomCC2_Name">
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomCC2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomCC2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomCC2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomCC2"/>
+					<button type='roll' name='roll_CustomCC3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC3"}} {{result=[[({1d100}) + @{CustomCC3}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomCC3" name="CustomCC3_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomCC3Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomCC3Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomCC3Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomCC3"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CCTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Expression Skills">
+		<input id="HideExp" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Expression</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_Acting' value='&{template:default} {{name=@{character_name}}} {{skillname="Acting"}} {{result=[[({1d100}) + @{Acting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Acting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ActingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ActingRanks">-</span></div>
+					<input type="number" value="0" name="attr_ActingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Acting"/>
+					<button type='roll' name='roll_Art' value='&{template:default} {{name=@{character_name}}} {{skillname="Art"}} {{result=[[({1d100}) + @{Art}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Art</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ArtRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ArtRanks">-</span></div>
+					<input type="number" value="0" name="attr_ArtBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Art"/>
+					<button type='roll' name='roll_Composing' value='&{template:default} {{name=@{character_name}}} {{skillname="Composing"}} {{result=[[({1d100}) + @{Composing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Composing</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ComposingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ComposingRanks">-</span></div>
+					<input type="number" value="0" name="attr_ComposingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Composing"/>
+					<button type='roll' name='roll_Dance' value='&{template:default} {{name=@{character_name}}} {{skillname="Dance"}} {{result=[[({1d100}) + @{Dance}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Dance</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_DanceRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_DanceRanks">-</span></div>
+					<input type="number" value="0" name="attr_DanceBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Dance"/>
+					<button type='roll' name='roll_Fashion' value='&{template:default} {{name=@{character_name}}} {{skillname="Fashion"}} {{result=[[({1d100}) + @{Fashion}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Fashion</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_FashionRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_FashionRanks">-</span></div>
+					<input type="number" value="0" name="attr_FashionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Fashion"/>
+					<button type='roll' name='roll_Metalwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Metalwork"}} {{result=[[({1d100}) + @{Metalwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Metalwork</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_MetalworkRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_MetalworkRanks">-</span></div>
+					<input type="number" value="0" name="attr_MetalworkBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Metalwork"/>
+					<button type='roll' name='roll_MusicalInstrument' value='&{template:default} {{name=@{character_name}}} {{skillname="Musical Instrument"}} {{result=[[({1d100}) + @{MusicalInstrument}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Musical Instrument</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_MusicalInstrumentRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_MusicalInstrumentRanks">-</span></div>
+					<input type="number" value="0" name="attr_MusicalInstrumentBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_MusicalInstrument"/>
+					<button type='roll' name='roll_Sculpting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sculpting"}} {{result=[[({1d100}) + @{Sculpting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Sculpting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SculptingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SculptingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SculptingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Sculpting"/>
+					<button type='roll' name='roll_Singing' value='&{template:default} {{name=@{character_name}}} {{skillname="Singing"}} {{result=[[({1d100}) + @{Singing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Singing</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SingingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SingingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SingingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Singing"/>
+					<button type='roll' name='roll_SpellDesign' value='&{template:default} {{name=@{character_name}}} {{skillname="Spell Design"}} {{result=[[({1d100}) + @{SpellDesign}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Spell Design</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SpellDesignRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SpellDesignRanks">-</span></div>
+					<input type="number" value="0" name="attr_SpellDesignBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SpellDesign"/>
+					<button type='roll' name='roll_Woodwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Woodwork"}} {{result=[[({1d100}) + @{Woodwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Woodwork</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_WoodworkRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_WoodworkRanks">-</span></div>
+					<input type="number" value="0" name="attr_WoodworkBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Woodwork"/>
+					<button type='roll' name='roll_Writing' value='&{template:default} {{name=@{character_name}}} {{skillname="Writing"}} {{result=[[({1d100}) + @{Writing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<span>Writing</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_WritingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_WritingRanks">-</span></div>
+					<input type="number" value="0" name="attr_WritingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Writing"/>
+					<button type='roll' name='roll_CustomExp1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp1"}} {{result=[[({1d100}) + @{CustomExp1}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomExp1" name="attr_CustomExp1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomExp1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomExp1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomExp1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomExp1"/>
+					<button type='roll' name='roll_CustomExp2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp2"}} {{result=[[({1d100}) + @{CustomExp2}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomExp2" name="attr_CustomExp2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomExp2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomExp2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomExp2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomExp2"/>
+					<button type='roll' name='roll_CustomExp3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp3"}} {{result=[[({1d100}) + @{CustomExp3}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomExp3" name="attr_CustomExp3_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomExp3Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomExp3Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomExp3Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomExp3"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ExpTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Mystic skills">
+		<input id="HideMys" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">		
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Mystic</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_AuraSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Aura Sense"}} {{result=[[({1d100}) + @{AuraSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Aura Sense</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_AuraSenseRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_AuraSenseRanks">-</span></div>
+					<input type="number" value="0" name="attr_AuraSenseBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_AuraSense"/>
+					<button type='roll' name='roll_Binding' value='&{template:default} {{name=@{character_name}}} {{skillname="Binding"}} {{result=[[({1d100}) + @{Binding}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Binding</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_BindingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_BindingRanks">-</span></div>
+					<input type="number" value="0" name="attr_BindingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Binding"/>
+					<button type='roll' name='roll_Celerity' value='&{template:default} {{name=@{character_name}}} {{skillname="Celerity"}} {{result=[[({1d100}) + @{Celerity}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Celerity</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CelerityRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_CelerityRanks">-</span></div>
+					<input type="number" value="0" name="attr_CelerityBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Celerity"/>
+					<button type='roll' name='roll_Conjuring' value='&{template:default} {{name=@{character_name}}} {{skillname="Conjuring"}} {{result=[[({1d100}) + @{Conjuring}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Conjuring</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ConjuringRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ConjuringRanks">-</span></div>
+					<input type="number" value="0" name="attr_ConjuringBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Conjuring"/>
+					<button type='roll' name='roll_Divining' value='&{template:default} {{name=@{character_name}}} {{skillname="Divining"}} {{result=[[({1d100}) + @{Divining}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Divining</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_DiviningRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_DiviningRanks">-</span></div>
+					<input type="number" value="0" name="attr_DiviningBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Divining"/>
+					<button type='roll' name='roll_Enchanting' value='&{template:default} {{name=@{character_name}}} {{skillname="Enchanting"}} {{result=[[({1d100}) + @{Enchanting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Enchanting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EnchantingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EnchantingRanks">-</span></div>
+					<input type="number" value="0" name="attr_EnchantingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Enchanting"/>
+					<button type='roll' name='roll_ManaSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Mana Sense"}} {{result=[[({1d100}) + @{ManaSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Mana Sense</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ManaSenseRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ManaSenseRanks">-</span></div>
+					<input type="number" value="0" name="attr_ManaSenseBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ManaSense"/>
+					<button type='roll' name='roll_ManifestWill' value='&{template:default} {{name=@{character_name}}} {{skillname="Manifest Will"}} {{result=[[({1d100}) + @{ManifestWill}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Manifest Will</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ManifestWillRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ManifestWillRanks">-</span></div>
+					<input type="number" value="0" name="attr_ManifestWillBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ManifestWill"/>
+					<button type='roll' name='roll_Meditation' value='&{template:default} {{name=@{character_name}}} {{skillname="Meditation"}} {{result=[[({1d100}) + @{Meditation}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Meditation</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_MeditationRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_MeditationRanks">-</span></div>
+					<input type="number" value="0" name="attr_MeditationBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Meditation"/>
+					<button type='roll' name='roll_Precognition' value='&{template:default} {{name=@{character_name}}} {{skillname="Precognition"}} {{result=[[({1d100}) + @{Precognition}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Precognition</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_PrecognitionRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_PrecognitionRanks">-</span></div>
+					<input type="number" value="0" name="attr_PrecognitionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Precognition"/>
+					<button type='roll' name='roll_Rituals' value='&{template:default} {{name=@{character_name}}} {{skillname="Rituals"}} {{result=[[({1d100}) + @{Rituals}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Rituals</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_RitualsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_RitualsRanks">-</span></div>
+					<input type="number" value="0" name="attr_RitualsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Rituals"/>
+					<button type='roll' name='roll_Runes' value='&{template:default} {{name=@{character_name}}} {{skillname="Runes"}} {{result=[[({1d100}) + @{Runes}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Runes</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_RunesRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_RunesRanks">-</span></div>
+					<input type="number" value="0" name="attr_RunesBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Runes"/>
+					<button type='roll' name='roll_Spellcasting' value='&{template:default} {{name=@{character_name}}} {{skillname="Spellcasting"}} {{result=[[({1d100}) + @{Spellcasting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Spellcasting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SpellcastingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SpellcastingRanks">-</span></div>
+					<input type="number" value="0" name="attr_SpellcastingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Spellcasting"/>
+					<button type='roll' name='roll_CustomMys1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys1"}} {{result=[[({1d100}) + @{CustomMys1}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomMys1" name="attr_CustomMys1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomMys1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomMys1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomMys1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomMys1"/>
+					<button type='roll' name='roll_CustomMys2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys2"}} {{result=[[({1d100}) + @{CustomMys2}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomMys2" name="attr_CustomMys2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomMys2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomMys2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomMys2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomMys2"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_MysTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Ranged skills" >
+		<input id="HideRan" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Ranged</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_Archery' value='&{template:default} {{name=@{character_name}}} {{skillname="Archery"}} {{result=[[({1d100}) + @{Archery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Archery</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ArcheryRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ArcheryRanks">-</span></div>
+					<input type="number" value="0" name="attr_ArcheryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Archery"/>
+					<button type='roll' name='roll_Artillery' value='&{template:default} {{name=@{character_name}}} {{skillname="Artillery"}} {{result=[[({1d100}) + @{Artillery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Artillery</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ArtilleryRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ArtilleryRanks">-</span></div>
+					<input type="number" value="0" name="attr_ArtilleryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Artillery"/>
+					<button type='roll' name='roll_Dodge' value='&{template:default} {{name=@{character_name}}} {{skillname="Dodge"}} {{result=[[({1d100}) + @{Dodge}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Dodge</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_DodgeRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_DodgeRanks">-</span></div>
+					<input type="number" value="0" name="attr_DodgeBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Dodge"/>
+					<button type='roll' name='roll_ExoticRanged' value='&{template:default} {{name=@{character_name}}} {{skillname="Exotic Ranged"}} {{result=[[({1d100}) + @{ExoticRanged}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<input class='sheet-skill-custom' type="text" value="Exotic Ranged Weapon" name="attr_ExoticRanged_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ExoticRangedRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ExoticRangedRanks">-</span></div>
+					<input type="number" value="0" name="attr_ExoticRangedBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ExoticRanged"/>
+					<button type='roll' name='roll_Gunnery' value='&{template:default} {{name=@{character_name}}} {{skillname="Gunnery"}} {{result=[[({1d100}) + @{Gunnery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Gunnery</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_GunneryRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_GunneryRanks">-</span></div>
+					<input type="number" value="0" name="attr_GunneryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Gunnery"/>
+					<button type='roll' name='roll_Lobbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Lobbing (Indirect)"}} {{result=[[({1d100}) + @{Lobbing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Lobbing (Indirect)</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_LobbingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_LobbingRanks">-</span></div>
+					<input type="number" value="0" name="attr_LobbingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Lobbing"/>
+					<button type='roll' name='roll_Machineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Machineguns"}} {{result=[[({1d100}) + @{Machineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Machineguns</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_MachinegunsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_MachinegunsRanks">-</span></div>
+					<input type="number" value="0" name="attr_MachinegunsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Machineguns"/>
+					<button type='roll' name='roll_Pistols' value='&{template:default} {{name=@{character_name}}} {{skillname="Pistols"}} {{result=[[({1d100}) + @{Pistols}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Pistols</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_PistolsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_PistolsRanks">-</span></div>
+					<input type="number" value="0" name="attr_PistolsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Pistols"/>
+					<button type='roll' name='roll_Rifles' value='&{template:default} {{name=@{character_name}}} {{skillname="Rifles"}} {{result=[[({1d100}) + @{Rifles}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Rifles</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_RiflesRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_RiflesRanks">-</span></div>
+					<input type="number" value="0" name="attr_RiflesBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Rifles"/>
+					<button type='roll' name='roll_SprayWeapons' value='&{template:default} {{name=@{character_name}}} {{skillname="Spray Weapons"}} {{result=[[({1d100}) + @{SprayWeapons}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Spray Weapons</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SprayWeaponsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SprayWeaponsRanks">-</span></div>
+					<input type="number" value="0" name="attr_SprayWeaponsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SprayWeapons"/>
+					<button type='roll' name='roll_Submachineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Submachineguns"}} {{result=[[({1d100}) + @{Submachineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Submachineguns</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SubmachinegunsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SubmachinegunsRanks">-</span></div>
+					<input type="number" value="0" name="attr_SubmachinegunsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Submachineguns"/>
+					<button type='roll' name='roll_Throwing' value='&{template:default} {{name=@{character_name}}} {{skillname="Throwing (Direct)"}} {{result=[[({1d100}) + @{Throwing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<span>Throwing (Direct)</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ThrowingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ThrowingRanks">-</span></div>
+					<input type="number" value="0" name="attr_ThrowingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Throwing"/>
+					<button type='roll' name='roll_CustomRan1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan1"}} {{result=[[({1d100}) + @{CustomRan1}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomRan1" name="attr_CustomRan1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomRan1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomRan1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomRan1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomRan1"/>
+					<button type='roll' name='roll_CustomRan2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan2"}} {{result=[[({1d100}) + @{CustomRan2}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomRan2" name="attr_CustomRan2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomRan2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomRan2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomRan2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomRan2"/>
+					<button type='roll' name='roll_CustomRan3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan3"}} {{result=[[({1d100}) + @{CustomRan3}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomRan3" name="attr_CustomRan3_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomRan3Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomRan3Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomRan3Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomRan3"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_RanTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Social skills">
+		<input id="HideSoc" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">	
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Social</label>
+				<Span>Ranks</Span>
+				<span>bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_Con' value='&{template:default} {{name=@{character_name}}} {{skillname="Con"}} {{result=[[({1d100}) + @{Con}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Con</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ConRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ConRanks">-</span></div>
+					<input type="number" value="0" name="attr_ConBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Con"/>
+					<button type='roll' name='roll_Disguise' value='&{template:default} {{name=@{character_name}}} {{skillname="Disguise"}} {{result=[[({1d100}) + @{Disguise}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Disguise</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_DisguiseRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_DisguiseRanks">-</span></div>
+					<input type="number" value="0" name="attr_DisguiseBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Disguise"/>
+					<button type='roll' name='roll_Etiquette' value='&{template:default} {{name=@{character_name}}} {{skillname="Etiquette"}} {{result=[[({1d100}) + @{Etiquette}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Etiquette</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EtiquetteRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EtiquetteRanks">-</span></div>
+					<input type="number" value="0" name="attr_EtiquetteBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Etiquette"/>
+					<button type='roll' name='roll_Instruction' value='&{template:default} {{name=@{character_name}}} {{skillname="Instruction"}} {{result=[[({1d100}) + @{Instruction}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Instruction</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_InstructionRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_InstructionRanks">-</span></div>
+					<input type="number" value="0" name="attr_InstructionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Instruction"/>
+					<button type='roll' name='roll_Interrogation' value='&{template:default} {{name=@{character_name}}} {{skillname="Interrogation"}} {{result=[[({1d100}) + @{Interrogation}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Interrogation</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_InterrogationRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_InterrogationRanks">-</span></div>
+					<input type="number" value="0" name="attr_InterrogationBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Interrogation"/>
+					<button type='roll' name='roll_Enchanting' value='&{template:default} {{name=@{character_name}}} {{skillname="Enchanting"}} {{result=[[({1d100}) + @{Enchanting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Enchanting</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_EnchantingRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_EnchantingRanks">-</span></div>
+					<input type="number" value="0" name="attr_EnchantingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Enchanting"/>
+					<button type='roll' name='roll_Leadership' value='&{template:default} {{name=@{character_name}}} {{skillname="Leadership"}} {{result=[[({1d100}) + @{Leadership}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Leadership</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_LeadershipRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_LeadershipRanks">-</span></div>
+					<input type="number" value="0" name="attr_LeadershipBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Leadership"/>
+					<button type='roll' name='roll_LieDetection' value='&{template:default} {{name=@{character_name}}} {{skillname="Lie Detection"}} {{result=[[({1d100}) + @{LieDetection}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Lie Detection</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_LieDetectionRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_LieDetectionRanks">-</span></div>
+					<input type="number" value="0" name="attr_LieDetectionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_LieDetection"/>
+					<button type='roll' name='roll_Linguistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Linguistics"}} {{result=[[({1d100}) + @{Linguistics}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Linguistics</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_LinguisticsRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_LinguisticsRanks">-</span></div>
+					<input type="number" value="0" name="attr_LinguisticsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Linguistics"/>
+					<button type='roll' name='roll_Negotiate' value='&{template:default} {{name=@{character_name}}} {{skillname="Negotiate"}} {{result=[[({1d100}) + @{Negotiate}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Negotiate</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_NegotiateRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_NegotiateRanks">-</span></div>
+					<input type="number" value="0" name="attr_NegotiateBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Negotiate"/>
+					<button type='roll' name='roll_ResistTemptation' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Temptation"}} {{result=[[({1d100}) + @{ResistTemptation}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Resist Temptation</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_ResistTemptationRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_ResistTemptationRanks">-</span></div>
+					<input type="number" value="0" name="attr_ResistTemptationBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ResistTemptation"/>
+					<button type='roll' name='roll_Seduction' value='&{template:default} {{name=@{character_name}}} {{skillname="Seduction"}} {{result=[[({1d100}) + @{Seduction}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Seduction</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SeductionRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SeductionRanks">-</span></div>
+					<input type="number" value="0" name="attr_SeductionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Seduction"/>
+					<button type='roll' name='roll_SleightofHand' value='&{template:default} {{name=@{character_name}}} {{skillname="Sleight of Hand"}} {{result=[[({1d100}) + @{SleightofHand}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<span style="color: blue">Sleight of Hand</span>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_SleightofHandRanks"/>
+					<span class="sheet-inputs-readonly" name="attr_SleightofHandRanks">-</span></div>
+					<input type="number" value="0" name="attr_SleightofHandBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SleightofHand"/>
+					<button type='roll' name='roll_CustomSoc1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc1"}} {{result=[[({1d100}) + @{CustomSoc1}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSoc1" name="attr_CustomSoc1_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomSoc1Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomSoc1Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomSoc1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSoc1"/>
+					<button type='roll' name='roll_CustomSoc2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc2"}} {{result=[[({1d100}) + @{CustomSoc2}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSoc2" name="attr_CustomSoc2_Name"/>
+					<div class="sheet-row"><input type="number" value="0" class="sheet-inputs-edit" name="attr_CustomSoc2Ranks"/>
+					<span class="sheet-inputs-readonly" name="attr_CustomSoc2Ranks">-</span></div>
+					<input type="number" value="0" name="attr_CustomSoc2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSoc2"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SocTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Science skills">
+		<input id="HideSci" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Science</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_Biology' value='&{template:default} {{name=@{character_name}}} {{skillname="Biology"}} {{result=[[({1d100}) + @{Biology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Biology</span>
+					<input type="number" value="0" name="attr_BiologyRanks"/>
+					<input type="number" value="0" name="attr_BiologyBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Biology"/>
+					<button type='roll' name='roll_Botany' value='&{template:default} {{name=@{character_name}}} {{skillname="Botany"}} {{result=[[({1d100}) + @{Botany}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Botany</span>
+					<input type="number" value="0" name="attr_BotanyRanks"/>
+					<input type="number" value="0" name="attr_BotyanyBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Botany"/>
+					<button type='roll' name='roll_Chemistry' value='&{template:default} {{name=@{character_name}}} {{skillname="Chemistry"}} {{result=[[({1d100}) + @{Chemistry}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Chemistry</span>
+					<input type="number" value="0" name="attr_ChemistryRanks"/>
+					<input type="number" value="0" name="attr_ChemistryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Chemistry"/>
+					<button type='roll' name='roll_Eidetics' value='&{template:default} {{name=@{character_name}}} {{skillname="Eidetics"}} {{result=[[({1d100}) + @{Eidetics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Eidetics</span>
+					<input type="number" value="0" name="attr_EideticsRanks"/>
+					<input type="number" value="0" name="attr_EideticsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Eidetics"/>
+					<button type='roll' name='roll_History' value='&{template:default} {{name=@{character_name}}} {{skillname="History"}} {{result=[[({1d100}) + @{History}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span>History</span>
+					<input type="number" value="0" name="attr_HistoryRanks"/>
+					<input type="number" value="0" name="attr_HistoryBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_History"/>
+					<button type='roll' name='roll_Literature' value='&{template:default} {{name=@{character_name}}} {{skillname="Literature"}} {{result=[[({1d100}) + @{Literature}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Literature</span>
+					<input type="number" value="0" name="attr_LiteratureRanks"/>
+					<input type="number" value="0" name="attr_LiteratureBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Literature"/>
+					<button type='roll' name='roll_Mathematics' value='&{template:default} {{name=@{character_name}}} {{skillname="Mathematics"}} {{result=[[({1d100}) + @{Mathematics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Mathematics</span>
+					<input type="number" value="0" name="attr_MathematicsRanks"/>
+					<input type="number" value="0" name="attr_MathematicsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Mathematics"/>
+					<button type='roll' name='roll_Medicine' value='&{template:default} {{name=@{character_name}}} {{skillname="Medicine"}} {{result=[[({1d100}) + @{Medicine}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Medicine</span>
+					<input type="number" value="0" name="attr_MedicineRanks"/>
+					<input type="number" value="0" name="attr_MedicineBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Medicine"/>
+					<button type='roll' name='roll_Navigation' value='&{template:default} {{name=@{character_name}}} {{skillname="Navigation"}} {{result=[[({1d100}) + @{Navigation}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Navigation</span>
+					<input type="number" value="0" name="attr_NavigationRanks"/>
+					<input type="number" value="0" name="attr_NavigationBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Navigation"/>
+					<button type='roll' name='roll_Occult' value='&{template:default} {{name=@{character_name}}} {{skillname="Occult"}} {{result=[[({1d100}) + @{Occult}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Occult</span>
+					<input type="number" value="0" name="attr_OccultRanks"/>
+					<input type="number" value="0" name="attr_OccultBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Occult"/>
+					<button type='roll' name='roll_Physics' value='&{template:default} {{name=@{character_name}}} {{skillname="Physics"}} {{result=[[({1d100}) + @{Physics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Physics</span>
+					<input type="number" value="0" name="attr_PhysicsRanks"/>
+					<input type="number" value="0" name="attr_PhysicsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Physics"/>
+					<button type='roll' name='roll_Xenology' value='&{template:default} {{name=@{character_name}}} {{skillname="Xenology"}} {{result=[[({1d100}) + @{Xenology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Xenology</span>
+					<input type="number" value="0" name="attr_XenologyRanks"/>
+					<input type="number" value="0" name="attr_XenologyBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Xenology"/>
+					<button type='roll' name='roll_Zoology' value='&{template:default} {{name=@{character_name}}} {{skillname="Zoology"}} {{result=[[({1d100}) + @{Zoology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<span style="color: blue">Zoology</span>
+					<input type="number" value="0" name="attr_ZoologyRanks"/>
+					<input type="number" value="0" name="attr_ZoologyBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Zoology"/>
+					<button type='roll' name='roll_CustomSci1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci1"}} {{result=[[({1d100}) + @{CustomSci1}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSci1" name="attr_CustomSci1_Name"/>
+					<input type="number" value="0" name="attr_CustomSci1Ranks"/>
+					<input type="number" value="0" name="attr_CustomSci1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSci1"/>
+					<button type='roll' name='roll_CustomSci2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci2"}} {{result=[[({1d100}) + @{CustomSci2}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSci2" name="attr_CustomSci2_Name"/>
+					<input type="number" value="0" name="attr_CustomSci2Ranks"/>
+					<input type="number" value="0" name="attr_CustomSci2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSci2"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SciTotal"/>
+				</div>
+			</div>
+		</div>	
+		<div title="Survival skills">
+		<input id="HideSur" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label>Survival</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_AnimalHandling' value='&{template:default} {{name=@{character_name}}} {{skillname="Animal Handling"}} {{result=[[({1d100}) + @{AnimalHandling}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Animal Handling</span>
+					<input type="number" value="0" name="attr_AnimalHandlingRanks"/>
+					<input type="number" value="0" name="attr_AnimalHandlingBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_AnimalHandling"/>
+					<button type='roll' name='roll_FindShelter' value='&{template:default} {{name=@{character_name}}} {{skillname="Find Shelter"}} {{result=[[({1d100}) + @{FindShelter}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Find Shelter</span>
+					<input type="number" value="0" name="attr_FindShelterRanks"/>
+					<input type="number" value="0" name="attr_FindSheldterBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_FindShelter"/>
+					<button type='roll' name='roll_Forage' value='&{template:default} {{name=@{character_name}}} {{skillname="Forage"}} {{result=[[({1d100}) + @{Forage}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Forage</span>
+					<input type="number" value="0" name="attr_ForageRanks"/>
+					<input type="number" value="0" name="attr_ForageBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Forage"/>
+					<button type='roll' name='roll_Observation' value='&{template:default} {{name=@{character_name}}} {{skillname="Observation"}} {{result=[[({1d100}) + @{Observation}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Observation</span>
+					<input type="number" value="0" name="attr_ObservationRanks"/>
+					<input type="number" value="0" name="attr_ObservationBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Observation"/>
+					<button type='roll' name='roll_Orienteering' value='&{template:default} {{name=@{character_name}}} {{skillname="Orienteering"}} {{result=[[({1d100}) + @{Orienteering}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Orienteering</span>
+					<input type="number" value="0" name="attr_OrienteeringRanks"/>
+					<input type="number" value="0" name="attr_OrienteeringBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Orienteering"/>
+					<button type='roll' name='roll_RefreshBody' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Body"}} {{result=[[({1d100}) + @{RefreshBody}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Refresh Body</span>
+					<input type="number" value="0" name="attr_RefreshBodyRanks"/>
+					<input type="number" value="0" name="attr_RefreshBodyBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_RefreshBody"/>
+					<button type='roll' name='roll_RefreshMind' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Mind"}} {{result=[[({1d100}) + @{RefreshMind}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Refresh Mind</span>
+					<input type="number" value="0" name="attr_RefreshMindRanks"/>
+					<input type="number" value="0" name="attr_RefreshMindBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_RefreshMind"/>
+					<button type='roll' name='roll_ResistKO' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist KO"}} {{result=[[({1d100}) + @{ResistKO}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Resist KO</span>
+					<input type="number" value="0" name="attr_ResistKORanks"/>
+					<input type="number" value="0" name="attr_ResistKOBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ResistKO"/>
+					<button type='roll' name='roll_ResistPain' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Pain"}} {{result=[[({1d100}) + @{ResistPain}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Resist Pain</span>
+					<input type="number" value="0" name="attr_ResistPainRanks"/>
+					<input type="number" value="0" name="attr_ResistPainBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_ResistPain"/>
+					<button type='roll' name='roll_Ride' value='&{template:default} {{name=@{character_name}}} {{skillname="Ride"}} {{result=[[({1d100}) + @{Ride}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Ride</span>
+					<input type="number" value="0" name="attr_RideRanks"/>
+					<input type="number" value="0" name="attr_RideBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Ride"/>
+					<button type='roll' name='roll_Snare' value='&{template:default} {{name=@{character_name}}} {{skillname="Snare"}} {{result=[[({1d100}) + @{Snare}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Snare</span>
+					<input type="number" value="0" name="attr_SnareRanks"/>
+					<input type="number" value="0" name="attr_SnareBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Snare"/>
+					<button type='roll' name='roll_Track' value='&{template:default} {{name=@{character_name}}} {{skillname="Track"}} {{result=[[({1d100}) + @{Track}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Track</span>
+					<input type="number" value="0" name="attr_TrackRanks"/>
+					<input type="number" value="0" name="attr_TrackBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Track"/>
+					<button type='roll' name='roll_WeatherSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Weather Sense"}} {{result=[[({1d100}) + @{WeatherSense}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<span>Weather Sense</span>
+					<input type="number" value="0" name="attr_WeatherSenseRanks"/>
+					<input type="number" value="0" name="attr_WeatherSenseBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_WeatherSense"/>
+					<button type='roll' name='roll_CustomSur1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur1"}} {{result=[[({1d100}) + @{CustomSur1}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSur1" name="attr_CustomSur1_Name"/>
+					<input type="number" value="0" name="attr_CustomSur1Ranks"/>
+					<input type="number" value="0" name="attr_CustomSur1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSur1"/>
+					<button type='roll' name='roll_CustomSur2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur2"}} {{result=[[({1d100}) + @{CustomSur2}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomSur2" name="attr_CustomSur2_Name"/>
+					<input type="number" value="0" name="attr_CustomSur2Ranks"/>
+					<input type="number" value="0" name="attr_CustomSur2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomSur2"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_SurTotal"/>
+				</div>
+			</div>
+		</div>
+		<div title="Technology skills">
+		<input id="HideTech" type="checkbox" class="sheet-toggle-hide"/>
+			<div class="sheet-body">
+				<div class="skills-section" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+				<input id="SkillRankToggle" class="sheet-toggle" type="checkbox" name="attr_toggle_editing" value="1" style="display: none"/>
+				<Span>Roll</Span>
+				<label style="width: 200px">Technology</label>
+				<Span>Ranks</Span>
+				<span>Bonus</span>
+				<Span>Total</Span>
+					<button type='roll' name='roll_Computers' value='&{template:default} {{name=@{character_name}}} {{skillname="Computers"}} {{result=[[({1d100}) + @{Computers}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
+					<span>Computers</span>
+					<input type="number" value="0" name="attr_ComputersRanks"/>
+					<input type="number" value="0" name="attr_ComputersBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Computers"/>
+					<button type='roll' name='roll_Construction' value='&{template:default} {{name=@{character_name}}} {{skillname="Construction"}} {{result=[[({1d100}) + @{Construction}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Construction</span>
+					<input type="number" value="0" name="attr_ConstructionRanks"/>
+					<input type="number" value="0" name="attr_ConstructionBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Construction"/>
+					<button type='roll' name='roll_Demolition' value='&{template:default} {{name=@{character_name}}} {{skillname="Demolition"}} {{result=[[({1d100}) + @{Demolition}]]}}' {{PUSH="Tech Skills use Cr, Int, or Pe"}}></button>
+					<span>Demolition</span>
+					<input type="number" value="0" name="attr_DemolitionRanks"/>
+					<input type="number" value="0" name="attr_DemolitionsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Demolition"/>
+					<button type='roll' name='roll_Electronics' value='&{template:default} {{name=@{character_name}}} {{skillname="Electronics"}} {{result=[[({1d100}) + @{Electronics}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span style="color: blue">Electronics</span>
+					<input type="number" value="0" name="attr_ElectronicsRanks"/>
+					<input type="number" value="0" name="attr_ElectronicsBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Electronics"/>
+					<button type='roll' name='roll_Engineering' value='&{template:default} {{name=@{character_name}}} {{skillname="Engineering"}} {{result=[[({1d100}) + @{Engineering}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Engineering</span>
+					<input type="number" value="0" name="attr_EngineeringRanks"/>
+					<input type="number" value="0" name="attr_EngineeringBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Engineering"/>
+					<button type='roll' name='roll_Lockpick' value='&{template:default} {{name=@{character_name}}} {{skillname="Lockpick"}} {{result=[[({1d100}) + @{Lockpick}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Lockpick</span>
+					<input type="number" value="0" name="attr_LockpickRanks"/>
+					<input type="number" value="0" name="attr_LockpickBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Lockpick"/>
+					<button type='roll' name='roll_Mechanic' value='&{template:default} {{name=@{character_name}}} {{skillname="Mechanic"}} {{result=[[({1d100}) + @{Mechanic}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Mechanic</span>
+					<input type="number" value="0" name="attr_MechanicRanks"/>
+					<input type="number" value="0" name="attr_MechanicBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Mechanic"/>
+					<button type='roll' name='roll_PilotAircraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Aircraft"}} {{result=[[({1d100}) + @{PilotAircraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span style="color: blue">Pilot Aircraft</span>
+					<input type="number" value="0" name="attr_PilotAircraftRanks"/>
+					<input type="number" value="0" name="attr_PilotAircraftBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_PilotAircraft"/>
+					<button type='roll' name='roll_PilotGroundcraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Groundcraft"}} {{result=[[({1d100}) + @{PilotGroundcraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Pilot Groundcraft</span>
+					<input type="number" value="0" name="attr_PilotGroundcraftRanks"/>
+					<input type="number" value="0" name="attr_PilotGroundcraftBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_PilotGroundcraft"/>
+					<button type='roll' name='roll_PilotSpacecraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Spacecraft"}} {{result=[[({1d100}) + @{PilotSpacecraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span style="color: blue">Pilot Spacecraft</span>
+					<input type="number" value="0" name="attr_PilotSpacecraftRanks"/>
+					<input type="number" value="0" name="attr_PilotSpacecraftBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_PilotSpacecraft"/>
+					<button type='roll' name='roll_PilotWatercraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Watercraft"}} {{result=[[({1d100}) + @{PilotWatercraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span>Pilot Watercraft</span>
+					<input type="number" value="0" name="attr_PilotWatercraftRanks"/>
+					<input type="number" value="0" name="attr_PilotWatercraftBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_PilotWatercraft"/>
+					<button type='roll' name='roll_PowerArmor' value='&{template:default} {{name=@{character_name}}} {{skillname="Power Armor"}} {{result=[[({1d100}) + @{PowerArmor}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span style="color: blue">Power Armor</span>
+					<input type="number" value="0" name="attr_PowerArmorRanks"/>
+					<input type="number" value="0" name="attr_PowerArmorBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_PowerArmor"/>
+					<button type='roll' name='roll_Software' value='&{template:default} {{name=@{character_name}}} {{skillname="Software"}} {{result=[[({1d100}) + @{Software}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<span style="color: blue">Software</span>
+					<input type="number" value="0" name="attr_SoftwareRanks"/>
+					<input type="number" value="0" name="attr_SoftwareBonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_Software"/>
+					<button type='roll' name='roll_CustomTech1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech1"}} {{result=[[({1d100}) + @{CustomTech1}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomTech1" name="attr_CustomTech1_Name"/>
+					<input type="number" value="0" name="attr_CustomTech1Ranks"/>
+					<input type="number" value="0" name="attr_CustomTech1Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomTech1"/>
+					<button type='roll' name='roll_CustomTech2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech2"}} {{result=[[({1d100}) + @{CustomTech2}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<input class='sheet-skill-custom' type="text" value="CustomTech2" name="attr_CustomTech2_Name"/>
+					<input type="number" value="0" name="attr_CustomTech2Ranks"/>
+					<input type="number" value="0" name="attr_CustomTech2Bonus"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_CustomTech2"/>
+					<input class="sheet-skill-total" type="text" value="0" readonly name="attr_TechTotal"/>				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+<div class='sheet-combatpages' style="border: solid black 2px; margin-top: 5px;">
+	<div class='rangedweapons' style="padding: 5px;">
+	<label for="RangedCheckbox" style="width: 150px">Ranged Weapons</label>
+	<input type="checkbox" id="RangedCheckbox" class="sheet-toggle-hide" />
+	<div class="sheet-body">
+		<div class='rangedweaponlabel'>
+		<span>Roll</span>
+		<span>Weapon Name/Type</span>
+		<span>KOV</span>
+		<span>Speed</span>
+		<span>Ammo Type</span>
+		<span>Magazine</span>
+		<span>Skill Used</span>
+		<span>Skill Bonus</span>
+		<span>Value</span>
+		<span>Weight</span>
+		<span>Quantity</span>
+		<span>Weapon Notes</span>
+		</div>
+          <fieldset class="repeating_rangedweapons">
+		  <div class='rangedweapon-section'>
+            <button type='roll' name='roll_rwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{skillname=@{wpn_weaponname}}} {{result=[[({1d100}}) + @{rwpn_kob}]]}}'></button>
+            <input type="text" name="attr_rwpn_weaponname" class='rangedweapon' style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_kov" style="width: 90%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_speed" style="width: 90%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_ammotype" style="width: 90%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_magazine" style="width: 90%; border: solid black 1px;"/>
+            <select type="text" name="attr_rwpn_skill" style="width: 90%; border: solid black 1px;"/>
+				<option value="Archery" selected="selected">Archery</option>
+				<option value="Artillery" selected="selected">Artillery</option>
+				<option value="ExoticRanged" selected="selected">Exotic Ranged Weapon</option>
+				<option value="Gunnery" selected="selected">Gunnery</option>
+				<option value="Lobbing" selected="selected">Lobbing</option>
+				<option value="Machineguns" selected="selected">Machineguns</option>
+				<option value="Pistols" selected="selected">Pistols</option>
+				<option value="Rifles" selected="selected">Rifles</option>
+				<option value="SprayWeapons" selected="selected">SprayWeapons</option>
+				<option value="Submachineguns" selected="selected">Submachineguns</option>
+				<option value="Throwing" selected="selected">Throwing</option>
+				<option value="CustomRan1" selected="selected">CustomRan1</option>
+				<option value="CustomRan2" selected="selected">CustomRan2</option>
+				<option value="CustomRan3" selected="selected">CustomRan3</option>
+            <input type="text" name="attr_rwpn_skillbonus" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_value" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_weight" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_rwpn_quantity" style="width: 99%; border: solid black 1px;"/>
+			<input type="text" name="attr_rwpn_weaponnotes" style="width: 99%; border: solid black 1px;"/>
+          </div>
+		  </fieldset>
+	</div>
+	</div>
+	<div class='meleeweapons' style="padding: 5px;">
+	<label for="MeleeCheckbox" style="width: 150px">Melee Weapons</label>
+	<input type="checkbox" id="MeleeCheckbox" class="sheet-toggle-hide" style="float: left; margin: 0px;"/>
+	<div class="sheet-body">
+		<div class='meleeweaponlabel'>
+		<span>Roll</span>
+		<span>Carried</span>
+		<span>Weapon Name/Type</span>
+		<span>KOV</span>
+		<span>Speed</span>
+		<span>Reach</span>
+		<span>Skill Used</span>
+		<span>Skill Bonus</span>
+		<span>Weight</span>
+		<span>Quantity</span>
+		<span>Value</span>
+		<span>Weapon Notes</span>
+		</div>
+          <fieldset class="repeating_meleeweapons">
+		  <div class='meleeweapon-section'>
+            <button type='roll' name='roll_mwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{skillname=@{wpn_weaponname}}} {{result=[[({1d100}}) + @{rwpn_kob}]]}}'></button>
+            <input type="checkbox" value="1" name="attr_mwpn_carried" style="width: 100%"/>
+			<input type="text" name="attr_mwpn_weaponname" class='rangedweapon' style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_kov" style="width: 90%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_speed" style="width: 90%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_reach" style="width: 90%; border: solid black 1px;"/>
+            <select name="attr_mwpn_skill" style="width: 90%; border: solid black 1px;"/>
+				<option value="Blades" selected="selected">Blades</option>
+				<option value="Brawl" selected="selected">Brawl</option>
+				<option value="Clubs" selected="selected">Clubs</option>
+				<option value="ExoticMelee" selected="selected">Exotic Melee</option>
+				<option value="Grapple" selected="selected">Grapple</option>
+				<option value="Polearms" selected="selected">Polearms</option>
+				<option value="Striking" selected="selected">Striking</option>
+				<option value="CustomCC1" selected="selected">CustomCC1</option>
+				<option value="CustomCC2" selected="selected">CustomCC2</option>
+				<option value="CustomCC3" selected="selected">CustomCC3</option>
+            <input type="number" name="attr_mwpn_skillbonus" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_weight" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_quantity" style="width: 99%; border: solid black 1px;"/>
+            <input type="text" name="attr_mwpn_value" style="width: 90%; border: solid black 1px;"/>
+			<input type="text" name="attr_mwpn_weaponnotes" style="width: 99%; border: solid black 1px;"/>
+          </div>
+		  </fieldset>
+	</div>
+	</div>
+	</div>
+<div class='sheet-gearpages' style="border: solid black 2px; margin-top: 5px;">
+	<div class='gear_and_equipment'>
+		<div class="sheet-body">
+			<div class='gearpagelabel'>
+				<span>Roll</span>
+				<span>Gear Name / Type</span>
+				<span>KOV</span>
+				<span>Speed</span>
+				<span>Power Type</span>
+				<span>Charges</span>
+				<span>Skill Used</span>
+				<span>Skill Bonus</span>
+				<span>Value</span>
+				<span>Weight</span>
+				<span>Quantity</span>
+				<span>Gear Notes</span>
+			</div>
+			  <fieldset class="repeating_gearpage">
+			  <div class='gearpage-section'>
+				<button type='roll' name='roll_gear_skillcheck' value='&{template:default} {{name=@{character_name}}} {{skillname=@{wpn_weaponname}}} {{result=[[({1d100}}) + @{rwpn_kob}]]}}'></button>
+				<input type="text" name="attr_gearname" class='gearpage' style="width: 99%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_kov" style="width: 90%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_speed" style="width: 90%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_powertype" style="width: 90%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_charges" style="width: 90%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_skill" style="width: 90%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_skillbonus" style="width: 99%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_value" style="width: 99%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_weight" style="width: 99%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_quantity" style="width: 99%; border: solid black 1px;"/>
+				<input type="text" name="attr_gear_weaponnotes" style="width: 99%; border: solid black 1px;"/>
+			  </div>
+			  </fieldset>
+		</div>
+	</div>
+</div>
+<div class='sheet-notespages' style="border: solid black 2px; margin-top: 5px;">
+	<div id="NotesTextarea" style="border: 2px solid black; padding: 3px; margin-top: 3px;">
+		<fieldset class="repeating_notesfield">
+			<label for="NotesTextarea">Notes:</label>
+			<textarea id="NotesTextarea" name="attr_NotesTextarea" style="max-width: 960px; max-height: 150px; min-height: 22px; height: 44px;"></textarea>
+		</fieldset>
+	</div>
+</div>
+<div class='sheet-spellpages' style="border: solid black 2px; margin-top: 5px;">
+	<div class='spells'>
+		<div class="sheet-body">
+			<div class='spells-section'>
+				<Span>Spell Name</span>
+				<span>Difficulty</span>
+				<span>Drain</span>
+				<span>Maintenance Cost</span>
+				<span>Spell Descripion</span>		
+			</div>
+			<fieldset class="repeating_spells">
+			<div class='spells-section'>
+				<Input type="text" name="attr_spellname" style="width: 99%; border: solid black 1px; max-height: 24px;"/>
+				<Input type="text" name="attr_spelldiff" style="width: 99%; border: solid black 1px; max-height: 24px;"/>
+				<Input type="text" name="attr_spelldrain" style="width: 99%; border: solid black 1px; max-height: 24px;"/>
+				<Input type="text" name="attr_spellmaint" style="width: 99%; border: solid black 1px; max-height: 24px;"/>
+				<textarea id="SpellDescriptions" name="attr_spelldesc" style="margin: 0px; width: 90%; border: solid black 1px; min-height: 15px; height: 15px;"/></textarea>
+			</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+<!-- ---------------------------SHEET WORKERS----------------- -->
+<script type="text/worker">
+
+// Common Functions
+const int = score => parseInt(score) || 0;
+const float = score => parseFloat(score) || 0;
+
+const skills = ['Climbing', 'Contortions', 'EnduranceRunning', 'Freefall', 'Freerunning', 'Jumping', 'Portage', 'Sneaking', 'Sports', 'Sprinting', 'Swimming', 'Weightlifting', 'CustomAth1', 'CustomAth2', 'CustomAth3', 'Accounting', 'Advertising', 'Appraisal', 'Bargain', 'Barter', 'Economics', 'Forgery', 'Gambling', 'Investment', 'Logistics', 'Procurement', 'Racketeering', 'CustomBus1', 'CustomBus2', 'CustomBus3', 'ArmorTraining', 'Blades', 'Block', 'Brawl', 'Clubs', 'Counter', 'Escape', 'ExoticMelee', 'Grapple', 'Parry', 'Polearms', 'Striking', 'CustomCC1', 'CustomCC2', 'CustomCC3', 'Acting', 'Art', 'Composing', 'Dance', 'Fashion', 'Metalwork', 'MusicalInstrument', 'Sculpting', 'Singing', 'SpellDesign', 'Woodwork', 'Writing', 'CustomExp1', 'CustomExp2', 'CustomExp3', 'AuraSense', 'Binding', 'Celerity', 'Conjuring', 'Divining', 'Enchanting', 'ManaSense', 'ManifestWill', 'Meditation', 'Precognition', 'Rituals', 'Runes', 'Spellcasting', 'CustomMys1', 'CustomMys2', 'Archery', 'Artillery', 'Dodge', 'ExoticRanged', 'Gunnery', 'Lobbing', 'Machineguns', 'Pistols', 'Rifles', 'SprayWeapons', 'SubmachineGuns', 'Throwing', 'CustomRan1', 'CustomRan2', 'CustomRan3', 'Biology', 'Botany', 'Chemistry', 'Eidetics', 'History', 'Literature', 'Mathematics', 'Medicine', 'Navigation', 'Occult', 'Physics', 'Xenology', 'Zoology', 'CustomSci1', 'CustomSci2', 'Con', 'Disguise', 'Etiquette', 'Instruction', 'Interrogation', 'Intimidate', 'Leadership', 'LieDetection', 'Linguistics', 'Negotiate', 'ResistTemptation', 'Seduction', 'SleightofHand', 'CustomSoc1', 'CustomSoc2', 'AnimalHandling', 'FindShelter', 'Forage', 'Observation', 'Orienteering', 'RefreshBody', 'RefreshMind', 'ResistKO', 'ResistPain', 'Ride', 'Snare', 'Track', 'WeatherSense', 'CustomSur1', 'CustomSur2', 'Computers', 'Construction', 'Demolition', 'Electronics', 'Engineering', 'Lockpick', 'Mechanic', 'PilotAircraft', 'PilotGroundcraft', 'PilotSpacecraft', 'PilotWatercraft', 'PowerArmor', 'Software', 'CustomTech1', 'CustomTech2'];
+const skillAttrs = skills.map(skill => `${skills}`);
+
+//Total Athletics Calculator
+on('change:ClimbingRanks change:ContortionsRanks change:EnduranceRunningRanks change:freefallRanks change:freerunningRanks change:jumpingRanks change:portageRanks change:sneakingRanks change:sportsRanks change:sprintingRanks change:swimmingRanks change:weightliftingRanks change:customath1Ranks change:customath2Ranks change:customath3Ranks sheet:opened', function() {  
+  getAttrs(['ClimbingRanks','ContortionsRanks', 'EnduranceRunningRanks', 'FreefallRanks', 'FreerunningRanks','JumpingRanks','PortageRanks','SneakingRanks','SportsRanks','SprintingRanks','SwimmingRanks','WeightliftingRanks','CustomAth1Ranks','CustomAth2Ranks','CustomAth3Ranks'], function(values) {
+    let A1 = parseInt(values.ClimbingRanks)||0;
+	let A2	= parseInt(values.ContortionsRanks)||0;
+	let A3	= parseInt(values.EnduranceRunningRanks)||0;
+	let A4	= parseInt(values.FreefallRanks)||0;
+	let A5	= parseInt(values.FreerunningRanks)||0;
+	let A6	= parseInt(values.JumpingRanks)||0;
+	let A7	= parseInt(values.PortageRanks)||0;
+	let A8	= parseInt(values.SneakingRanks)||0;
+	let A9	= parseInt(values.SportsRanks)||0;
+	let A10	= parseInt(values.SprintingRanks)||0;
+	let A11	= parseInt(values.SwimmingRanks)||0;
+	let A12	= parseInt(values.WeightliftingRanks)||0;
+	let A13	= parseInt(values.CustomAth1Ranks)||0;
+	let A14	= parseInt(values.CustomAth2Ranks)||0;
+	let A15	= parseInt(values.CustomAth3Ranks)||0;		
+    let AthSum = (A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12+A13+A14+A15);
+    setAttrs({                            
+      AthTotal: AthSum
+    });
+  });
+});
+
+//Total Business Calculator
+on('change:AccountingRanks change:AdvertisingRanks change:AppraisalRanks change:BargainRanks change:BarterRanks change:EconomicsRanks change:ForgeryRanks change:GamblingRanks change:InvestmentRanks change:LogisticsRanks change:ProcurementRanks change:RacketeeringRanks change:CustomBus1Ranks change:CustomBus2Ranks change:CustomBus3Ranks sheet:opened', function() {  
+  getAttrs(['AccountingRanks','AdvertisingRanks', 'AppraisalRanks', 'BargainRanks', 'BarterRanks','EconomicsRanks','ForgeryRanks','GamblingRanks','InvestmentRanks','LogisticsRanks','ProcurementRanks','RacketeeringRanks','CustomBus1Ranks','CustomBus2Ranks','CustomBus3Ranks'], function(values) {
+    let B1 = parseInt(values.AccountingRanks)||0;
+	let B2	= parseInt(values.AdvertisingRanks)||0;
+	let B3	= parseInt(values.AppraisalRanks)||0;
+	let B4	= parseInt(values.BargainRanks)||0;
+	let B5	= parseInt(values.BarterRanks)||0;
+	let B6	= parseInt(values.EconomicsRanks)||0;
+	let B7	= parseInt(values.ForgeryRanks)||0;
+	let B8	= parseInt(values.GamblingRanks)||0;
+	let B9	= parseInt(values.InvestmentRanks)||0;
+	let B10	= parseInt(values.LogisticsRanks)||0;
+	let B11	= parseInt(values.ProcurementRanks)||0;
+	let B12	= parseInt(values.RacketeeringRanks)||0;
+	let B13	= parseInt(values.CustomBus1Ranks)||0;
+	let B14	= parseInt(values.CustomBus2Ranks)||0;
+	let B15	= parseInt(values.CustomBus3Ranks)||0;
+    let BusSum = (B1+B2+B3+B4+B5+B6+B7+B8+B9+B10+B11+B12+B13+B14+B15);
+    setAttrs({                            
+      BusTotal: BusSum
+    });
+  });
+});
+
+//Total Close Combat Calculator
+on('change:ArmorTrainingRanks change:BladesRanks change:BlockRanks change:BrawlRanks change:ClubsRanks change:CounterRanks change:EscapeRanks change:ExoticMeleeRanks change:GrappleRanks change:ParryRanks change:PolearmsRanks change:StrikingRanks change:CustomCC1Ranks change:CustomCC2Ranks change:CustomCC3Ranks sheet:opened', function() {  
+  getAttrs(['ArmorTrainingRanks','BladesRanks', 'BlockRanks', 'BrawlRanks', 'ClubsRanks','CounterRanks','EscapeRanks','ExoticMeleeRanks','GrappleRanks','ParryRanks','PolearmsRanks','StrikingRanks','CustomCC1Ranks','CustomCC2Ranks','CustomCC3Ranks'], function(values) {
+    let C1 = parseInt(values.ArmorTrainingRanks)||0;
+	let C2	= parseInt(values.BladesRanks)||0;
+	let C3	= parseInt(values.BlockRanks)||0;
+	let C4	= parseInt(values.BrawlRanks)||0;
+	let C5	= parseInt(values.ClubsRanks)||0;
+	let C6	= parseInt(values.CounterRanks)||0;
+	let C7	= parseInt(values.EscapeRanks)||0;
+	let C8	= parseInt(values.ExoticMeleeRanks)||0;
+	let C9	= parseInt(values.GrappleRanks)||0;
+	let C10	= parseInt(values.ParryRanks)||0;
+	let C11	= parseInt(values.PolearmsRanks)||0;
+	let C12	= parseInt(values.StrikingRanks)||0;
+	let C13	= parseInt(values.CustomCC1Ranks)||0;
+	let C14	= parseInt(values.CustomCC2Ranks)||0;
+	let C15	= parseInt(values.CustomCC3Ranks)||0;
+    let CCSum = (C1+C2+C3+C4+C5+C6+C7+C8+C9+C10+C11+C12+C13+C14+C15);
+    setAttrs({                            
+      CCTotal: CCSum
+    });
+  });
+});
+
+//Total Expression Calculator
+on('change:ActingRanks change:ArtRanks change:ComposingRanks change:DanceRanks change:FashionRanks change:MetalworkRanks change:MusicalInstrumentRanks change:SculptingRanks change:SingingRanks change:SpellDesignRanks change:WoodworkRanks change:WritingRanks change:CustomExp1Ranks change:CustomExp2Ranks change:CustomExp3Ranks sheet:opened', function() {  
+  getAttrs(['ActingRanks','ArtRanks', 'ComposingRanks', 'DanceRanks', 'FashionRanks','MetalworkRanks','MusicalInstrumentRanks','SculptingRanks','SingingRanks','SpellDesignRanks','WoodworkRanks','WritingRanks','CustomExp1Ranks','CustomExp2Ranks','CustomExp3Ranks'], function(values) {
+    let E1 = parseInt(values.ActingRanks)||0;
+	let E2	= parseInt(values.ArtRanks)||0;
+	let E3	= parseInt(values.ComposingRanks)||0;
+	let E4	= parseInt(values.DanceRanks)||0;
+	let E5	= parseInt(values.FashionRanks)||0;
+	let E6	= parseInt(values.MetalworkRanks)||0;
+	let E7	= parseInt(values.MusicalInstrumentRanks)||0;
+	let E8	= parseInt(values.SculptingRanks)||0;
+	let E9	= parseInt(values.SingingRanks)||0;
+	let E10	= parseInt(values.SpellDesignRanks)||0;
+	let E11	= parseInt(values.WoodworkRanks)||0;
+	let E12	= parseInt(values.WritingRanks)||0;
+	let E13	= parseInt(values.CustomExp1Ranks)||0;
+	let E14	= parseInt(values.CustomExp2Ranks)||0;
+	let E15	= parseInt(values.CustomExp3Ranks)||0;
+    let ExpSum = (E1+E2+E3+E4+E5+E6+E7+E8+E9+E10+E11+E12+E13+E14+E15);
+    setAttrs({                            
+      ExpTotal: ExpSum
+    });
+  });
+});
+
+//Total Mystic Calculator
+on('change:AuraSenseRanks change:BindingRanks change:CelerityRanks change:ConjuringRanks change:DiviningRanks change:EnchantingRanks change:ManaSenseRanks change:ManifestWillRanks change:MeditationRanks change:PrecognitionRanks change:RitualsRanks change:RunesRanks change:SpellcastingRanks change:CustomMys1Ranks change:CustomMys2Ranks sheet:opened', function() {  
+  getAttrs(['AuraSenseRanks','BindingRanks', 'CelerityRanks', 'ConjuringRanks', 'DiviningRanks','EnchantingRanks','ManaSenseRanks','ManifestWillRanks','MeditationRanks','PrecognitionRanks','RitualsRanks','RunesRanks','SpellcastingRanks','CustomMys1Ranks','CustomMys2Ranks'], function(values) {
+    let M1 = parseInt(values.AuraSenseRanks)||0;
+	let M2	= parseInt(values.BindingRanks)||0;
+	let M3	= parseInt(values.CelerityRanks)||0;
+	let M4	= parseInt(values.ConjuringRanks)||0;
+	let M5	= parseInt(values.DiviningRanks)||0;
+	let M6	= parseInt(values.EnchantingRanks)||0;
+	let M7	= parseInt(values.ManaSenseRanks)||0;
+	let M8	= parseInt(values.ManifestWillRanks)||0;
+	let M9	= parseInt(values.MeditationRanks)||0;
+	let M10	= parseInt(values.PrecognitionRanks)||0;
+	let M11	= parseInt(values.RitualsRanks)||0;
+	let M12	= parseInt(values.RunesRanks)||0;
+	let M13	= parseInt(values.SpellcastingRanks)||0;
+	let M14	= parseInt(values.CustomMys1Ranks)||0;
+	let M15	= parseInt(values.CustomMys2Ranks)||0;
+    let MysSum = (M1+M2+M3+M4+M5+M6+M7+M8+M9+M10+M11+M12+M13+M14+M15);
+    setAttrs({                            
+      MysTotal: MysSum
+    });
+  });
+});
+
+//Total Ranged Calculator
+on('change:ArcheryRanks change:ArtilleryRanks change:DodgeRanks change:ExoticRangedRanks change:GunneryRanks change:LobbingRanks change:MachinegunsRanks change:PistolsRanks change:RiflesRanks change:SprayWeaponsRanks change:SubmachineGunsRanks change:ThrowingRanks change:CustomRan1Ranks change:CustomRan2Ranks change:CustomRan3Ranks sheet:opened', function() {  
+  getAttrs(['ArcheryRanks','ArtilleryRanks', 'DodgeRanks', 'ExoticRangedRanks', 'GunneryRanks','LobbingRanks','MachinegunsRanks','PistolsRanks','RiflesRanks','SprayWeaponsRanks','SubmachineGunsRanks','ThrowingRanks','CustomRan1Ranks','CustomRan2Ranks','CustomRan3Ranks'], function(values) {
+    let R1 = parseInt(values.ArcheryRanks)||0;
+	let R2	= parseInt(values.ArtilleryRanks)||0;
+	let R3	= parseInt(values.DodgeRanks)||0;
+	let R4	= parseInt(values.ExoticRangedRanks)||0;
+	let R5	= parseInt(values.GunneryRanks)||0;
+	let R6	= parseInt(values.LobbingRanks)||0;
+	let R7	= parseInt(values.MachinegunsRanks)||0;
+	let R8	= parseInt(values.PistolsRanks)||0;
+	let R9	= parseInt(values.RiflesRanks)||0;
+	let R10	= parseInt(values.SprayWeaponsRanks)||0;
+	let R11	= parseInt(values.SubmachineGunsRanks)||0;
+	let R12	= parseInt(values.ThrowingRanks)||0;
+	let R13	= parseInt(values.CustomRan1Ranks)||0;
+	let R14	= parseInt(values.CustomRan2Ranks)||0;
+	let R15	= parseInt(values.CustomRan3Ranks)||0;
+    let RanSum = (R1+R2+R3+R4+R5+R6+R7+R8+R9+R10+R11+R12+R13+R14+R15);
+    setAttrs({                            
+      RanTotal: RanSum
+    });
+  });
+});
+
+//Total Science Calculator
+on('change:BiologyRanks change:BotanyRanks change:ChemistryRanks change:EideticsRanks change:HistoryRanks change:LiteratureRanks change:MathematicsRanks change:MedicineRanks change:NavigationRanks change:OccultRanks change:PhysicsRanks change:XenologyRanks change:ZoologyRanks change:CustomSci2Ranks change:CustomSci3Ranks sheet:opened', function() {  
+  getAttrs(['BiologyRanks','BotanyRanks', 'ChemistryRanks', 'EideticsRanks', 'HistoryRanks','LiteratureRanks','MathematicsRanks','MedicineRanks','NavigationRanks','OccultRanks','PhysicsRanks','XenologyRanks','ZoologyRanks','CustomSci2Ranks','CustomSci3Ranks'], function(values) {
+    let SC1 = parseInt(values.BiologyRanks)||0;
+	let SC2	= parseInt(values.BotanyRanks)||0;
+	let SC3	= parseInt(values.ChemistryRanks)||0;
+	let SC4	= parseInt(values.EideticsRanks)||0;
+	let SC5	= parseInt(values.HistoryRanks)||0;
+	let SC6	= parseInt(values.LiteratureRanks)||0;
+	let SC7	= parseInt(values.MathematicsRanks)||0;
+	let SC8	= parseInt(values.MedicineRanks)||0;
+	let SC9	= parseInt(values.NavigationRanks)||0;
+	let SC10 = parseInt(values.OccultRanks)||0;
+	let SC11 = parseInt(values.PhysicsRanks)||0;
+	let SC12 = parseInt(values.XenologyRanks)||0;
+	let SC13 = parseInt(values.ZoologyRanks)||0;
+	let SC14 = parseInt(values.CustomSci1Ranks)||0;
+	let SC15 = parseInt(values.CustomSci2Ranks)||0;
+    let SciSum = (SC1+SC2+SC3+SC4+SC5+SC6+SC7+SC8+SC9+SC10+SC11+SC12+SC13+SC14+SC15);
+    setAttrs({                            
+      SciTotal: SciSum
+    });
+  });
+});
+
+//Total Social Calculator
+on('change:ConRanks change:DisguiseRanks change:EtiquetteRanks change:InstructionRanks change:InterrogationRanks change:IntimidateRanks change:LeadershipRanks change:LieDetectionRanks change:LinguisticsRanks change:NegotiateRanks change:ResistTemptationRanks change:SeductionRanks change:SleightofHandRanks change:CustomSoc2Ranks change:CustomSoc2Ranks sheet:opened', function() {  
+  getAttrs(['ConRanks','DisguiseRanks', 'EtiquetteRanks', 'InstructionRanks', 'InterrogationRanks','IntimidateRanks','LeadershipRanks','LieDetectionRanks','LinguisticsRanks','NegotiateRanks','ResistTemptationRanks','SeductionRanks','SleightofHandRanks','CustomSoc1Ranks','CustomSoc2Ranks'], function(values) {
+    let SO1 = parseInt(values.ConRanks)||0;
+	let SO2	= parseInt(values.DisguiseRanks)||0;
+	let SO3	= parseInt(values.EtiquetteRanks)||0;
+	let SO4	= parseInt(values.InstructionRanks)||0;
+	let SO5	= parseInt(values.InterrogationRanks)||0;
+	let SO6	= parseInt(values.IntimidateRanks)||0;
+	let SO7	= parseInt(values.LeadershipRanks)||0;
+	let SO8	= parseInt(values.LieDetectionRanks)||0;
+	let SO9	= parseInt(values.LinguisticsRanks)||0;
+	let SO10 = parseInt(values.NegotiateRanks)||0;
+	let SO11 = parseInt(values.ResistTemptationRanks)||0;
+	let SO12 = parseInt(values.SeductionRanks)||0;
+	let SO13 = parseInt(values.SleightofHandRanks)||0;
+	let SO14 = parseInt(values.CustomSoc1Ranks)||0;
+	let SO15 = parseInt(values.CustomSoc2Ranks)||0;
+    let SocSum = (SO1+SO2+SO3+SO4+SO5+SO6+SO7+SO8+SO9+SO10+SO11+SO12+SO13+SO14+SO15);
+    setAttrs({                            
+      SocTotal: SocSum
+    });
+  });
+});
+
+//Total Survival Calculator
+on('change:AnimalHandlingRanks change:FindShelterRanks change:ForageRanks change:ObservationRanks change:OrienteeringRanks change:RefreshBodyRanks change:RefreshMindRanks change:ResistKORanks change:ResistPainRanks change:RideRanks change:SnareRanks change:TrackRanks change:WeatherSenseRanks change:CustomSur2Ranks change:CustomSur3Ranks sheet:opened', function() {  
+  getAttrs(['AnimalHandlingRanks','FindShelterRanks', 'ForageRanks', 'ObservationRanks', 'OrienteeringRanks','RefreshBodyRanks','RefreshMindRanks','ResistKORanks','ResistPainRanks','RideRanks','SnareRanks','TrackRanks','WeatherSenseRanks','CustomSur2Ranks','CustomSur3Ranks'], function(values) {
+    let SU1 = parseInt(values.AnimalHandlingRanks)||0;
+	let SU2	= parseInt(values.FindShelterRanks)||0;
+	let SU3	= parseInt(values.ForageRanks)||0;
+	let SU4	= parseInt(values.ObservationRanks)||0;
+	let SU5	= parseInt(values.OrienteeringRanks)||0;
+	let SU6	= parseInt(values.RefreshBodyRanks)||0;
+	let SU7	= parseInt(values.RefreshMindRanks)||0;
+	let SU8	= parseInt(values.ResistKORanks)||0;
+	let SU9	= parseInt(values.ResistPainRanks)||0;
+	let SU10 = parseInt(values.RideRanks)||0;
+	let SU11 = parseInt(values.SnareRanks)||0;
+	let SU12 = parseInt(values.TrackRanks)||0;
+	let SU13 = parseInt(values.WeatherSenseRanks)||0;
+	let SU14 = parseInt(values.CustomSur1Ranks)||0;
+	let SU15 = parseInt(values.CustomSur2Ranks)||0;
+    let SurSum = (SU1+SU2+SU3+SU4+SU5+SU6+SU7+SU8+SU9+SU10+SU11+SU12+SU13+SU14+SU15);
+    setAttrs({                            
+      SurTotal: SurSum
+    });
+  });
+});
+
+//Total Technology Calculator
+on('change:ComputersRanks change:ConstructionRanks change:DemolitionRanks change:ElectronicsRanks change:EngineeringRanks change:LockpickRanks change:MechanicRanks change:PilotAircraftRanks change:PilotGroundcraftRanks change:PilotSpacecraftRanks change:PilotWatercraftRanks change:PowerArmorRanks change:SoftwareRanks change:CustomTech1Ranks change:CustomTech2Ranks sheet:opened', function() {  
+  getAttrs(['ComputersRanks','ConstructionRanks', 'DemolitionRanks', 'ElectronicsRanks', 'EngineeringRanks','LockpickRanks','MechanicRanks','PilotAircraftRanks','PilotGroundcraftRanks','PilotSpacecraftRanks','PilotWatercraftRanks','PowerArmorRanks','SoftwareRanks','CustomTech1Ranks','CustomTech2Ranks'], function(values) {
+    let TE1 = parseInt(values.ComputersRanks)||0;
+	let TE2	= parseInt(values.ConstructionRanks)||0;
+	let TE3	= parseInt(values.DemolitionRanks)||0;
+	let TE4	= parseInt(values.ElectronicsRanks)||0;
+	let TE5	= parseInt(values.EngineeringRanks)||0;
+	let TE6	= parseInt(values.LockpickRanks)||0;
+	let TE7	= parseInt(values.MechanicRanks)||0;
+	let TE8	= parseInt(values.PilotAircraftRanks)||0;
+	let TE9	= parseInt(values.PilotGroundcraftRanks)||0;
+	let TE10 = parseInt(values.PilotSpacecraftRanks)||0;
+	let TE11 = parseInt(values.PilotWatercraftRanks)||0;
+	let TE12 = parseInt(values.PowerArmorRanks)||0;
+	let TE13 = parseInt(values.SoftwareRanks)||0;
+	let TE14 = parseInt(values.CustomTech1Ranks)||0;
+	let TE15 = parseInt(values.CustomTech2Ranks)||0;
+    let TecSum = (TE1+TE2+TE3+TE4+TE5+TE6+TE7+TE8+TE9+TE10+TE11+TE12+TE13+TE14+TE15);
+    setAttrs({                            
+      TechTotal: TecSum
+    });
+  });
+});
+
+//Total Pool Calculator
+on('change:AthTotal change:BusTotal change:CCTotal change:ExpTotal change:MysTotal change:RanTotal change:SciTotal change:SocTotal change:SurTotal change:TechTotal sheet:opened', function() {  
+  getAttrs(['AthTotal','BusTotal', 'CCTotal', 'ExpTotal', 'MysTotal','RanTotal','SciTotal','SocTotal','SurTotal','TechTotal'], function(values) {
+     let Ath1 = parseInt(values.AthTotal)||0;
+	 let Bus1 = parseInt(values.BusTotal)||0;
+	 let CC1 = parseInt(values.CCTotal)||0;
+	 let Exp1 = parseInt(values.ExpTotal)||0;
+	 let Mys1 = parseInt(values.MysTotal)||0;
+	 let Ran1 = parseInt(values.RanTotal)||0;
+	 let Sci1 = parseInt(values.SciTotal)||0;
+	 let Soc1 = parseInt(values.SocTotal)||0;
+	 let Sur1 = parseInt(values.SurTotal)||0;
+	 let Tech1 = parseInt(values.TechTotal)||0;
+    setAttrs({                            
+      Ag: (Ath1 + Exp1 + Ran1)
+    });
+	setAttrs({                            
+      Cr: (Exp1 + Soc1 + Tech1)
+    });
+	setAttrs({                            
+      Di: (Bus1 + Ran1 + Sci1)
+    });
+	setAttrs({                            
+      Em: (Exp1 + Mys1 + Soc1)
+    });
+	setAttrs({                            
+      En: (Ath1 + CC1 + Mys1)
+    });
+	setAttrs({                            
+      Int: (Bus1 + Sci1 + Tech1)
+    });
+	setAttrs({                            
+      In: (CC1 + Sci1 + Sur1)
+    });
+	setAttrs({                            
+      Pe: (Ran1 + Sur1 + Tech1)
+    });
+	setAttrs({                            
+      Pr: (Bus1 + Mys1 + Soc1)
+    });
+	setAttrs({                            
+      St: (Ath1 + CC1 + Sur1)
+    });
+	setAttrs({
+	  TotalSkillRanks: (Ath1 + Bus1 + CC1 + Exp1 + Mys1 + Ran1 + Sci1 + Soc1 + Sur1 + Tech1)
+	})
+  });
+});
+
+//Skill Totals Calculator
+skills.forEach(skill => {
+    on(`change:${skill}ranks change:${skill}bonus sheet:opened change:penaltybox`, () => {
+        getAttrs(['penaltybox',`${skill}ranks`,`${skill}bonus`], values => {
+            const skill_base = int(values[`${skill}ranks`]);
+			const skill_bonus = int(values[`${skill}bonus`]);
+            const rankbonus = (skill_base * 5);
+			let penalty = parseInt(values.penaltybox)||0;
+            setAttrs({
+                [`${skill}`]: rankbonus + penalty + skill_bonus
+            });
+        });
+    });
+});
+
+
+//Derived Attribute Calculator
+on('change:St change:En sheet:opened', function () {
+    getAttrs(['St', 'En', 'Ag', 'In', 'Pe', 'ObservationRanks','PortageRanks'], function(values) {
+        let ETST = parseInt(values.St)||0;
+		let ETEN = parseInt(values.En)||0;
+		let ETPO = parseInt(values.PortageRanks)||0;
+		let DRAG = parseInt(values.Ag)||0;
+		let ININ = parseInt(values.In)||0;
+		let INPE = parseInt(values.Pe)||0;
+		let INOB = parseInt(values.ObservationRanks)||0;
+		setAttrs({
+            ET: ((ETST + ETEN)/4) + ETPO
+        });
+		setAttrs({
+            ThrowLimit: ((ETST + ETEN)/40)
+        });		
+		setAttrs({
+            LiftLimit: ((ETST + ETEN)/4) + ETST
+        });	    
+		setAttrs({
+            MKOB: Math.round(ETST/10,0)
+        });	 
+		setAttrs({
+            RKOB: Math.round(DRAG/10,0)
+        });
+		setAttrs({
+            Initiative: (Math.round((ININ + INPE)/20,0)) + INOB
+        });
+	});
+});
+
+//Page Buttons
+const buttonlist = ['skillpages', 'combatpages', 'gearpages', 'notespages', 'spellpages'];
+buttonlist.forEach(button => {
+    on(`clicked:${button}`, function () {
+        setAttrs({
+            sheetTab: button
+        });
+    });
+});
+
+//Derived Page Buttons
+const derivedbuttonlist = ['derivedstats', 'hitchart'];
+derivedbuttonlist.forEach(button => {
+    on(`clicked:${button}`, function () {
+        setAttrs({
+            derivedsheetTab: button
+        });
+    });
+});
+
+
+</script>
+
+
