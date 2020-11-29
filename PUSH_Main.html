@@ -109,204 +109,489 @@
 				<button type="action" name="act_derivedstats" >Derived Stats</button>
 				<button type="action" name="act_hitchart" >Hit Chart</button>
 				<button type="action" name="act_pacechart" >Pace Chart</button>
+				<button type="action" name="act_armorchart">Armor</button>
 				<label style="width: 170px"><input type="checkbox" name="attr_hidederivedstats" class="toggle-hide"/>Derived Attributes</label>
-			<input type='hidden' class='derivedtabstoggle' name='attr_derivedsheetTab'  value='derivedstats'/>
-			<div class='derivedstats'>
-			 <input type="checkbox" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
-		 		<div class="body">
-					<div class="derived-section">
-						<label title="A character's encumbrance tolerance is how much weight he can carry without being overburdened.">Encumberance Tolerance (ET)</label>
-						<input title="(St+En)/4 plus portage ranks" type="number" name="attr_ET" readonly value="0"/>
-						<label>Throw Limit</label>
-						<input type="number" readonly name="attr_ThrowLimit" value="0"/>
-						<label>Lift Limit</label>
-						<input type="number" readonly name="attr_LiftLimit" value="0"/>
-						<label>Melee KO Bonus</label>
-						<input type="number" readonly name="attr_MKOB" value="0"/>
-						<label>Ranged KO Bonus</label>
-						<input type="number" readonly name="attr_RKOB" value="0"/>
-						<button type='roll' style="display: flex; text-align: left; margin-left: 0px;" name='roll_Initiative' value='&{template:default} {{name=@{character_name}}} {{skillname="Initiative"}} {{result=[[(50 - ({2d10}) - @{Initiative})&{tracker}]]}}'>Initiative</button>
-						<input type="number" readonly name="attr_Initiative" value="0"/>
-						<label>Universal Bonus</label>
-						<input type="number" name="attr_penaltybox" value="0"/>
+				<input type='hidden' class='derivedtabstoggle' name='attr_derivedsheetTab'  value='derivedstats'/>
+				<div class='derivedstats'>
+				 <input type="checkbox" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
+					<div class="body">
+						<div class="derived-section">
+							<label title="A character's encumbrance tolerance is how much weight he can carry without being overburdened.">Encumberance Tolerance (ET)</label>
+							<input title="(St+En)/4 plus portage ranks" type="text" name="attr_ET" readonly value="0"/>
+							<span>Available ET</span>
+							<input type="text" readonly name="attr_available_et" value="0"></input>
+							<label>Throw Limit</label>
+							<input type="text" readonly name="attr_ThrowLimit" value="0"/>
+							<span>Catch Limit</span>
+							<input type="text" readonly name="attr_catchlimit" value="0"></input>
+							<label>Lift Limit</label>
+							<input type="text" readonly name="attr_LiftLimit" value="0"/>
+							<span></span>
+							<span></span>
+							<label>Melee KO Bonus</label>
+							<input type="text" readonly name="attr_MKOB" value="0"/>
+							<span></span>
+							<span></span>
+							<label>Ranged KO Bonus</label>
+							<input type="text" readonly name="attr_RKOB" value="0"/>
+							<span></span>
+							<span></span>
+							<button type='roll' style="display: flex; text-align: left; margin-left: 0px;" name='roll_Initiative' value='&{template:default} {{name=@{character_name}}} {{skillname="Initiative"}} {{result=[[(50 - ({2d10}) - @{Initiative})&{tracker}]]}}'>Initiative</button>
+							<input type="text" readonly name="attr_Initiative" value="0"/>
+							<span></span>
+							<span></span>
+							<label>Universal Bonuses and Penalties</label>
+							<input type="number" name="attr_penaltybox" value="0"/>
+							<input type="number" readonly name="attr_penaltyfull" values="0"/>
+							<span></span>
+							<span></span>
+							<span style="width: 100%; text-align: center">Manual</span>
+							<span style="width: 100%; margin-top: 0px; text-align: center">Total</span>
+						</div>
+						<div class="conditiontracker-section" style="border-top: 2px solid black; border-bottom: 2px solid black;">
+							<label name="attr_Winded" title="Winded characters suffer a -10 penalty to all skill checks while winded.">Winded<br /><input type="checkbox" value="-10" name="attr_Winded"/></input></label>											
+							<label name="attr_Fatigued" title="A fatigued character can recover by resting for 1 hour.  While fatigued, a character takes a -10 to all skill checks.">Fatigued<br /><input type="checkbox" value="1" name="attr_Fatigued"/></label>					
+							<label name="attr_Exhausted" title="Once exhausted, a character takes a long time to recover.  Resting one hour reduces the character to Winded for the rest of the day.  A character that is exhausted takes a -20 to all skill checks and may not run.">Exhausted<br /><input type="checkbox" value="-10" name="attr_Exhausted"/></label>					
+							<label name="attr_Immobilized" title="An exhausted character becomes immobilized if further drained or wounded.  Immobilization quickly reduces to Exhausted if the character is not further injured.  After a minute of disorientation and nausea, an Immobilized character becomes Exhausted.  An immobilized character is incoherent and cannot associate with his surroundings, and cannot make any skill checks, including Refresh Body.  An immobilized character may even have hallucinations or seem to be unconscious.">Immobilized<br /><input type="checkbox" value="1" name="attr_Immobilized"/></label>						
+							<label name="attr_KnockedOut" title="A KO’d character can regain consciousness after 1d10 minutes, after which time he is considered Immobilized and can recover from there.  A character can make a Resist KO check when first KO’d, and if successful, remains conscious.">Knocked Out<br /><input type="checkbox" value="1" name="attr_KnockedOut"/></label>						
+						</div>
+						<div class="quickview_weight" >
+							<label name='attr_totalvalue' title='The combined value of all your gear and weapons'>Net Worth</label>
+							<input readonly name='attr_totalvalue' type="text" value='0'/>
+							<label name='attr_totalweight' title='The combined weight of everything you are carrying'>Total Weight</label>
+							<input readonly name='attr_totalweight' type='text' value='0'/>
+						</div>
+					</div>	
+				</div>
+				<div class='hitchart'>
+					<input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
+					<div class='body'>
+						<div class='wounds'>
+							<span title="Roll 1d100 to see where you've been hit.">Wound Location</span>
+							<span>Roll</span>
+							<span>KOT</span>
+							<span>Wounds and Healing Time</span>
+							
+							<span title="A lot of really sensitive stuff in here.">Head (-20)</span>
+							<div><span>1-10</span></div>
+							<div><span>25</span></div>
+							<input type="text" name="attr_headwound">
+							
+							<div><span title="Including the throat and spine">Neck (-50)</span></div>
+							<div><span>11-15</span></div>
+							<div><span>20</span></div>
+							<input type="text" name="attr_neckwound">
+							
+							<div><span title="The torso from collarbones to bottom or ribs">Torso (0)</span></div>
+							<div><span>16-35</span></div>
+							<div><span>35</span></div>
+							<input type="text" name="attr_torsowound">			
+							
+							<div><span title="Upper Left Arm or Shoulder">UL Arm (-10)</span></div>
+							<div><span>36-40</span></div>
+							<div><span>12</span></div>
+							<input type="text" name="attr_ulawound">
+							
+							<div><span title="Upper Right Arm or Shoulder">UR Arm (-10)</span></div>
+							<div><span>41-45</span></div>
+							<div><span>12</span></div>
+							<input type="text" name="attr_urawound">
+							
+							<div><span title="Lower Left Arm or Elbow">L.L. Arm (-20)</span></div>
+							<div><span>46-50</span></div>
+							<div><span>10</span></div>
+							<input type="text" name="attr_llawound">
+							
+							<div><span title="Lower Right Arm or Elbow">L.R. Arm (-20)</span></div>
+							<div><span>51-55</span></div>
+							<div><span>10</span></div>
+							<input type="text" name="attr_lrawound">
+							
+							<div><span title="Left hand or wrist.">Left Hand (-50)</span></div>
+							<div><span>56-58</span></div>
+							<div><span>8</span></div>
+							<input type="text" name="attr_lhandwound">
+
+							<div><span title="Right hand or wrist.">Right Hand (-50)</span></div>
+							<div><span>59-60</span></div>
+							<div><span>8</span></div>
+							<input type="text" name="attr_rhandwound">
+
+							<div><span title="From ribs to groin.">Abdomen (-20)</span></div>
+							<div><span>61-80</span></div>
+							<div><span>25</span></div>
+							<input type="text" name="attr_abswound">
+							
+							<div><span title="Upper left leg and hip.">U.Left Leg (-10)</span></div>
+							<div><span>81-85</span></div>
+							<div><span>20</span></div>
+							<input type="text" name="attr_ullegwound">
+							
+							<div><span title="Upper right leg and hip.">U.Right Leg (-10)</span></div>
+							<div><span>86-90</span></div>
+							<div><span>20</span></div>
+							<input type="text" name="attr_urlegwound">
+							
+							<div><span title="Lower left leg and knee.">L.Left Leg (-20)</span></div>
+							<div><span>91-93</span></div>
+							<div><span>15</span></div>
+							<input type="text" name="attr_lllegwound">	
+							
+							<div><span title="Lower right leg and knee.">L.Right Leg (-20)</span></div>
+							<div><span>94-96</span></div>
+							<div><span>15</span></div>
+							<input type="text" name="attr_lrlegwound">
+
+							<div><span title="Left foot or ankle.">Left Foot (-50)</span></div>
+							<div><span>97-98</span></div>
+							<div><span>10</span></div>
+							<input type="text" name="attr_lfootwound"/>	
+							
+							<div><span title="Right foot or ankle.">Right Foot (-50)</span></div>
+							<div><span>99-00</span></div>
+							<div><span>10</span></div>
+							<input type="text" name="attr_rfootwound"/>		
+						</div>
 					</div>
-					<div class="conditiontracker-section" style="border-top: 2px solid black; border-bottom: 2px solid black;">
-						<label name="attr_Winded" title="Winded characters suffer a -10 penalty to all skill checks while winded.">Winded<br /><input type="checkbox" value="1" name="attr_Winded"/></label>				
-						<label name="attr_Fatigued" title="A fatigued character can recover by resting for 1 hour.  While fatigued, a character takes a -10 to all skill checks.">Fatigued<br /><input type="checkbox" value="1" name="attr_Fatigued"/></label>					
-						<label name="attr_Exhausted" title="Once exhausted, a character takes a long time to recover.  Resting one hour reduces the character to Winded for the rest of the day.  A character that is exhausted takes a -20 to all skill checks and may not run.">Exhausted<br /><input type="checkbox" value="1" name="attr_Exhausted"/></label>					
-						<label name="attr_Immobilized" title="An exhausted character becomes immobilized if further drained or wounded.  Immobilization quickly reduces to Exhausted if the character is not further injured.  After a minute of disorientation and nausea, an Immobilized character becomes Exhausted.  An immobilized character is incoherent and cannot associate with his surroundings, and cannot make any skill checks, including Refresh Body.  An immobilized character may even have hallucinations or seem to be unconscious.">Immobilized<br /><input type="checkbox" value="1" name="attr_Immobilized"/></label>						
-						<label name="attr_KnockedOut" title="A KO’d character can regain consciousness after 1d10 minutes, after which time he is considered Immobilized and can recover from there.  A character can make a Resist KO check when first KO’d, and if successful, remains conscious.">Knocked Out<br /><input type="checkbox" value="1" name="attr_KnockedOut"/></label>						
-					</div>
-					<div style="display: flex; ">
-						<label name='attr_totalvalue' title='The combined value of all your gear and weapons'>Net Worth</label>
-						<input readonly name='attr_totalvalue' type="text" value='0'/>
-						<label name='attr_totalweight' title='The combined weight of everything you are carrying'>Total Weight</label>
-						<input readonly name='attr_totalweight' type='text' value='0'/>
-					</div>
-				</div>	
-			</div>
-			<div class='hitchart'>
+				</div>
+				<div class='pacechart'>
 				<input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
-				<div class='body'>
-				<div class='wounds'>
-					<span title="Roll 1d100 to see where you've been hit.">Wound Location</span>
-					<span>Roll</span>
-					<span>KOT</span>
-					<span>PV</span>
-					<span style="width: 200px;">Wounds and Healing Time</span>
-					
-					<div><span title="A lot of really sensitive stuff in here.">Head (-20)</span></div>
-					<div><span>1-10</span></div>
-					<div><span>25</span></div>
-					<input type="number" value="0" name="attr_headpv">
-					<input type="text" name="attr_headwound">
-					
-					<div><span title="Including the throat and spine">Neck (-50)</span></div>
-					<div><span>11-15</span></div>
-					<div><span>20</span></div>
-					<input type="number" value="0" name="attr_neckpv">
-					<input type="text" name="attr_neckwound">
-					
-					<div><span title="The torso from collarbones to bottom or ribs">Torso (0)</span></div>
-					<div><span>16-35</span></div>
-					<div><span>35</span></div>
-					<input type="number" value="0" name="attr_torsopv">
-					<input type="text" name="attr_torsowound">			
-					
-					<div><span title="Upper Left Arm or Shoulder">UL Arm (-10)</span></div>
-					<div><span>36-40</span></div>
-					<div><span>12</span></div>
-					<input type="number" value="0" name="attr_ulapv">
-					<input type="text" name="attr_ulawound">
-					
-					<div><span title="Upper Right Arm or Shoulder">UR Arm (-10)</span></div>
-					<div><span>41-45</span></div>
-					<div><span>12</span></div>
-					<input type="number" value="0" name="attr_urapv">
-					<input type="text" name="attr_urawound">
-					
-					<div><span title="Lower Left Arm or Elbow">L.L. Arm (-20)</span></div>
-					<div><span>46-50</span></div>
-					<div><span>10</span></div>
-					<input type="number" value="0" name="attr_llapv">
-					<input type="text" name="attr_llawound">
-					
-					<div><span title="Lower Right Arm or Elbow">L.R. Arm (-20)</span></div>
-					<div><span>51-55</span></div>
-					<div><span>10</span></div>
-					<input type="number" value="0" name="attr_lrapv">
-					<input type="text" name="attr_lrawound">
-					
-					<div><span title="Left hand or wrist.">Left Hand (-50)</span></div>
-					<div><span>56-58</span></div>
-					<div><span>8</span></div>
-					<input type="number" value="0" name="attr_lhandpv">
-					<input type="text" name="attr_lhandwound">
+					<div class='body'>
+						<div class='pace'>
+							<span title="The speed at which you are moving">Pace</span>
+							<span>Difficulty</span>
+							<span>Beats</span>
+							<span>Meters</span>
+							<span>Penalty</span>
+							
+							<span title="A normal walking pace, about 4.8kph">Walking</span>
+							<span>Auto</span>
+							<span>6</span>
+							<span>1m</span>
+							<span>0</span>
+							
+							<span title="Doubletime! About 9.6kph">Jogging</span>
+							<span>25</span>
+							<span>3</span>
+							<span>1m</span>
+							<span>-10</span>
+							
+							<span title="A brisk run, about 14.4kph">Running</span>
+							<span>50</span>
+							<span>2</span>
+							<span>1m</span>
+							<span>-20</span>	
+							
+							<span title="You are moving about 19.3kph now.">Sprinting</span>
+							<span>75</span>
+							<span>3</span>
+							<span>2m</span>
+							<span>-50</span>
+							
+							<span title="So fast you can hear the wind whipping past at 38.6kph">Dashing</span>
+							<span>100</span>
+							<span>3</span>
+							<span>4m</span>
+							<span>-100</span>
 
-					<div><span title="Right hand or wrist.">Right Hand (-50)</span></div>
-					<div><span>59-60</span></div>
-					<div><span>8</span></div>
-					<input type="number" value="0" name="attr_rhandpv">
-					<input type="text" name="attr_rhandwound">
+							<span title="Trying to set a record? 44.7kph">Dash+</span>
+							<span>125</span>
+							<span>2</span>
+							<span>3m</span>
+							<span>-200</span>
 
-					<div><span title="From ribs to groin.">Abdomen (-20)</span></div>
-					<div><span>61-80</span></div>
-					<div><span>25</span></div>
-					<input type="number" value="0" name="attr_abspv">
-					<input type="text" name="attr_abswound">
-					
-					<div><span title="Upper left leg and hip.">U.Left Leg (-10)</span></div>
-					<div><span>81-85</span></div>
-					<div><span>20</span></div>
-					<input type="number" value="0" name="attr_ullegpv">
-					<input type="text" name="attr_ullegwound">
-					
-					<div><span title="Upper right leg and hip.">U.Right Leg (-10)</span></div>
-					<div><span>86-90</span></div>
-					<div><span>20</span></div>
-					<input type="number" value="0" name="attr_urlegpv">
-					<input type="text" name="attr_urlegwound">
-					
-					<div><span title="Lower left leg and knee.">L.Left Leg (-20)</span></div>
-					<div><span>91-93</span></div>
-					<div><span>15</span></div>
-					<input type="number" value="0" name="attr_lllegpv">
-					<input type="text" name="attr_lllegwound">	
-					
-					<div><span title="Lower right leg and knee.">L.Right Leg (-20)</span></div>
-					<div><span>94-96</span></div>
-					<div><span>15</span></div>
-					<input type="number" value="0" name="attr_lrlegpv">
-					<input type="text" name="attr_lrlegwound">
-
-					<div><span title="Left foot or ankle.">Left Foot (-50)</span></div>
-					<div><span>97-98</span></div>
-					<div><span>10</span></div>
-					<input type="number" value="0" name="attr_lfootpv"/>
-					<input type="text" name="attr_lfootwound"/>	
-					
-					<span title="Right foot or ankle.">Right Foot (-50)</span>
-					<span>99-00</span>
-					<span>10</span>
-					<input type="number" value="0" name="attr_rfootpv"/>
-					<input type="text" name="attr_rfootwound"/>		
+							<span title="How are you so fast? 57.6kph">Inhuman</span>
+							<span>150</span>
+							<span>2</span>
+							<span>4m</span>
+							<span>-300</span>
+						</div>
+					</div>
 				</div>
-				</div>
-			</div>
-			<div class='pacechart'>
-				<input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
-				<div class='body'>
-				<div class='pace'>
-					<span title="The speed at which you are moving">Pace</span>
-					<span>Difficulty</span>
-					<span>Beats</span>
-					<span>Meters</span>
-					<span>Penalty</span>
-					
-					<span title="A normal walking pace, about 4.8kph">Walking</span>
-					<span>Auto</span>
-					<span>6</span>
-					<span>1m</span>
-					<span>0</span>
-					
-					<span title="Doubletime! About 9.6kph">Jogging</span>
-					<span>25</span>
-					<span>3</span>
-					<span>1m</span>
-					<span>-10</span>
-					
-					<span title="A brisk run, about 14.4kph">Running</span>
-					<span>50</span>
-					<span>2</span>
-					<span>1m</span>
-					<span>-20</span>	
-					
-					<span title="You are moving about 19.3kph now.">Sprinting</span>
-					<span>75</span>
-					<span>3</span>
-					<span>2m</span>
-					<span>-50</span>
-					
-					<span title="So fast you can hear the wind whipping past at 38.6kph">Dashing</span>
-					<span>100</span>
-					<span>3</span>
-					<span>4m</span>
-					<span>-100</span>
+				<div class="armorchart" style="display: flex;" >
+					<input type="checkbox" id="hidederivedstats" name="attr_hidederivedstats" class="toggle-hide" style="display: none"/>
+					<div class='body'>
+						<div class='armorpieces'>				
+							<label>Base Armor</label>
+							<select name="attr_basearmortype" style="width: 125%; height: 24px;">
+								<option>None</option>
+								<option>Heavy Duty Work Clothes</option>
+								<option>Gambeson</option>
+								<option>Animal Hide</option>
+								<option>Leather Vest</option>
+								<option>Leather Coat</option>
+								<option>Studded Leather</option>
+								<option>Brigandine</option>
+								<option>Chain Hauberk</option>					
+								<option>Full Chainmail</option>
+								<option>Breastplate with Chainmail</option>
+								<option>Platemail with Greaves</option>					
+								<option>Full Platemail</option>
+							</select>
+							<span></span>
+							<input type="text" style="width: 85%; margin-left: 30px; height: 24px;"></input>
+							<span title="The location this piece of armor is covering" style="text-align: left">Armor Location</span>
+							<span title="Select the armor for this location">Armor Type</span>
+							<span title="Protective Value">PV</span>
+							<span title="Record anything noteworthy about this armor piece here">Armor Condition/Notes</span>
+							<label>Head</label>
+							<select name="attr_headarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_headpv" value="0"/></div>
+							<input name="attr_headpvnotes" type="text"/>
 
-					<span title="Trying to set a record? 44.7kph">Dash+</span>
-					<span>125</span>
-					<span>2</span>
-					<span>3m</span>
-					<span>-200</span>
+							<label>Neck</label>
+							<select name="attr_neckarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_neckpv" value="0"/></div>
+							<input name="attr_neckpvnotes" type="text"/>
 
-					<span title="How are you so fast? 57.6kph">Inhuman</span>
-					<span>150</span>
-					<span>2</span>
-					<span>4m</span>
-					<span>-300</span>
+							<label>Torso</label>
+							<select name="attr_torsoarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_torsopv" value="0"/></div>
+							<input name="attr_torsopvnotes" type="text"/>
+
+							<label>Upper L. Arm</label>
+							<select name="attr_ulaarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_ulapv" value="0"/></div>
+							<input name="attr_ulanotes" type="text"/>
+
+							<label>Upper R. Arm</label>
+							<select name="attr_uraarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_urapv" value="0"/></div>
+							<input name="attr_uranotes" type="text"/>
+
+							<label>Lower L. Arm</label>
+							<select name="attr_llaarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_llapv" value="0"/></div>
+							<input name="attr_llanotes" type="text"/>
+
+							<label>Lower R. Arm</label>
+							<select name="attr_lraarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_lrapv" value="0"/></div>
+							<input name="attr_lranotes" type="text"/>
+
+							<label>Left Hand</label>
+							<select name="attr_lhandarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_lhandpv" value="0"/></div>
+							<input name="attr_lhandnotes" type="text"/>
+
+							<label>Right Hand</label>
+							<select name="attr_rhandarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_rhandpv" value="0"/></div>
+							<input name="attr_rhandnotes" type="text"/>
+
+							<label>Abdomen</label>
+							<select name="attr_absarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_abspv" value="0"/></div>
+							<input name="attr_absnotes" type="text"/>
+
+							<label>Upper L. Leg</label>
+							<select name="attr_ullarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_ullpv" value="0"/></div>
+							<input name="attr_ullnotes" type="text"/>
+
+							<label>Upper R. Leg</label>
+							<select name="attr_urlarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_urlpv" value="0"/></div>
+							<input name="attr_urlnotes" type="text"/>
+
+							<label>Lower L. Leg</label>
+							<select name="attr_lllarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_lllpv" value="0"/></div>
+							<input name="attr_lllnotes" type="text"/>
+
+							<label>Lower R. Leg</label>
+							<select name="attr_lrlarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_lrlpv" value="0"/></div>
+							<input name="attr_lrlnotes" type="text"/>
+
+							<label>Left Foot</label>
+							<select name="attr_lfootarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_lfootpv" value="0"/></div>
+							<input name="attr_lfootnotes" type="text"/>
+
+							<label>Right Foot</label>
+							<select name="attr_rfootarmor">
+								<option>None</option>
+								<option>Heavy Cloth</option>
+								<option>Padded Cloth</option>
+								<option>Hide</option>
+								<option>Leather</option>
+								<option>Hardened Leather</option>
+								<option>Reinforced Leather</option>
+								<option>Metal Chain</option>
+								<option>Metal Scale</option>					
+								<option>Metal Plate</option>
+							</select>
+							<div class="pvfield"><input readonly type="text" name="attr_rfootpv" value="0"/></div>
+							<input name="attr_rfootnotes" type="text"/>
+						</div>
+					</div>		
 				</div>
-				</div>
-			</div>
 			</div>
 		</div>
 </div>
@@ -348,91 +633,91 @@
 					<Span>Ranks</Span>
 					<Span>Bonus</Span>
 					<Span>Total</Span>
-					<button type='roll' name='roll_Climbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Climbing"}} {{result=[[({1d100}) + @{Climbing}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Climbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Climbing"}} {{result=[[({1d100cs>96cf<5}) + @{Climbing}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Climbing</span>
 					<div class="row"><input type="number" class="inputs-edit" value="0" name="attr_ClimbingRanks"/>
 					<span class="inputs-readonly" name="attr_ClimbingRanks">-</span></div>
 					<input type="number" value="0" name="attr_ClimbingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Climbing"/>
-					<button type='roll' name='roll_Contortions' value='&{template:default} {{name=@{character_name}}} {{skillname="Contortions"}} {{result=[[({1d100}) + @{Contortions}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Contortions' value='&{template:default} {{name=@{character_name}}} {{skillname="Contortions"}} {{result=[[({1d100cs>96cf<5}) + @{Contortions}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Contortions</span>
 					<div class="row"><input type="number" class="inputs-edit" value="0" name="attr_ContortionsRanks"/>
 					<span class="inputs-readonly" name="attr_ContortionsRanks">-</span></div>
 					<input type="number" value="0" name="attr_ContortionsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Contortions"/>
-					<button type='roll' name='roll_EnduranceRunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Endurance Running"}} {{result=[[({1d100}) + @{EnduranceRunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_EnduranceRunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Endurance Running"}} {{result=[[({1d100cs>96cf<5}) + @{EnduranceRunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Endurance Running</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EnduranceRunningRanks"/>
 					<span class="inputs-readonly" name="attr_EnduranceRanks">-</span></div>
 					<input type="number" value="0" name="attr_EnduranceRunningBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_EnduranceRunning"/>
-					<button type='roll' name='roll_Freefall' value='&{template:default} {{name=@{character_name}}} {{skillname="Freefall"}} {{result=[[({1d100}) + @{Freefall}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Freefall' value='&{template:default} {{name=@{character_name}}} {{skillname="Freefall"}} {{result=[[({1d100cs>96cf<5}) + @{Freefall}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Freefall</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_FreefallRanks"/>
 					<span class="inputs-readonly" name="attr_FreefallRanks">-</span></div>
 					<input type="number" value="0" name="attr_FreefallBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Freefall"/>
-					<button type='roll' name='roll_Freerunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Freerunning"}} {{result=[[({1d100}) + @{Freerunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Freerunning' value='&{template:default} {{name=@{character_name}}} {{skillname="Freerunning"}} {{result=[[({1d100cs>96cf<5}) + @{Freerunning}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Freerunning</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_FreerunningRanks"/>
 					<span class="inputs-readonly" name="attr_FreerunningRanks">-</span></div>
 					<input type="number" value="0" name="attr_FreerunningBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Freerunning"/>
-					<button type='roll' name='roll_Jumping' value='&{template:default} {{name=@{character_name}}} {{skillname="Jumping"}} {{result=[[({1d100}) + @{Jumping}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Jumping' value='&{template:default} {{name=@{character_name}}} {{skillname="Jumping"}} {{result=[[({1d100cs>96cf<5}) + @{Jumping}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Jumping</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_JumpingRanks"/>
 					<span class="inputs-readonly" name="attr_JumpingRanks">-</span></div>
 					<input type="number" value="0" name="attr_JumpingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Jumping"/>
-					<button type='roll' name='roll_Portage' value='&{template:default} {{name=@{character_name}}} {{skillname="Portage"}} {{result=[[({1d100}) + @{Portage}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Portage' value='&{template:default} {{name=@{character_name}}} {{skillname="Portage"}} {{result=[[({1d100cs>96cf<5}) + @{Portage}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Portage</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PortageRanks"/>
 					<span class="inputs-readonly" name="attr_PortageRanks">-</span></div>
 					<input type="number" value="0" name="attr_PortageBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Portage"/>
-					<button type='roll' name='roll_Sneaking' value='&{template:default} {{name=@{character_name}}} {{skillname="Sneaking"}} {{result=[[({1d100}) + @{Sneaking}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Sneaking' value='&{template:default} {{name=@{character_name}}} {{skillname="Sneaking"}} {{result=[[({1d100cs>96cf<5}) + @{Sneaking}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Sneaking</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SneakingRanks"/>
 					<span class="inputs-readonly" name="attr_SneakingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SneakingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Sneaking"/>
-					<button type='roll' name='roll_Sports' value='&{template:default} {{name=@{character_name}}} {{skillname="Sports"}} {{result=[[({1d100}) + @{Sports}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Sports' value='&{template:default} {{name=@{character_name}}} {{skillname="Sports"}} {{result=[[({1d100cs>96cf<5}) + @{Sports}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Sports</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SportsRanks"/>
 					<span class="inputs-readonly" name="attr_SportsRanks">-</span></div>
 					<input type="number" value="0" name="attr_SportsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Sports"/>
-					<button type='roll' name='roll_Sprinting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sprinting"}} {{result=[[({1d100}) + @{Sprinting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Sprinting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sprinting"}} {{result=[[({1d100cs>96cf<5}) + @{Sprinting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Sprinting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SprintingRanks"/>
 					<span class="inputs-readonly" name="attr_SprintingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SprintingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Sprinting"/>
-					<button type='roll' name='roll_Swimming' value='&{template:default} {{name=@{character_name}}} {{skillname="Swimming"}} {{result=[[({1d100}) + @{Swimming}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Swimming' value='&{template:default} {{name=@{character_name}}} {{skillname="Swimming"}} {{result=[[({1d100cs>96cf<5}) + @{Swimming}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Swimming</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SwimmingRanks"/>
 					<span class="inputs-readonly" name="attr_SwimmingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SwimmingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Swimming"/>
-					<button type='roll' name='roll_Weightlifting' value='&{template:default} {{name=@{character_name}}} {{skillname="Weightlifting"}} {{result=[[({1d100}) + @{Weightlifting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_Weightlifting' value='&{template:default} {{name=@{character_name}}} {{skillname="Weightlifting"}} {{result=[[({1d100cs>96cf<5}) + @{Weightlifting}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<span>Weightlifting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_WeightliftingRanks"/>
 					<span class="inputs-readonly" name="attr_WeightliftingRanks">-</span></div>
 					<input type="number" value="0" name="attr_WeightliftingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Weightlifting"/>
-					<button type='roll' name='roll_CustomAth1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth1"}} {{result=[[({1d100}) + @{CustomAth1}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_CustomAth1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomAth1}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<input class='skill-custom' type="text" value="CustomAth1" name="attr_CustomAth1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomAth1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomAth1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomAth1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomAth1"/>
-					<button type='roll' name='roll_CustomAth2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth2"}} {{result=[[({1d100}) + @{CustomAth2}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_CustomAth2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomAth2}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<input class='skill-custom' type="text" value="CustomAth2" name="attr_CustomAth2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomAth2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomAth2Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomAth2Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomAth2"/>
-					<button type='roll' name='roll_CustomAth3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth3"}} {{result=[[({1d100}) + @{CustomAth3}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
+					<button type='roll' name='roll_CustomAth3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomAth3"}} {{result=[[({1d100cs>96cf<5}) + @{CustomAth3}]]}} {{PUSH=Athletic Skills use Ag, En, or St}}'></button>
 					<input class='skill-custom' type="text" value="CustomAth3" name="attr_CustomAth3_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomAth3Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomAth3Ranks">-</span></div>
@@ -452,91 +737,91 @@
 					<Span>Ranks</Span>
 					<span>Bonus</span>
 					<Span>Total</Span>
-					<button type='roll' name='roll_Accounting' value='&{template:default} {{name=@{character_name}}} {{skillname="Accounting"}} {{result=[[({1d100}) + @{Accounting}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Accounting' value='&{template:default} {{name=@{character_name}}} {{skillname="Accounting"}} {{result=[[({1d100cs>96cf<5}) + @{Accounting}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Accounting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_AccountingRanks"/>
 					<span class="inputs-readonly" name="attr_AccountingRanks">-</span></div>
 					<input type="number" value="0" name="attr_AccountingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Accounting"/>
-					<button type='roll' name='roll_Advertising' value='&{template:default} {{name=@{character_name}}} {{skillname="Advertising"}} {{result=[[({1d100}) + @{Advertising}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Advertising' value='&{template:default} {{name=@{character_name}}} {{skillname="Advertising"}} {{result=[[({1d100cs>96cf<5}) + @{Advertising}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Advertising</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_AdvertisingRanks"/>
 					<span class="inputs-readonly" name="attr_AdvertisingRanks">-</span></div>
 					<input type="number" value="0" name="attr_AdvertisingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Advertising"/>
-					<button type='roll' name='roll_Appraisal' value='&{template:default} {{name=@{character_name}}} {{skillname="Appraisal"}} {{result=[[({1d100}) + @{Appraisal}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Appraisal' value='&{template:default} {{name=@{character_name}}} {{skillname="Appraisal"}} {{result=[[({1d100cs>96cf<5}) + @{Appraisal}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Appraisal</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_AppraisalRanks"/>
 					<span class="inputs-readonly" name="attr_AppraisalRanks">-</span></div>
 					<input type="number" value="0" name="attr_AppraisalBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Appraisal"/>
-					<button type='roll' name='roll_Bargain' value='&{template:default} {{name=@{character_name}}} {{skillname="Bargain"}} {{result=[[({1d100}) + @{Bargain}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Bargain' value='&{template:default} {{name=@{character_name}}} {{skillname="Bargain"}} {{result=[[({1d100cs>96cf<5}) + @{Bargain}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Bargain</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BargainRanks"/>
 					<span class="inputs-readonly" name="attr_BargainRanks">-</span></div>
 					<input type="number" value="0" name="attr_BargainBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Bargain"/>
-					<button type='roll' name='roll_Barter' value='&{template:default} {{name=@{character_name}}} {{skillname="Barter"}} {{result=[[({1d100}) + @{Barter}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Barter' value='&{template:default} {{name=@{character_name}}} {{skillname="Barter"}} {{result=[[({1d100cs>96cf<5}) + @{Barter}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Barter</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BarterRanks"/>
 					<span class="inputs-readonly" name="attr_BarterRanks">-</span></div>
 					<input type="number" value="0" name="attr_BarterBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Barter"/>
-					<button type='roll' name='roll_Economics' value='&{template:default} {{name=@{character_name}}} {{skillname="Economics"}} {{result=[[({1d100}) + @{Economics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Economics' value='&{template:default} {{name=@{character_name}}} {{skillname="Economics"}} {{result=[[({1d100cs>96cf<5}) + @{Economics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Economics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EconomicsRanks"/>
 					<span class="inputs-readonly" name="attr_EconomicsRanks">-</span></div>
 					<input type="number" value="0" name="attr_EconomicsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Economics"/>
-					<button type='roll' name='roll_Forgery' value='&{template:default} {{name=@{character_name}}} {{skillname="Forgery"}} {{result=[[({1d100}) + @{Forgery}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Forgery' value='&{template:default} {{name=@{character_name}}} {{skillname="Forgery"}} {{result=[[({1d100cs>96cf<5}) + @{Forgery}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Forgery</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ForgeryRanks"/>
 					<span class="inputs-readonly" name="attr_ForgeryRanks">-</span></div>
 					<input type="number" value="0" name="attr_ForgeryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Forgery"/>
-					<button type='roll' name='roll_Gambling' value='&{template:default} {{name=@{character_name}}} {{skillname="Gambling"}} {{result=[[({1d100}) + @{Gambling}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Gambling' value='&{template:default} {{name=@{character_name}}} {{skillname="Gambling"}} {{result=[[({1d100cs>96cf<5}) + @{Gambling}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Gambling</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_GamblingRanks"/>
 					<span class="inputs-readonly" name="attr_GamblingRanks">-</span></div>
 					<input type="number" value="0" name="attr_GamblingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Gambling"/>
-					<button type='roll' name='roll_Investment' value='&{template:default} {{name=@{character_name}}} {{skillname="Investment"}} {{result=[[({1d100}) + @{Investment}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Investment' value='&{template:default} {{name=@{character_name}}} {{skillname="Investment"}} {{result=[[({1d100cs>96cf<5}) + @{Investment}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Investment</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_InvestmentRanks"/>
 					<span class="inputs-readonly" name="attr_InvestmentRanks">-</span></div>
 					<input type="number" value="0" name="attr_InvestmentBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Investment"/>
-					<button type='roll' name='roll_Logistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Logistics"}} {{result=[[({1d100}) + @{Logistics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Logistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Logistics"}} {{result=[[({1d100cs>96cf<5}) + @{Logistics}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Logistics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LogisticsRanks"/>
 					<span class="inputs-readonly" name="attr_LogisticsRanks">-</span></div>
 					<input type="number" value="0" name="attr_LogisticsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Logistics"/>
-					<button type='roll' name='roll_Procurement' value='&{template:default} {{name=@{character_name}}} {{skillname="Procurement"}} {{result=[[({1d100}) + @{Procurement}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Procurement' value='&{template:default} {{name=@{character_name}}} {{skillname="Procurement"}} {{result=[[({1d100cs>96cf<5}) + @{Procurement}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Procurement</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ProcurementRanks"/>
 					<span class="inputs-readonly" name="attr_ProcurementRanks">-</span></div>
 					<input type="number" value="0" name="attr_ProcurementBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Procurement"/>
-					<button type='roll' name='roll_Racketeering' value='&{template:default} {{name=@{character_name}}} {{skillname="Racketeering"}} {{result=[[({1d100}) + @{Racketeering}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_Racketeering' value='&{template:default} {{name=@{character_name}}} {{skillname="Racketeering"}} {{result=[[({1d100cs>96cf<5}) + @{Racketeering}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<span>Racketeering</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RacketeeringRanks"/>
 					<span class="inputs-readonly" name="attr_RacketeeringRanks">-</span></div>
 					<input type="number" value="0" name="attr_RacketeeringBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Racketeering"/>
-					<button type='roll' name='roll_CustomBus1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus1"}} {{result=[[({1d100}) + @{CustomBus1}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_CustomBus1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomBus1}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomBus1" name="attr_CustomBus1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomBus1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomBus1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomBus1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomBus1"/>
-					<button type='roll' name='roll_CustomBus2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus2"}} {{result=[[({1d100}) + @{CustomBus2}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_CustomBus2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomBus2}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomBus2" name="attr_CustomBus2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomBus2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomBus2Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomBus2Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomBus2"/>
-					<button type='roll' name='roll_CustomBus3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus3"}} {{result=[[({1d100}) + @{CustomBus3}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
+					<button type='roll' name='roll_CustomBus3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomBus3"}} {{result=[[({1d100cs>96cf<5}) + @{CustomBus3}]]}} {{PUSH=Business Skills use Di, Int or Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomBus3" name="attr_CustomBus3_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomBus3Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomBus3Ranks">-</span></div>
@@ -556,91 +841,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_ArmorTraining' value='&{template:default} {{name=@{character_name}}} {{skillname="Armor Training"}} {{result=[[({1d100}) + @{ArmorTraining}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_ArmorTraining' value='&{template:default} {{name=@{character_name}}} {{skillname="Armor Training"}} {{result=[[({1d100cs>96cf<5}) + @{ArmorTraining}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Armor Training</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ArmorTrainingRanks"/>
 					<span class="inputs-readonly" name="attr_ArmorTrainingRanks">-</span></div>
 					<input type="number" value="0" name="attr_ArmorTrainingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ArmorTraining"/>
-					<button type='roll' name='roll_Blades' value='&{template:default} {{name=@{character_name}}} {{skillname="Blades"}} {{result=[[({1d100}) + @{Blades}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Blades' value='&{template:default} {{name=@{character_name}}} {{skillname="Blades"}} {{result=[[({1d100cs>96cf<5}) + @{Blades}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Blades</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BladesRanks"/>
 					<span class="inputs-readonly" name="attr_BladesRanks">-</span></div>
 					<input type="number" value="0" name="attr_BladesBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Blades"/>
-					<button type='roll' name='roll_Block' value='&{template:default} {{name=@{character_name}}} {{skillname="Block"}} {{result=[[({1d100}) + @{Block}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Block' value='&{template:default} {{name=@{character_name}}} {{skillname="Block"}} {{result=[[({1d100cs>96cf<5}) + @{Block}]]}} {{beats=[[ 5 &{tracker:+}]]}}  {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Block</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BlockRanks"/>
 					<span class="inputs-readonly" name="attr_BlockRanks">-</span></div>
 					<input type="number" value="0" name="attr_BlockBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Block"/>
-					<button type='roll' name='roll_Brawl' value='&{template:default} {{name=@{character_name}}} {{skillname="Brawl"}} {{result=[[({1d100}) + @{Brawl}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Brawl' value='&{template:default} {{name=@{character_name}}} {{skillname="Brawl"}} {{result=[[({1d100cs>96cf<5cs>95cf<6}) + @{Brawl}]]}} {{KOV=[[@{MKOB}]]}}{{unarmed beats=[[ 8 &{tracker:+}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Brawl</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BrawlRanks"/>
 					<span class="inputs-readonly" name="attr_BrawlRanks">-</span></div>
 					<input type="number" value="0" name="attr_BrawlBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Brawl"/>
-					<button type='roll' name='roll_Clubs' value='&{template:default} {{name=@{character_name}}} {{skillname="Clubs"}} {{result=[[({1d100}) + @{Clubs}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Clubs' value='&{template:default} {{name=@{character_name}}} {{skillname="Clubs"}} {{result=[[({1d100cs>96cf<5}) + @{Clubs}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Clubs</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ClubsRanks"/>
 					<span class="inputs-readonly" name="attr_ClubsRanks">-</span></div>
 					<input type="number" value="0" name="attr_ClubsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Clubs"/>
-					<button type='roll' name='roll_Counter' value='&{template:default} {{name=@{character_name}}} {{skillname="Counter"}} {{result=[[({1d100}) + @{Counter}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Counter' value='&{template:default} {{name=@{character_name}}} {{skillname="Counter"}} {{result=[[({1d100cs>96cf<5}) + @{Counter}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Counter</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CounterRanks"/>
 					<span class="inputs-readonly" name="attr_CounterRanks">-</span></div>
 					<input type="number" value="0" name="attr_CounterBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Counter"/>
-					<button type='roll' name='roll_Escape' value='&{template:default} {{name=@{character_name}}} {{skillname="Escape"}} {{result=[[({1d100}) + @{Escape}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Escape' value='&{template:default} {{name=@{character_name}}} {{skillname="Escape"}} {{result=[[({1d100cs>96cf<5}) + @{Escape}]]}} {{beats=[[ 5 &{tracker:+}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Escape</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EscapeRanks"/>
 					<span class="inputs-readonly" name="attr_EscapeRanks">-</span></div>
 					<input type="number" value="0" name="attr_EscapeBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Escape"/>
-					<button type='roll' name='roll_ExoticMelee' value='&{template:default} {{name=@{character_name}}} {{skillname=@{ExoticMelee_name}}} {{result=[[({1d100}) + @{ExoticMelee}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_ExoticMelee' value='&{template:default} {{name=@{character_name}}} {{skillname=@{ExoticMelee_name}}} {{result=[[({1d100cs>96cf<5}) + @{ExoticMelee}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<input class='skill-custom' type="text" value="Exotic Melee" name="attr_ExoticMelee_name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ExoticMeleeRanks"/>
 					<span class="inputs-readonly" name="attr_ExoticMeleeRanks">-</span></div>
 					<input type="number" value="0" name="attr_ExoticMeleeBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ExoticMelee"/>
-					<button type='roll' name='roll_Grapple' value='&{template:default} {{name=@{character_name}}} {{skillname="Grapple"}} {{result=[[({1d100}) + @{Grapple}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Grapple' value='&{template:default} {{name=@{character_name}}} {{skillname="Grapple"}} {{result=[[({1d100cs>96cf<5}) + @{Grapple}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Grapple</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_GrappleRanks"/>
 					<span class="inputs-readonly" name="attr_GrappleRanks">-</span></div>
 					<input type="number" value="0" name="attr_GrappleBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Grapple"/>
-					<button type='roll' name='roll_Parry' value='&{template:default} {{name=@{character_name}}} {{skillname="Parry"}} {{result=[[({1d100}) + @{Parry}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Parry' value='&{template:default} {{name=@{character_name}}} {{skillname="Parry"}} {{result=[[({1d100cs>96cf<5}) + @{Parry}]]}} {{beats=[[ 5 &{tracker:+}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Parry</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ParryRanks"/>
 					<span class="inputs-readonly" name="attr_ParryRanks">-</span></div>
 					<input type="number" value="0" name="attr_ParryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Parry"/>
-					<button type='roll' name='roll_Polearms' value='&{template:default} {{name=@{character_name}}} {{skillname="Polearms"}} {{result=[[({1d100}) + @{Polearms}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Polearms' value='&{template:default} {{name=@{character_name}}} {{skillname="Polearms"}} {{result=[[({1d100cs>96cf<5}) + @{Polearms}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span>Polearms</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PolearmsRanks"/>
 					<span class="inputs-readonly" name="attr_PolearmsRanks">-</span></div>
 					<input type="number" value="0" name="attr_PolearmsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Polearms"/>
-					<button type='roll' name='roll_Striking' value='&{template:default} {{name=@{character_name}}} {{skillname="Striking"}} {{result=[[({1d100}) + @{Striking}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_Striking' value='&{template:default} {{name=@{character_name}}} {{skillname="Striking"}} {{result=[[({1d100cs>96cf<5}) + @{Striking}]]}} {{beats=[[ 6 &{tracker:+}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<span style="color: blue">Striking</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_StrikingRanks"/>
 					<span class="inputs-readonly" name="attr_StrikingRanks">-</span></div>
 					<input type="number" value="0" name="attr_StrikingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Striking"/>
-					<button type='roll' name='roll_CustomCC1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC1"}} {{result=[[({1d100}) + @{CustomCC1}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_CustomCC1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomCC1}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<input class='skill-custom' type="text" value="CustomCC1" name="CustomCC1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomCC1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomCC1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomCC1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomCC1"/>
-					<button type='roll' name='roll_CustomCC2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC2"}} {{result=[[({1d100}) + @{CustomCC2}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_CustomCC2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomCC2}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<input class='skill-custom' type="text" value="CustomCC2" name="CustomCC2_Name">
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomCC2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomCC2Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomCC2Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomCC2"/>
-					<button type='roll' name='roll_CustomCC3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC3"}} {{result=[[({1d100}) + @{CustomCC3}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
+					<button type='roll' name='roll_CustomCC3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomCC3"}} {{result=[[({1d100cs>96cf<5}) + @{CustomCC3}]]}} {{PUSH=Close Combat Skills use En, In and St}}'></button>
 					<input class='skill-custom' type="text" value="CustomCC3" name="CustomCC3_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomCC3Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomCC3Ranks">-</span></div>
@@ -660,91 +945,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_Acting' value='&{template:default} {{name=@{character_name}}} {{skillname="Acting"}} {{result=[[({1d100}) + @{Acting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Acting' value='&{template:default} {{name=@{character_name}}} {{skillname="Acting"}} {{result=[[({1d100cs>96cf<5}) + @{Acting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Acting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ActingRanks"/>
 					<span class="inputs-readonly" name="attr_ActingRanks">-</span></div>
 					<input type="number" value="0" name="attr_ActingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Acting"/>
-					<button type='roll' name='roll_Art' value='&{template:default} {{name=@{character_name}}} {{skillname="Art"}} {{result=[[({1d100}) + @{Art}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Art' value='&{template:default} {{name=@{character_name}}} {{skillname="Art"}} {{result=[[({1d100cs>96cf<5}) + @{Art}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Art</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ArtRanks"/>
 					<span class="inputs-readonly" name="attr_ArtRanks">-</span></div>
 					<input type="number" value="0" name="attr_ArtBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Art"/>
-					<button type='roll' name='roll_Composing' value='&{template:default} {{name=@{character_name}}} {{skillname="Composing"}} {{result=[[({1d100}) + @{Composing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Composing' value='&{template:default} {{name=@{character_name}}} {{skillname="Composing"}} {{result=[[({1d100cs>96cf<5}) + @{Composing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Composing</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ComposingRanks"/>
 					<span class="inputs-readonly" name="attr_ComposingRanks">-</span></div>
 					<input type="number" value="0" name="attr_ComposingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Composing"/>
-					<button type='roll' name='roll_Dance' value='&{template:default} {{name=@{character_name}}} {{skillname="Dance"}} {{result=[[({1d100}) + @{Dance}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Dance' value='&{template:default} {{name=@{character_name}}} {{skillname="Dance"}} {{result=[[({1d100cs>96cf<5}) + @{Dance}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Dance</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_DanceRanks"/>
 					<span class="inputs-readonly" name="attr_DanceRanks">-</span></div>
 					<input type="number" value="0" name="attr_DanceBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Dance"/>
-					<button type='roll' name='roll_Fashion' value='&{template:default} {{name=@{character_name}}} {{skillname="Fashion"}} {{result=[[({1d100}) + @{Fashion}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Fashion' value='&{template:default} {{name=@{character_name}}} {{skillname="Fashion"}} {{result=[[({1d100cs>96cf<5}) + @{Fashion}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Fashion</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_FashionRanks"/>
 					<span class="inputs-readonly" name="attr_FashionRanks">-</span></div>
 					<input type="number" value="0" name="attr_FashionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Fashion"/>
-					<button type='roll' name='roll_Metalwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Metalwork"}} {{result=[[({1d100}) + @{Metalwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Metalwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Metalwork"}} {{result=[[({1d100cs>96cf<5}) + @{Metalwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Metalwork</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MetalworkRanks"/>
 					<span class="inputs-readonly" name="attr_MetalworkRanks">-</span></div>
 					<input type="number" value="0" name="attr_MetalworkBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Metalwork"/>
-					<button type='roll' name='roll_MusicalInstrument' value='&{template:default} {{name=@{character_name}}} {{skillname="Musical Instrument"}} {{result=[[({1d100}) + @{MusicalInstrument}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_MusicalInstrument' value='&{template:default} {{name=@{character_name}}} {{skillname="Musical Instrument"}} {{result=[[({1d100cs>96cf<5}) + @{MusicalInstrument}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Musical Instrument</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MusicalInstrumentRanks"/>
 					<span class="inputs-readonly" name="attr_MusicalInstrumentRanks">-</span></div>
 					<input type="number" value="0" name="attr_MusicalInstrumentBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_MusicalInstrument"/>
-					<button type='roll' name='roll_Sculpting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sculpting"}} {{result=[[({1d100}) + @{Sculpting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Sculpting' value='&{template:default} {{name=@{character_name}}} {{skillname="Sculpting"}} {{result=[[({1d100cs>96cf<5}) + @{Sculpting}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Sculpting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SculptingRanks"/>
 					<span class="inputs-readonly" name="attr_SculptingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SculptingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Sculpting"/>
-					<button type='roll' name='roll_Singing' value='&{template:default} {{name=@{character_name}}} {{skillname="Singing"}} {{result=[[({1d100}) + @{Singing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Singing' value='&{template:default} {{name=@{character_name}}} {{skillname="Singing"}} {{result=[[({1d100cs>96cf<5}) + @{Singing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Singing</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SingingRanks"/>
 					<span class="inputs-readonly" name="attr_SingingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SingingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Singing"/>
-					<button type='roll' name='roll_SpellDesign' value='&{template:default} {{name=@{character_name}}} {{skillname="Spell Design"}} {{result=[[({1d100}) + @{SpellDesign}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_SpellDesign' value='&{template:default} {{name=@{character_name}}} {{skillname="Spell Design"}} {{result=[[({1d100cs>96cf<5}) + @{SpellDesign}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Spell Design</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SpellDesignRanks"/>
 					<span class="inputs-readonly" name="attr_SpellDesignRanks">-</span></div>
 					<input type="number" value="0" name="attr_SpellDesignBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_SpellDesign"/>
-					<button type='roll' name='roll_Woodwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Woodwork"}} {{result=[[({1d100}) + @{Woodwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Woodwork' value='&{template:default} {{name=@{character_name}}} {{skillname="Woodwork"}} {{result=[[({1d100cs>96cf<5}) + @{Woodwork}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Woodwork</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_WoodworkRanks"/>
 					<span class="inputs-readonly" name="attr_WoodworkRanks">-</span></div>
 					<input type="number" value="0" name="attr_WoodworkBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Woodwork"/>
-					<button type='roll' name='roll_Writing' value='&{template:default} {{name=@{character_name}}} {{skillname="Writing"}} {{result=[[({1d100}) + @{Writing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_Writing' value='&{template:default} {{name=@{character_name}}} {{skillname="Writing"}} {{result=[[({1d100cs>96cf<5}) + @{Writing}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<span>Writing</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_WritingRanks"/>
 					<span class="inputs-readonly" name="attr_WritingRanks">-</span></div>
 					<input type="number" value="0" name="attr_WritingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Writing"/>
-					<button type='roll' name='roll_CustomExp1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp1"}} {{result=[[({1d100}) + @{CustomExp1}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_CustomExp1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomExp1}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<input class='skill-custom' type="text" value="CustomExp1" name="attr_CustomExp1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomExp1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomExp1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomExp1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomExp1"/>
-					<button type='roll' name='roll_CustomExp2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp2"}} {{result=[[({1d100}) + @{CustomExp2}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_CustomExp2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomExp2}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<input class='skill-custom' type="text" value="CustomExp2" name="attr_CustomExp2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomExp2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomExp2Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomExp2Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomExp2"/>
-					<button type='roll' name='roll_CustomExp3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp3"}} {{result=[[({1d100}) + @{CustomExp3}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
+					<button type='roll' name='roll_CustomExp3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomExp3"}} {{result=[[({1d100cs>96cf<5}) + @{CustomExp3}]]}} {{PUSH=Close Expression Skills use Ag, Cr and Em}}'></button>
 					<input class='skill-custom' type="text" value="CustomExp3" name="attr_CustomExp3_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomExp3Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomExp3Ranks">-</span></div>
@@ -764,91 +1049,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_AuraSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Aura Sense"}} {{result=[[({1d100}) + @{AuraSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_AuraSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Aura Sense"}} {{result=[[({1d100cs>96cf<5}) + @{AuraSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Aura Sense</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_AuraSenseRanks"/>
 					<span class="inputs-readonly" name="attr_AuraSenseRanks">-</span></div>
 					<input type="number" value="0" name="attr_AuraSenseBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_AuraSense"/>
-					<button type='roll' name='roll_Binding' value='&{template:default} {{name=@{character_name}}} {{skillname="Binding"}} {{result=[[({1d100}) + @{Binding}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Binding' value='&{template:default} {{name=@{character_name}}} {{skillname="Binding"}} {{result=[[({1d100cs>96cf<5}) + @{Binding}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Binding</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BindingRanks"/>
 					<span class="inputs-readonly" name="attr_BindingRanks">-</span></div>
 					<input type="number" value="0" name="attr_BindingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Binding"/>
-					<button type='roll' name='roll_Celerity' value='&{template:default} {{name=@{character_name}}} {{skillname="Celerity"}} {{result=[[({1d100}) + @{Celerity}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Celerity' value='&{template:default} {{name=@{character_name}}} {{skillname="Celerity"}} {{result=[[({1d100cs>96cf<5}) + @{Celerity}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Celerity</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CelerityRanks"/>
 					<span class="inputs-readonly" name="attr_CelerityRanks">-</span></div>
 					<input type="number" value="0" name="attr_CelerityBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Celerity"/>
-					<button type='roll' name='roll_Conjuring' value='&{template:default} {{name=@{character_name}}} {{skillname="Conjuring"}} {{result=[[({1d100}) + @{Conjuring}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Conjuring' value='&{template:default} {{name=@{character_name}}} {{skillname="Conjuring"}} {{result=[[({1d100cs>96cf<5}) + @{Conjuring}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Conjuring</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ConjuringRanks"/>
 					<span class="inputs-readonly" name="attr_ConjuringRanks">-</span></div>
 					<input type="number" value="0" name="attr_ConjuringBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Conjuring"/>
-					<button type='roll' name='roll_Divining' value='&{template:default} {{name=@{character_name}}} {{skillname="Divining"}} {{result=[[({1d100}) + @{Divining}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Divining' value='&{template:default} {{name=@{character_name}}} {{skillname="Divining"}} {{result=[[({1d100cs>96cf<5}) + @{Divining}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Divining</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_DiviningRanks"/>
 					<span class="inputs-readonly" name="attr_DiviningRanks">-</span></div>
 					<input type="number" value="0" name="attr_DiviningBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Divining"/>
-					<button type='roll' name='roll_Enchanting' value='&{template:default} {{name=@{character_name}}} {{skillname="Enchanting"}} {{result=[[({1d100}) + @{Enchanting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Enchanting' value='&{template:default} {{name=@{character_name}}} {{skillname="Enchanting"}} {{result=[[({1d100cs>96cf<5}) + @{Enchanting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Enchanting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EnchantingRanks"/>
 					<span class="inputs-readonly" name="attr_EnchantingRanks">-</span></div>
 					<input type="number" value="0" name="attr_EnchantingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Enchanting"/>
-					<button type='roll' name='roll_ManaSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Mana Sense"}} {{result=[[({1d100}) + @{ManaSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_ManaSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Mana Sense"}} {{result=[[({1d100cs>96cf<5}) + @{ManaSense}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Mana Sense</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ManaSenseRanks"/>
 					<span class="inputs-readonly" name="attr_ManaSenseRanks">-</span></div>
 					<input type="number" value="0" name="attr_ManaSenseBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ManaSense"/>
-					<button type='roll' name='roll_ManifestWill' value='&{template:default} {{name=@{character_name}}} {{skillname="Manifest Will"}} {{result=[[({1d100}) + @{ManifestWill}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_ManifestWill' value='&{template:default} {{name=@{character_name}}} {{skillname="Manifest Will"}} {{result=[[({1d100cs>96cf<5}) + @{ManifestWill}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Manifest Will</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ManifestWillRanks"/>
 					<span class="inputs-readonly" name="attr_ManifestWillRanks">-</span></div>
 					<input type="number" value="0" name="attr_ManifestWillBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ManifestWill"/>
-					<button type='roll' name='roll_Meditation' value='&{template:default} {{name=@{character_name}}} {{skillname="Meditation"}} {{result=[[({1d100}) + @{Meditation}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Meditation' value='&{template:default} {{name=@{character_name}}} {{skillname="Meditation"}} {{result=[[({1d100cs>96cf<5}) + @{Meditation}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Meditation</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MeditationRanks"/>
 					<span class="inputs-readonly" name="attr_MeditationRanks">-</span></div>
 					<input type="number" value="0" name="attr_MeditationBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Meditation"/>
-					<button type='roll' name='roll_Precognition' value='&{template:default} {{name=@{character_name}}} {{skillname="Precognition"}} {{result=[[({1d100}) + @{Precognition}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Precognition' value='&{template:default} {{name=@{character_name}}} {{skillname="Precognition"}} {{result=[[({1d100cs>96cf<5}) + @{Precognition}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Precognition</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PrecognitionRanks"/>
 					<span class="inputs-readonly" name="attr_PrecognitionRanks">-</span></div>
 					<input type="number" value="0" name="attr_PrecognitionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Precognition"/>
-					<button type='roll' name='roll_Rituals' value='&{template:default} {{name=@{character_name}}} {{skillname="Rituals"}} {{result=[[({1d100}) + @{Rituals}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Rituals' value='&{template:default} {{name=@{character_name}}} {{skillname="Rituals"}} {{result=[[({1d100cs>96cf<5}) + @{Rituals}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Rituals</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RitualsRanks"/>
 					<span class="inputs-readonly" name="attr_RitualsRanks">-</span></div>
 					<input type="number" value="0" name="attr_RitualsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Rituals"/>
-					<button type='roll' name='roll_Runes' value='&{template:default} {{name=@{character_name}}} {{skillname="Runes"}} {{result=[[({1d100}) + @{Runes}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Runes' value='&{template:default} {{name=@{character_name}}} {{skillname="Runes"}} {{result=[[({1d100cs>96cf<5}) + @{Runes}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Runes</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RunesRanks"/>
 					<span class="inputs-readonly" name="attr_RunesRanks">-</span></div>
 					<input type="number" value="0" name="attr_RunesBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Runes"/>
-					<button type='roll' name='roll_Spellcasting' value='&{template:default} {{name=@{character_name}}} {{skillname="Spellcasting"}} {{result=[[({1d100}) + @{Spellcasting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_Spellcasting' value='&{template:default} {{name=@{character_name}}} {{skillname="Spellcasting"}} {{result=[[({1d100cs>96cf<5}) + @{Spellcasting}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<span style="color: blue">Spellcasting</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SpellcastingRanks"/>
 					<span class="inputs-readonly" name="attr_SpellcastingRanks">-</span></div>
 					<input type="number" value="0" name="attr_SpellcastingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Spellcasting"/>
-					<button type='roll' name='roll_CustomMys1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys1"}} {{result=[[({1d100}) + @{CustomMys1}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_CustomMys1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomMys1}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomMys1" name="attr_CustomMys1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomMys1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomMys1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomMys1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomMys1"/>
-					<button type='roll' name='roll_CustomMys2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys2"}} {{result=[[({1d100}) + @{CustomMys2}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
+					<button type='roll' name='roll_CustomMys2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomMys2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomMys2}]]}} {{PUSH=Mystic Skills use Em, En and Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomMys2" name="attr_CustomMys2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomMys2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomMys2Ranks">-</span></div>
@@ -868,91 +1153,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_Archery' value='&{template:default} {{name=@{character_name}}} {{skillname="Archery"}} {{result=[[({1d100}) + @{Archery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Archery' value='&{template:default} {{name=@{character_name}}} {{skillname="Archery"}} {{result=[[({1d100cs>96cf<5}) + @{Archery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Archery</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ArcheryRanks"/>
 					<span class="inputs-readonly" name="attr_ArcheryRanks">-</span></div>
 					<input type="number" value="0" name="attr_ArcheryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Archery"/>
-					<button type='roll' name='roll_Artillery' value='&{template:default} {{name=@{character_name}}} {{skillname="Artillery"}} {{result=[[({1d100}) + @{Artillery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Artillery' value='&{template:default} {{name=@{character_name}}} {{skillname="Artillery"}} {{result=[[({1d100cs>96cf<5}) + @{Artillery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Artillery</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ArtilleryRanks"/>
 					<span class="inputs-readonly" name="attr_ArtilleryRanks">-</span></div>
 					<input type="number" value="0" name="attr_ArtilleryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Artillery"/>
-					<button type='roll' name='roll_Dodge' value='&{template:default} {{name=@{character_name}}} {{skillname="Dodge"}} {{result=[[({1d100}) + @{Dodge}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Dodge' value='&{template:default} {{name=@{character_name}}} {{skillname="Dodge"}} {{result=[[({1d100cs>96cf<5}) + @{Dodge}]]}} {{beats=[[ 8 &{tracker:+}]] and you must move 1 meter or take a -50 penalty}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Dodge</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_DodgeRanks"/>
 					<span class="inputs-readonly" name="attr_DodgeRanks">-</span></div>
 					<input type="number" value="0" name="attr_DodgeBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Dodge"/>
-					<button type='roll' name='roll_ExoticRanged' value='&{template:default} {{name=@{character_name}}} {{skillname="Exotic Ranged"}} {{result=[[({1d100}) + @{ExoticRanged}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_ExoticRanged' value='&{template:default} {{name=@{character_name}}} {{skillname="Exotic Ranged"}} {{result=[[({1d100cs>96cf<5}) + @{ExoticRanged}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<input class='skill-custom' type="text" value="Exotic Ranged Weapon" name="attr_ExoticRanged_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ExoticRangedRanks"/>
 					<span class="inputs-readonly" name="attr_ExoticRangedRanks">-</span></div>
 					<input type="number" value="0" name="attr_ExoticRangedBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ExoticRanged"/>
-					<button type='roll' name='roll_Gunnery' value='&{template:default} {{name=@{character_name}}} {{skillname="Gunnery"}} {{result=[[({1d100}) + @{Gunnery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Gunnery' value='&{template:default} {{name=@{character_name}}} {{skillname="Gunnery"}} {{result=[[({1d100cs>96cf<5}) + @{Gunnery}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Gunnery</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_GunneryRanks"/>
 					<span class="inputs-readonly" name="attr_GunneryRanks">-</span></div>
 					<input type="number" value="0" name="attr_GunneryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Gunnery"/>
-					<button type='roll' name='roll_Lobbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Lobbing (Indirect)"}} {{result=[[({1d100}) + @{Lobbing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Lobbing' value='&{template:default} {{name=@{character_name}}} {{skillname="Lobbing (Indirect)"}} {{result=[[({1d100cs>96cf<5}) + @{Lobbing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Lobbing (Indirect)</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LobbingRanks"/>
 					<span class="inputs-readonly" name="attr_LobbingRanks">-</span></div>
 					<input type="number" value="0" name="attr_LobbingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Lobbing"/>
-					<button type='roll' name='roll_Machineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Machineguns"}} {{result=[[({1d100}) + @{Machineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Machineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Machineguns"}} {{result=[[({1d100cs>96cf<5}) + @{Machineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Machineguns</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MachinegunsRanks"/>
 					<span class="inputs-readonly" name="attr_MachinegunsRanks">-</span></div>
 					<input type="number" value="0" name="attr_MachinegunsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Machineguns"/>
-					<button type='roll' name='roll_Pistols' value='&{template:default} {{name=@{character_name}}} {{skillname="Pistols"}} {{result=[[({1d100}) + @{Pistols}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Pistols' value='&{template:default} {{name=@{character_name}}} {{skillname="Pistols"}} {{result=[[({1d100cs>96cf<5}) + @{Pistols}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Pistols</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PistolsRanks"/>
 					<span class="inputs-readonly" name="attr_PistolsRanks">-</span></div>
 					<input type="number" value="0" name="attr_PistolsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Pistols"/>
-					<button type='roll' name='roll_Rifles' value='&{template:default} {{name=@{character_name}}} {{skillname="Rifles"}} {{result=[[({1d100}) + @{Rifles}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Rifles' value='&{template:default} {{name=@{character_name}}} {{skillname="Rifles"}} {{result=[[({1d100cs>96cf<5}) + @{Rifles}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Rifles</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RiflesRanks"/>
 					<span class="inputs-readonly" name="attr_RiflesRanks">-</span></div>
 					<input type="number" value="0" name="attr_RiflesBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Rifles"/>
-					<button type='roll' name='roll_SprayWeapons' value='&{template:default} {{name=@{character_name}}} {{skillname="Spray Weapons"}} {{result=[[({1d100}) + @{SprayWeapons}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_SprayWeapons' value='&{template:default} {{name=@{character_name}}} {{skillname="Spray Weapons"}} {{result=[[({1d100cs>96cf<5}) + @{SprayWeapons}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Spray Weapons</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SprayWeaponsRanks"/>
 					<span class="inputs-readonly" name="attr_SprayWeaponsRanks">-</span></div>
 					<input type="number" value="0" name="attr_SprayWeaponsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_SprayWeapons"/>
-					<button type='roll' name='roll_Submachineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Submachineguns"}} {{result=[[({1d100}) + @{Submachineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Submachineguns' value='&{template:default} {{name=@{character_name}}} {{skillname="Submachineguns"}} {{result=[[({1d100cs>96cf<5}) + @{Submachineguns}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Submachineguns</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SubmachinegunsRanks"/>
 					<span class="inputs-readonly" name="attr_SubmachinegunsRanks">-</span></div>
 					<input type="number" value="0" name="attr_SubmachinegunsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Submachineguns"/>
-					<button type='roll' name='roll_Throwing' value='&{template:default} {{name=@{character_name}}} {{skillname="Throwing (Direct)"}} {{result=[[({1d100}) + @{Throwing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_Throwing' value='&{template:default} {{name=@{character_name}}} {{skillname="Throwing (Direct)"}} {{result=[[({1d100cs>96cf<5}) + @{Throwing}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<span>Throwing (Direct)</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ThrowingRanks"/>
 					<span class="inputs-readonly" name="attr_ThrowingRanks">-</span></div>
 					<input type="number" value="0" name="attr_ThrowingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Throwing"/>
-					<button type='roll' name='roll_CustomRan1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan1"}} {{result=[[({1d100}) + @{CustomRan1}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_CustomRan1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomRan1}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<input class='skill-custom' type="text" value="CustomRan1" name="attr_CustomRan1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomRan1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomRan1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomRan1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomRan1"/>
-					<button type='roll' name='roll_CustomRan2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan2"}} {{result=[[({1d100}) + @{CustomRan2}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_CustomRan2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomRan2}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<input class='skill-custom' type="text" value="CustomRan2" name="attr_CustomRan2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomRan2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomRan2Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomRan2Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomRan2"/>
-					<button type='roll' name='roll_CustomRan3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan3"}} {{result=[[({1d100}) + @{CustomRan3}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
+					<button type='roll' name='roll_CustomRan3' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomRan3"}} {{result=[[({1d100cs>96cf<5}) + @{CustomRan3}]]}} {{PUSH=Ranged Skills use Ag, Di and Pe}}'></button>
 					<input class='skill-custom' type="text" value="CustomRan3" name="attr_CustomRan3_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomRan3Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomRan3Ranks">-</span></div>
@@ -972,91 +1257,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_Biology' value='&{template:default} {{name=@{character_name}}} {{skillname="Biology"}} {{result=[[({1d100}) + @{Biology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Biology' value='&{template:default} {{name=@{character_name}}} {{skillname="Biology"}} {{result=[[({1d100cs>96cf<5}) + @{Biology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Biology</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BiologyRanks"/>
 					<span class="inputs-readonly" name="attr_BiologyRanks">-</span></div>
 					<input type="number" value="0" name="attr_BiologyBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Biology"/>
-					<button type='roll' name='roll_Botany' value='&{template:default} {{name=@{character_name}}} {{skillname="Botany"}} {{result=[[({1d100}) + @{Botany}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Botany' value='&{template:default} {{name=@{character_name}}} {{skillname="Botany"}} {{result=[[({1d100cs>96cf<5}) + @{Botany}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Botany</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_BotanyRanks"/>
 					<span class="inputs-readonly" name="attr_BotanyRanks">-</span></div>
 					<input type="number" value="0" name="attr_BotyanyBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Botany"/>
-					<button type='roll' name='roll_Chemistry' value='&{template:default} {{name=@{character_name}}} {{skillname="Chemistry"}} {{result=[[({1d100}) + @{Chemistry}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Chemistry' value='&{template:default} {{name=@{character_name}}} {{skillname="Chemistry"}} {{result=[[({1d100cs>96cf<5}) + @{Chemistry}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Chemistry</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ChemistryRanks"/>
 					<span class="inputs-readonly" name="attr_ChemistryRanks">-</span></div>
 					<input type="number" value="0" name="attr_ChemistryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Chemistry"/>
-					<button type='roll' name='roll_Eidetics' value='&{template:default} {{name=@{character_name}}} {{skillname="Eidetics"}} {{result=[[({1d100}) + @{Eidetics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Eidetics' value='&{template:default} {{name=@{character_name}}} {{skillname="Eidetics"}} {{result=[[({1d100cs>96cf<5}) + @{Eidetics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Eidetics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EideticsRanks"/>
 					<span class="inputs-readonly" name="attr_EideticsRanks">-</span></div>
 					<input type="number" value="0" name="attr_EideticsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Eidetics"/>
-					<button type='roll' name='roll_History' value='&{template:default} {{name=@{character_name}}} {{skillname="History"}} {{result=[[({1d100}) + @{History}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_History' value='&{template:default} {{name=@{character_name}}} {{skillname="History"}} {{result=[[({1d100cs>96cf<5}) + @{History}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span>History</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_HistoryRanks"/>
 					<span class="inputs-readonly" name="attr_HistoryRanks">-</span></div>
 					<input type="number" value="0" name="attr_HistoryBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_History"/>
-					<button type='roll' name='roll_Literature' value='&{template:default} {{name=@{character_name}}} {{skillname="Literature"}} {{result=[[({1d100}) + @{Literature}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Literature' value='&{template:default} {{name=@{character_name}}} {{skillname="Literature"}} {{result=[[({1d100cs>96cf<5}) + @{Literature}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Literature</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LiteratureRanks"/>
 					<span class="inputs-readonly" name="attr_LiteratureRanks">-</span></div>
 					<input type="number" value="0" name="attr_LiteratureBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Literature"/>
-					<button type='roll' name='roll_Mathematics' value='&{template:default} {{name=@{character_name}}} {{skillname="Mathematics"}} {{result=[[({1d100}) + @{Mathematics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Mathematics' value='&{template:default} {{name=@{character_name}}} {{skillname="Mathematics"}} {{result=[[({1d100cs>96cf<5}) + @{Mathematics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Mathematics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MathematicsRanks"/>
 					<span class="inputs-readonly" name="attr_MathematicsRanks">-</span></div>
 					<input type="number" value="0" name="attr_MathematicsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Mathematics"/>
-					<button type='roll' name='roll_Medicine' value='&{template:default} {{name=@{character_name}}} {{skillname="Medicine"}} {{result=[[({1d100}) + @{Medicine}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Medicine' value='&{template:default} {{name=@{character_name}}} {{skillname="Medicine"}} {{result=[[({1d100cs>96cf<5}) + @{Medicine}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Medicine</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MedicineRanks"/>
 					<span class="inputs-readonly" name="attr_MedecineRanks">-</span></div>
 					<input type="number" value="0" name="attr_MedicineBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Medicine"/>
-					<button type='roll' name='roll_Navigation' value='&{template:default} {{name=@{character_name}}} {{skillname="Navigation"}} {{result=[[({1d100}) + @{Navigation}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Navigation' value='&{template:default} {{name=@{character_name}}} {{skillname="Navigation"}} {{result=[[({1d100cs>96cf<5}) + @{Navigation}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Navigation</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_NavigationRanks"/>
 					<span class="inputs-readonly" name="attr_NavigationRanks">-</span></div>
 					<input type="number" value="0" name="attr_NavigationBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Navigation"/>
-					<button type='roll' name='roll_Occult' value='&{template:default} {{name=@{character_name}}} {{skillname="Occult"}} {{result=[[({1d100}) + @{Occult}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Occult' value='&{template:default} {{name=@{character_name}}} {{skillname="Occult"}} {{result=[[({1d100cs>96cf<5}) + @{Occult}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Occult</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_OccultRanks"/>
 					<span class="inputs-readonly" name="attr_OccultRanks">-</span></div>
 					<input type="number" value="0" name="attr_OccultBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Occult"/>
-					<button type='roll' name='roll_Physics' value='&{template:default} {{name=@{character_name}}} {{skillname="Physics"}} {{result=[[({1d100}) + @{Physics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Physics' value='&{template:default} {{name=@{character_name}}} {{skillname="Physics"}} {{result=[[({1d100cs>96cf<5}) + @{Physics}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Physics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PhysicsRanks"/>
 					<span class="inputs-readonly" name="attr_PhysicsRanks">-</span></div>
 					<input type="number" value="0" name="attr_PhysicsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Physics"/>
-					<button type='roll' name='roll_Xenology' value='&{template:default} {{name=@{character_name}}} {{skillname="Xenology"}} {{result=[[({1d100}) + @{Xenology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Xenology' value='&{template:default} {{name=@{character_name}}} {{skillname="Xenology"}} {{result=[[({1d100cs>96cf<5}) + @{Xenology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Xenology</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_XenologyRanks"/>
 					<span class="inputs-readonly" name="attr_XenologyRanks">-</span></div>
 					<input type="number" value="0" name="attr_XenologyBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Xenology"/>
-					<button type='roll' name='roll_Zoology' value='&{template:default} {{name=@{character_name}}} {{skillname="Zoology"}} {{result=[[({1d100}) + @{Zoology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_Zoology' value='&{template:default} {{name=@{character_name}}} {{skillname="Zoology"}} {{result=[[({1d100cs>96cf<5}) + @{Zoology}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<span style="color: blue">Zoology</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ZoologyRanks"/>
 					<span class="inputs-readonly" name="attr_ZoologyRanks">-</span></div>
 					<input type="number" value="0" name="attr_ZoologyBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Zoology"/>
-					<button type='roll' name='roll_CustomSci1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci1"}} {{result=[[({1d100}) + @{CustomSci1}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_CustomSci1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSci1}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<input class='skill-custom' type="text" value="CustomSci1" name="attr_CustomSci1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSci1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSci1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomSci1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomSci1"/>
-					<button type='roll' name='roll_CustomSci2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci2"}} {{result=[[({1d100}) + @{CustomSci2}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
+					<button type='roll' name='roll_CustomSci2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSci2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSci2}]]}} {{PUSH=Science Skills use Di, Int and In}}'></button>
 					<input class='skill-custom' type="text" value="CustomSci2" name="attr_CustomSci2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSci2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSci2Ranks">-</span></div>
@@ -1076,91 +1361,91 @@
 				<Span>Ranks</Span>
 				<span>bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_Con' value='&{template:default} {{name=@{character_name}}} {{skillname="Con"}} {{result=[[({1d100}) + @{Con}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Con' value='&{template:default} {{name=@{character_name}}} {{skillname="Con"}} {{result=[[({1d100cs>96cf<5}) + @{Con}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Con</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ConRanks"/>
 					<span class="inputs-readonly" name="attr_ConRanks">-</span></div>
 					<input type="number" value="0" name="attr_ConBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Con"/>
-					<button type='roll' name='roll_Disguise' value='&{template:default} {{name=@{character_name}}} {{skillname="Disguise"}} {{result=[[({1d100}) + @{Disguise}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Disguise' value='&{template:default} {{name=@{character_name}}} {{skillname="Disguise"}} {{result=[[({1d100cs>96cf<5}) + @{Disguise}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Disguise</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_DisguiseRanks"/>
 					<span class="inputs-readonly" name="attr_DisguiseRanks">-</span></div>
 					<input type="number" value="0" name="attr_DisguiseBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Disguise"/>
-					<button type='roll' name='roll_Etiquette' value='&{template:default} {{name=@{character_name}}} {{skillname="Etiquette"}} {{result=[[({1d100}) + @{Etiquette}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Etiquette' value='&{template:default} {{name=@{character_name}}} {{skillname="Etiquette"}} {{result=[[({1d100cs>96cf<5}) + @{Etiquette}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Etiquette</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EtiquetteRanks"/>
 					<span class="inputs-readonly" name="attr_EtiquetteRanks">-</span></div>
 					<input type="number" value="0" name="attr_EtiquetteBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Etiquette"/>
-					<button type='roll' name='roll_Instruction' value='&{template:default} {{name=@{character_name}}} {{skillname="Instruction"}} {{result=[[({1d100}) + @{Instruction}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Instruction' value='&{template:default} {{name=@{character_name}}} {{skillname="Instruction"}} {{result=[[({1d100cs>96cf<5}) + @{Instruction}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Instruction</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_InstructionRanks"/>
 					<span class="inputs-readonly" name="attr_InstructionRanks">-</span></div>
 					<input type="number" value="0" name="attr_InstructionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Instruction"/>
-					<button type='roll' name='roll_Interrogation' value='&{template:default} {{name=@{character_name}}} {{skillname="Interrogation"}} {{result=[[({1d100}) + @{Interrogation}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Interrogation' value='&{template:default} {{name=@{character_name}}} {{skillname="Interrogation"}} {{result=[[({1d100cs>96cf<5}) + @{Interrogation}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Interrogation</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_InterrogationRanks"/>
 					<span class="inputs-readonly" name="attr_InterrogationRanks">-</span></div>
 					<input type="number" value="0" name="attr_InterrogationBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Interrogation"/>
-					<button type='roll' name='Intimidate' value='&{template:default} {{name=@{character_name}}} {{skillname="Intimidate"}} {{result=[[({1d100}) + @{Intimidate}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='Intimidate' value='&{template:default} {{name=@{character_name}}} {{skillname="Intimidate"}} {{result=[[({1d100cs>96cf<5}) + @{Intimidate}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Intimidate</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_IntimidateRanks"/>
 					<span class="inputs-readonly" name="attr_IntimidateRanks">-</span></div>
 					<input type="number" value="0" name="attr_IntimidateBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Intimidate"/>
-					<button type='roll' name='roll_Leadership' value='&{template:default} {{name=@{character_name}}} {{skillname="Leadership"}} {{result=[[({1d100}) + @{Leadership}]]}} {{PPUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Leadership' value='&{template:default} {{name=@{character_name}}} {{skillname="Leadership"}} {{result=[[({1d100cs>96cf<5}) + @{Leadership}]]}} {{PPUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Leadership</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LeadershipRanks"/>
 					<span class="inputs-readonly" name="attr_LeadershipRanks">-</span></div>
 					<input type="number" value="0" name="attr_LeadershipBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Leadership"/>
-					<button type='roll' name='roll_LieDetection' value='&{template:default} {{name=@{character_name}}} {{skillname="Lie Detection"}} {{result=[[({1d100}) + @{LieDetection}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_LieDetection' value='&{template:default} {{name=@{character_name}}} {{skillname="Lie Detection"}} {{result=[[({1d100cs>96cf<5}) + @{LieDetection}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Lie Detection</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LieDetectionRanks"/>
 					<span class="inputs-readonly" name="attr_LieDetectionRanks">-</span></div>
 					<input type="number" value="0" name="attr_LieDetectionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_LieDetection"/>
-					<button type='roll' name='roll_Linguistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Linguistics"}} {{result=[[({1d100}) + @{Linguistics}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Linguistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Linguistics"}} {{result=[[({1d100cs>96cf<5}) + @{Linguistics}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Linguistics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LinguisticsRanks"/>
 					<span class="inputs-readonly" name="attr_LinguisticsRanks">-</span></div>
 					<input type="number" value="0" name="attr_LinguisticsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Linguistics"/>
-					<button type='roll' name='roll_Negotiate' value='&{template:default} {{name=@{character_name}}} {{skillname="Negotiate"}} {{result=[[({1d100}) + @{Negotiate}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Negotiate' value='&{template:default} {{name=@{character_name}}} {{skillname="Negotiate"}} {{result=[[({1d100cs>96cf<5}) + @{Negotiate}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Negotiate</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_NegotiateRanks"/>
 					<span class="inputs-readonly" name="attr_NegotiateRanks">-</span></div>
 					<input type="number" value="0" name="attr_NegotiateBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Negotiate"/>
-					<button type='roll' name='roll_ResistTemptation' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Temptation"}} {{result=[[({1d100}) + @{ResistTemptation}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_ResistTemptation' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Temptation"}} {{result=[[({1d100cs>96cf<5}) + @{ResistTemptation}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Resist Temptation</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ResistTemptationRanks"/>
 					<span class="inputs-readonly" name="attr_ResistTemptationRanks">-</span></div>
 					<input type="number" value="0" name="attr_ResistTemptationBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ResistTemptation"/>
-					<button type='roll' name='roll_Seduction' value='&{template:default} {{name=@{character_name}}} {{skillname="Seduction"}} {{result=[[({1d100}) + @{Seduction}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_Seduction' value='&{template:default} {{name=@{character_name}}} {{skillname="Seduction"}} {{result=[[({1d100cs>96cf<5}) + @{Seduction}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Seduction</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SeductionRanks"/>
 					<span class="inputs-readonly" name="attr_SeductionRanks">-</span></div>
 					<input type="number" value="0" name="attr_SeductionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Seduction"/>
-					<button type='roll' name='roll_SleightofHand' value='&{template:default} {{name=@{character_name}}} {{skillname="Sleight of Hand"}} {{result=[[({1d100}) + @{SleightofHand}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_SleightofHand' value='&{template:default} {{name=@{character_name}}} {{skillname="Sleight of Hand"}} {{result=[[({1d100cs>96cf<5}) + @{SleightofHand}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<span>Sleight of Hand</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SleightofHandRanks"/>
 					<span class="inputs-readonly" name="attr_SleightofHandRanks">-</span></div>
 					<input type="number" value="0" name="attr_SleightofHandBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_SleightofHand"/>
-					<button type='roll' name='roll_CustomSoc1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc1"}} {{result=[[({1d100}) + @{CustomSoc1}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_CustomSoc1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSoc1}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomSoc1" name="attr_CustomSoc1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSoc1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSoc1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomSoc1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomSoc1"/>
-					<button type='roll' name='roll_CustomSoc2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc2"}} {{result=[[({1d100}) + @{CustomSoc2}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
+					<button type='roll' name='roll_CustomSoc2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSoc2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSoc2}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
 					<input class='skill-custom' type="text" value="CustomSoc2" name="attr_CustomSoc2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSoc2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSoc2Ranks">-</span></div>
@@ -1180,91 +1465,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_AnimalHandling' value='&{template:default} {{name=@{character_name}}} {{skillname="Animal Handling"}} {{result=[[({1d100}) + @{AnimalHandling}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_AnimalHandling' value='&{template:default} {{name=@{character_name}}} {{skillname="Animal Handling"}} {{result=[[({1d100cs>96cf<5}) + @{AnimalHandling}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Animal Handling</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_AnimalHandlingRanks"/>
 					<span class="inputs-readonly" name="attr_AnimalHandlingRanks">-</span></div>
 					<input type="number" value="0" name="attr_AnimalHandlingBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_AnimalHandling"/>
-					<button type='roll' name='roll_FindShelter' value='&{template:default} {{name=@{character_name}}} {{skillname="Find Shelter"}} {{result=[[({1d100}) + @{FindShelter}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_FindShelter' value='&{template:default} {{name=@{character_name}}} {{skillname="Find Shelter"}} {{result=[[({1d100cs>96cf<5}) + @{FindShelter}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Find Shelter</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_FindShelterRanks"/>
 					<span class="inputs-readonly" name="attr_FindShelterRanks">-</span></div>
 					<input type="number" value="0" name="attr_FindShelterBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_FindShelter"/>
-					<button type='roll' name='roll_Forage' value='&{template:default} {{name=@{character_name}}} {{skillname="Forage"}} {{result=[[({1d100}) + @{Forage}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Forage' value='&{template:default} {{name=@{character_name}}} {{skillname="Forage"}} {{result=[[({1d100cs>96cf<5}) + @{Forage}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Forage</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ForageRanks"/>
 					<span class="inputs-readonly" name="attr_ForageRanks">-</span></div>
 					<input type="number" value="0" name="attr_ForageBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Forage"/>
-					<button type='roll' name='roll_Observation' value='&{template:default} {{name=@{character_name}}} {{skillname="Observation"}} {{result=[[({1d100}) + @{Observation}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Observation' value='&{template:default} {{name=@{character_name}}} {{skillname="Observation"}} {{result=[[({1d100cs>96cf<5}) + @{Observation}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Observation</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ObservationRanks"/>
 					<span class="inputs-readonly" name="attr_ObservationRanks">-</span></div>
 					<input type="number" value="0" name="attr_ObservationBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Observation"/>
-					<button type='roll' name='roll_Orienteering' value='&{template:default} {{name=@{character_name}}} {{skillname="Orienteering"}} {{result=[[({1d100}) + @{Orienteering}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Orienteering' value='&{template:default} {{name=@{character_name}}} {{skillname="Orienteering"}} {{result=[[({1d100cs>96cf<5}) + @{Orienteering}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Orienteering</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_OrienteeringRanks"/>
 					<span class="inputs-readonly" name="attr_OrienteeringRanks">-</span></div>
 					<input type="number" value="0" name="attr_OrienteeringBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Orienteering"/>
-					<button type='roll' name='roll_RefreshBody' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Body"}} {{result=[[({1d100}) + @{RefreshBody}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_RefreshBody' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Body"}} {{result=[[({1d100cs>96cf<5}) + @{RefreshBody}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Refresh Body</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RefreshBodyRanks"/>
 					<span class="inputs-readonly" name="attr_RefreshBodyRanks">-</span></div>
 					<input type="number" value="0" name="attr_RefreshBodyBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_RefreshBody"/>
-					<button type='roll' name='roll_RefreshMind' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Mind"}} {{result=[[({1d100}) + @{RefreshMind}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_RefreshMind' value='&{template:default} {{name=@{character_name}}} {{skillname="Refresh Mind"}} {{result=[[({1d100cs>96cf<5}) + @{RefreshMind}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Refresh Mind</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RefreshMindRanks"/>
 					<span class="inputs-readonly" name="attr_RefreshMindRanks">-</span></div>
 					<input type="number" value="0" name="attr_RefreshMindBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_RefreshMind"/>
-					<button type='roll' name='roll_ResistKO' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist KO"}} {{result=[[({1d100}) + @{ResistKO}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_ResistKO' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist KO"}} {{result=[[({1d100cs>96cf<5}) + @{ResistKO}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Resist KO</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ResistKORanks"/>
 					<span class="inputs-readonly" name="attr_ResistKORanks">-</span></div>
 					<input type="number" value="0" name="attr_ResistKOBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ResistKO"/>
-					<button type='roll' name='roll_ResistPain' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Pain"}} {{result=[[({1d100}) + @{ResistPain}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_ResistPain' value='&{template:default} {{name=@{character_name}}} {{skillname="Resist Pain"}} {{result=[[({1d100cs>96cf<5}) + @{ResistPain}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Resist Pain</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ResistPainRanks"/>
 					<span class="inputs-readonly" name="attr_ResistPainRanks">-</span></div>
 					<input type="number" value="0" name="attr_ResistPainBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_ResistPain"/>
-					<button type='roll' name='roll_Ride' value='&{template:default} {{name=@{character_name}}} {{skillname="Ride"}} {{result=[[({1d100}) + @{Ride}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Ride' value='&{template:default} {{name=@{character_name}}} {{skillname="Ride"}} {{result=[[({1d100cs>96cf<5}) + @{Ride}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Ride</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_RideRanks"/>
 					<span class="inputs-readonly" name="attr_RideRanks">-</span></div>
 					<input type="number" value="0" name="attr_RideBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Ride"/>
-					<button type='roll' name='roll_Snare' value='&{template:default} {{name=@{character_name}}} {{skillname="Snare"}} {{result=[[({1d100}) + @{Snare}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Snare' value='&{template:default} {{name=@{character_name}}} {{skillname="Snare"}} {{result=[[({1d100cs>96cf<5}) + @{Snare}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Snare</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SnareRanks"/>
 					<span class="inputs-readonly" name="attr_SnareRanks">-</span></div>
 					<input type="number" value="0" name="attr_SnareBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Snare"/>
-					<button type='roll' name='roll_Track' value='&{template:default} {{name=@{character_name}}} {{skillname="Track"}} {{result=[[({1d100}) + @{Track}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_Track' value='&{template:default} {{name=@{character_name}}} {{skillname="Track"}} {{result=[[({1d100cs>96cf<5}) + @{Track}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Track</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_TrackRanks"/>
 					<span class="inputs-readonly" name="attr_TrackRanks">-</span></div>
 					<input type="number" value="0" name="attr_TrackBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Track"/>
-					<button type='roll' name='roll_WeatherSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Weather Sense"}} {{result=[[({1d100}) + @{WeatherSense}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_WeatherSense' value='&{template:default} {{name=@{character_name}}} {{skillname="Weather Sense"}} {{result=[[({1d100cs>96cf<5}) + @{WeatherSense}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<span>Weather Sense</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_WeatherSenseRanks"/>
 					<span class="inputs-readonly" name="attr_WeatherSenseRanks">-</span></div>
 					<input type="number" value="0" name="attr_WeatherSenseBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_WeatherSense"/>
-					<button type='roll' name='roll_CustomSur1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur1"}} {{result=[[({1d100}) + @{CustomSur1}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_CustomSur1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSur1}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<input class='skill-custom' type="text" value="CustomSur1" name="attr_CustomSur1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSur1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSur1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomSur1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomSur1"/>
-					<button type='roll' name='roll_CustomSur2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur2"}} {{result=[[({1d100}) + @{CustomSur2}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
+					<button type='roll' name='roll_CustomSur2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomSur2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomSur2}]]}} {{PUSH=Survival Skills use In, Pe and St}}'></button>
 					<input class='skill-custom' type="text" value="CustomSur2" name="attr_CustomSur2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomSur2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomSur2Ranks">-</span></div>
@@ -1284,91 +1569,91 @@
 				<Span>Ranks</Span>
 				<span>Bonus</span>
 				<Span>Total</Span>
-					<button type='roll' name='roll_Computers' value='&{template:default} {{name=@{character_name}}} {{skillname="Computers"}} {{result=[[({1d100}) + @{Computers}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
+					<button type='roll' name='roll_Computers' value='&{template:default} {{name=@{character_name}}} {{skillname="Computers"}} {{result=[[({1d100cs>96cf<5}) + @{Computers}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Computers</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ComputersRanks"/>
 					<span class="inputs-readonly" name="attr_ComputersRanks">-</span></div>
 					<input type="number" value="0" name="attr_ComputersBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Computers"/>
-					<button type='roll' name='roll_Construction' value='&{template:default} {{name=@{character_name}}} {{skillname="Construction"}} {{result=[[({1d100}) + @{Construction}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Construction' value='&{template:default} {{name=@{character_name}}} {{skillname="Construction"}} {{result=[[({1d100cs>96cf<5}) + @{Construction}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Construction</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ConstructionRanks"/>
 					<span class="inputs-readonly" name="attr_ConstructionRanks">-</span></div>
 					<input type="number" value="0" name="attr_ConstructionBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Construction"/>
-					<button type='roll' name='roll_Demolition' value='&{template:default} {{name=@{character_name}}} {{skillname="Demolition"}} {{result=[[({1d100}) + @{Demolition}]]}}' {{PUSH="Tech Skills use Cr, Int, or Pe"}}></button>
+					<button type='roll' name='roll_Demolition' value='&{template:default} {{name=@{character_name}}} {{skillname="Demolition"}} {{result=[[({1d100cs>96cf<5}) + @{Demolition}]]}}' {{PUSH="Tech Skills use Cr, Int, or Pe"}}></button>
 					<span>Demolition</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_DemolitionRanks"/>
 					<span class="inputs-readonly" name="attr_DemolitionRanks">-</span></div>
 					<input type="number" value="0" name="attr_DemolitionsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Demolition"/>
-					<button type='roll' name='roll_Electronics' value='&{template:default} {{name=@{character_name}}} {{skillname="Electronics"}} {{result=[[({1d100}) + @{Electronics}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Electronics' value='&{template:default} {{name=@{character_name}}} {{skillname="Electronics"}} {{result=[[({1d100cs>96cf<5}) + @{Electronics}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span style="color: blue">Electronics</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_ElectronicsRanks"/>
 					<span class="inputs-readonly" name="attr_ElectronicsRanks">-</span></div>
 					<input type="number" value="0" name="attr_ElectronicsBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Electronics"/>
-					<button type='roll' name='roll_Engineering' value='&{template:default} {{name=@{character_name}}} {{skillname="Engineering"}} {{result=[[({1d100}) + @{Engineering}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Engineering' value='&{template:default} {{name=@{character_name}}} {{skillname="Engineering"}} {{result=[[({1d100cs>96cf<5}) + @{Engineering}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Engineering</span>
 										<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_EngineeringRanks"/>
 					<span class="inputs-readonly" name="attr_EngineeringRanks">-</span></div>
 					<input type="number" value="0" name="attr_EngineeringBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Engineering"/>
-					<button type='roll' name='roll_Lockpick' value='&{template:default} {{name=@{character_name}}} {{skillname="Lockpick"}} {{result=[[({1d100}) + @{Lockpick}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Lockpick' value='&{template:default} {{name=@{character_name}}} {{skillname="Lockpick"}} {{result=[[({1d100cs>96cf<5}) + @{Lockpick}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Lockpick</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_LockpickRanks"/>
 					<span class="inputs-readonly" name="attr_LockpickRanks">-</span></div>
 					<input type="number" value="0" name="attr_LockpickBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Lockpick"/>
-					<button type='roll' name='roll_Mechanic' value='&{template:default} {{name=@{character_name}}} {{skillname="Mechanic"}} {{result=[[({1d100}) + @{Mechanic}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Mechanic' value='&{template:default} {{name=@{character_name}}} {{skillname="Mechanic"}} {{result=[[({1d100cs>96cf<5}) + @{Mechanic}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Mechanic</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_MechanicRanks"/>
 					<span class="inputs-readonly" name="attr_MechanicRanks">-</span></div>
 					<input type="number" value="0" name="attr_MechanicBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Mechanic"/>
-					<button type='roll' name='roll_PilotAircraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Aircraft"}} {{result=[[({1d100}) + @{PilotAircraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_PilotAircraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Aircraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotAircraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span style="color: blue">Pilot Aircraft</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PilotAircraftRanks"/>
 					<span class="inputs-readonly" name="attr_PilotAircraftRanks">-</span></div>
 					<input type="number" value="0" name="attr_PilotAircraftBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_PilotAircraft"/>
-					<button type='roll' name='roll_PilotGroundcraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Groundcraft"}} {{result=[[({1d100}) + @{PilotGroundcraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_PilotGroundcraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Groundcraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotGroundcraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Pilot Groundcraft</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PilotGroundcraftRanks"/>
 					<span class="inputs-readonly" name="attr_PilotGroundcraftRanks">-</span></div>
 					<input type="number" value="0" name="attr_PilotGroundcraftBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_PilotGroundcraft"/>
-					<button type='roll' name='roll_PilotSpacecraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Spacecraft"}} {{result=[[({1d100}) + @{PilotSpacecraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_PilotSpacecraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Spacecraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotSpacecraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span style="color: blue">Pilot Spacecraft</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PilotSpacecraftRanks"/>
 					<span class="inputs-readonly" name="attr_PilotSpacecraftRanks">-</span></div>
 					<input type="number" value="0" name="attr_PilotSpacecraftBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_PilotSpacecraft"/>
-					<button type='roll' name='roll_PilotWatercraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Watercraft"}} {{result=[[({1d100}) + @{PilotWatercraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_PilotWatercraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Watercraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotWatercraft}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span>Pilot Watercraft</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PilotWatercraftRanks"/>
 					<span class="inputs-readonly" name="attr_PilotWatercraftRanks">-</span></div>
 					<input type="number" value="0" name="attr_PilotWatercraftBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_PilotWatercraft"/>
-					<button type='roll' name='roll_PowerArmor' value='&{template:default} {{name=@{character_name}}} {{skillname="Power Armor"}} {{result=[[({1d100}) + @{PowerArmor}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_PowerArmor' value='&{template:default} {{name=@{character_name}}} {{skillname="Power Armor"}} {{result=[[({1d100cs>96cf<5}) + @{PowerArmor}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span style="color: blue">Power Armor</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_PowerArmorRanks"/>
 					<span class="inputs-readonly" name="attr_PowerArmorRanks">-</span></div>
 					<input type="number" value="0" name="attr_PowerArmorBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_PowerArmor"/>
-					<button type='roll' name='roll_Software' value='&{template:default} {{name=@{character_name}}} {{skillname="Software"}} {{result=[[({1d100}) + @{Software}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_Software' value='&{template:default} {{name=@{character_name}}} {{skillname="Software"}} {{result=[[({1d100cs>96cf<5}) + @{Software}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<span style="color: blue">Software</span>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_SoftwareRanks"/>
 					<span class="inputs-readonly" name="attr_SoftwareRanks">-</span></div>
 					<input type="number" value="0" name="attr_SoftwareBonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_Software"/>
-					<button type='roll' name='roll_CustomTech1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech1"}} {{result=[[({1d100}) + @{CustomTech1}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_CustomTech1' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech1"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech1}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<input class='skill-custom' type="text" value="CustomTech1" name="attr_CustomTech1_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomTech1Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomTech1Ranks">-</span></div>
 					<input type="number" value="0" name="attr_CustomTech1Bonus"/>
 					<input class="skill-total" type="text" value="0" readonly name="attr_CustomTech1"/>
-					<button type='roll' name='roll_CustomTech2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech2"}} {{result=[[({1d100}) + @{CustomTech2}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
+					<button type='roll' name='roll_CustomTech2' value='&{template:default} {{name=@{character_name}}} {{skillname="CustomTech2"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech2}]]}} {{PUSH="Tech Skills use Cr, Int, or Pe"}}'></button>
 					<input class='skill-custom' type="text" value="CustomTech2" name="attr_CustomTech2_Name"/>
 					<div class="row"><input type="number" value="0" class="inputs-edit" name="attr_CustomTech2Ranks"/>
 					<span class="inputs-readonly" name="attr_CustomTech2Ranks">-</span></div>
@@ -1403,7 +1688,7 @@
 		</div>
           <fieldset class="repeating_rangedweapon">
 		  <div class='rangedweapon-section'>
-			<button type='roll' name='roll_rwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{rwpn_weaponname}}} {{skillname=@{rwpn_skill}}} {{result=[[({1d100}) + @{rwpn_skillbonus}]]}} {{Hit Location=[[(1d100)]]}} {{Notes=@{rwpn_weaponnotes}}}'></button>
+			<button type='roll' name='roll_rwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{rwpn_weaponname}}} {{skillname=@{rwpn_skill}}} {{Attack Roll=[[({1d100cs>96cf<5}) + @{rwpn_skillbonus} + @{penaltybox}]]}} {{Hit Location=[[(1d100)]]}} {{KOV=[[@{rwpn_kov}+@{rkob}]]}} {{beats=[[@{rwpn_speed}&{tracker:+}]]}} {{Notes=@{rwpn_weaponnotes}}} '></button>
 			<input type="checkbox" value="1" name="attr_rwpn_carried"/>
             <input type="text" name="attr_rwpn_weaponname" class='rangedweapon' style="width: 99%; border: solid black 1px;"/>
             <input type="number" name="attr_rwpn_kov"/>
@@ -1455,7 +1740,7 @@
 			</div>
 			  <fieldset class="repeating_meleeweapon">
 				  <div class='meleeweapon-section'>
-					<button type='roll' name='roll_mwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{mwpn_weaponname}}} {{skillname=@{mwpn_skill}}} {{result=[[({1d100}) + @{mwpn_skillbonus}]]}} {{Notes=@{mwpn_weaponnotes}}}'></button>
+					<button type='roll' name='roll_mwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{mwpn_weaponname}}} {{skillname=@{mwpn_skill}}} {{Attack Roll=[[({1d100cs>96cf<5}) + @{mwpn_skillbonus}]]}} {{Hit Location=[[(1d100)]]}} {{KOV=[[@{mwpn_kov}+@{mkob}]]}} {{Notes=@{mwpn_weaponnotes}}} {{beats=[[@{mwpn_speed}&{tracker:+}]]}}'></button>
 					<input type="checkbox" value="1" name="attr_mwpn_carried"/>
 					<input type="text" name="attr_mwpn_weaponname" class='rangedweapon'/>
 					<input type="number" name="attr_mwpn_kov"/>
@@ -1502,7 +1787,7 @@
 			</div>
 			  <fieldset class="repeating_gearpage">
 			  <div class='gearpage-section'>
-				<button type='roll' name='roll_gear_skillcheck' value='&{template:default} {{name=@{character_name}}} {{Gear=@{gearname}}} {{skillname=@{gear_skill}}} {{result=[[({1d100}) + @{gear_skillbonus}]]}} {{Notes=@{gear_notes}}}'></button>
+				<button type='roll' name='roll_gear_skillcheck' value='&{template:default} {{name=@{character_name}}} {{Gear=@{gearname}}} {{skillname=@{gear_skill}}} {{result=[[({1d100cs>96cf<5}) + @{gear_skillbonus}]]}} {{Notes=@{gear_notes}}}'></button>
 				<input type="checkbox" value="1" name="attr_gear_carried"/>
 				<input type="text" name="attr_gearname"/>
 				<input type="text" name="attr_gear_kov"/>
@@ -1566,6 +1851,8 @@ const int = score => parseInt(score) || 0;
 const float = score => parseFloat(score) || 0;
 const skills = ['Climbing', 'Contortions', 'EnduranceRunning', 'Freefall', 'Freerunning', 'Jumping', 'Portage', 'Sneaking', 'Sports', 'Sprinting', 'Swimming', 'Weightlifting', 'CustomAth1', 'CustomAth2', 'CustomAth3', 'Accounting', 'Advertising', 'Appraisal', 'Bargain', 'Barter', 'Economics', 'Forgery', 'Gambling', 'Investment', 'Logistics', 'Procurement', 'Racketeering', 'CustomBus1', 'CustomBus2', 'CustomBus3', 'ArmorTraining', 'Blades', 'Block', 'Brawl', 'Clubs', 'Counter', 'Escape', 'ExoticMelee', 'Grapple', 'Parry', 'Polearms', 'Striking', 'CustomCC1', 'CustomCC2', 'CustomCC3', 'Acting', 'Art', 'Composing', 'Dance', 'Fashion', 'Metalwork', 'MusicalInstrument', 'Sculpting', 'Singing', 'SpellDesign', 'Woodwork', 'Writing', 'CustomExp1', 'CustomExp2', 'CustomExp3', 'AuraSense', 'Binding', 'Celerity', 'Conjuring', 'Divining', 'Enchanting', 'ManaSense', 'ManifestWill', 'Meditation', 'Precognition', 'Rituals', 'Runes', 'Spellcasting', 'CustomMys1', 'CustomMys2', 'Archery', 'Artillery', 'Dodge', 'ExoticRanged', 'Gunnery', 'Lobbing', 'Machineguns', 'Pistols', 'Rifles', 'SprayWeapons', 'SubmachineGuns', 'Throwing', 'CustomRan1', 'CustomRan2', 'CustomRan3', 'Biology', 'Botany', 'Chemistry', 'Eidetics', 'History', 'Literature', 'Mathematics', 'Medicine', 'Navigation', 'Occult', 'Physics', 'Xenology', 'Zoology', 'CustomSci1', 'CustomSci2', 'Con', 'Disguise', 'Etiquette', 'Instruction', 'Interrogation', 'Intimidate', 'Leadership', 'LieDetection', 'Linguistics', 'Negotiate', 'ResistTemptation', 'Seduction', 'SleightofHand', 'CustomSoc1', 'CustomSoc2', 'AnimalHandling', 'FindShelter', 'Forage', 'Observation', 'Orienteering', 'RefreshBody', 'RefreshMind', 'ResistKO', 'ResistPain', 'Ride', 'Snare', 'Track', 'WeatherSense', 'CustomSur1', 'CustomSur2', 'Computers', 'Construction', 'Demolition', 'Electronics', 'Engineering', 'Lockpick', 'Mechanic', 'PilotAircraft', 'PilotGroundcraft', 'PilotSpacecraft', 'PilotWatercraft', 'PowerArmor', 'Software', 'CustomTech1', 'CustomTech2'];
 const skillAttrs = skills.map(skill => `${skills}`);
+const hitloc = ['head','torso','neck','abs','ula','lla','ura','lra','ull','lll','url','lrl','lhand','rhand','lfoot','rfoot'];
+const hitlocAttrs = hitloc.map(location => `${hitloc}`);
 
 const weapons = ['rwpn','mwpn'];
 const weaponAttrs = weapons.map(weapon => `${weapon}`);
@@ -1853,52 +2140,57 @@ on('change:AthTotal change:BusTotal change:CCTotal change:ExpTotal change:MysTot
   });
 });
 
-//Weapon attack bonus calculator
-weapons.forEach(weapon => {
-	on(`change:${weapon}_skill change:${skill}ranks change:${skill}bonus  change:penaltybox sheet:opened`, function () {
-		getAttrs([`${skill},`${weapon}_skill`,`${skill}name`], function(values) {
-			const wpnskillname = parseInt(values[`${weapon}_skill`])||0;
-			const skillname = parstInt(values[`${skill}name`])||0;
-			const weaponskilltotal = parseInt(values[`${skill}`])||0;
-			setAttrs({
-				[`${weapon}_skillbonus`]: weaponskilltotal
-			});
-		});
-	});
-});
 
 //Skill Totals Calculator
 skills.forEach(skill => {
-    on(`change:${skill}ranks change:${skill}bonus sheet:opened change:penaltybox`, () => {
-        getAttrs(['penaltybox',`${skill}ranks`,`${skill}bonus`], values => {
+    on(`change:${skill}ranks change:${skill}bonus sheet:opened change:penaltybox change:penaltyfull change:winded change:exhausted`, () => {
+        getAttrs(['penaltyfull',`${skill}ranks`,`${skill}bonus`], values => {
             const skill_base = int(values[`${skill}ranks`]);
 			const skill_bonus = int(values[`${skill}bonus`]);
             const rankbonus = (skill_base * 5);
-			let penalty = parseInt(values.penaltybox)||0;
+			let penalty1 = parseInt(values.penaltyfull)||0;
             setAttrs({
-                [`${skill}`]: rankbonus + penalty + skill_bonus
+                [`${skill}`]: rankbonus + penalty1 + skill_bonus
             });
         });
     });
 });
+
+//Adhoc Skill Modifier Calculator
+skills.forEach(skill => {
+    on(`change:${skill}ranks change:${skill}bonus sheet:opened change:penaltybox change:winded change:exhausted`, () => {
+        getAttrs(['penaltybox','winded','exhausted'], values => {
+            let winded = parseInt(values.winded)||0;
+			let exhausted = parseInt(values.exhausted)||0;
+			let penalty2 = parseInt(values.penaltybox)||0;
+            setAttrs({
+                penaltyfull: winded + exhausted + penalty2
+            });
+        });
+    });
+});
+
 //Derived Attribute Calculator
-on('change:St change:En sheet:opened', function () {
-    getAttrs(['St', 'En', 'Ag', 'In', 'Pe', 'ObservationRanks','PortageRanks'], function(values) {
+on('change:St change:En sheet:opened change:totalweight', function () {
+    getAttrs(['St', 'En', 'Ag', 'In', 'Pe', 'ET','ObservationRanks','PortageRanks','WeightliftingRanks','totalweight'], function(values) {
         let ETST = parseInt(values.St)||0;
 		let ETEN = parseInt(values.En)||0;
 		let ETPO = parseInt(values.PortageRanks)||0;
+		let ETWL = parseInt(values.WeightliftingRanks)||0;
 		let DRAG = parseInt(values.Ag)||0;
 		let ININ = parseInt(values.In)||0;
 		let INPE = parseInt(values.Pe)||0;
 		let INOB = parseInt(values.ObservationRanks)||0;
+		let ETFull = parseFloat(values.ET)||0;
+		let totwgt = parseFloat(values.totalweight)||0;
 		setAttrs({
-            ET: ((ETST + ETEN)/4) + ETPO
+            ET: ((ETST + ETEN)/4) + ETPO + (ETWL / 2)
         });
 		setAttrs({
             ThrowLimit: ((ETST + ETEN)/40)
         });		
 		setAttrs({
-            LiftLimit: ((ETST + ETEN)/4) + ETST
+            LiftLimit: ((ETST + ETEN)/4) + ETST + ETWL
         });	    
 		setAttrs({
             MKOB: Math.round(ETST/10,0)
@@ -1909,6 +2201,12 @@ on('change:St change:En sheet:opened', function () {
 		setAttrs({
             Initiative: (Math.round((ININ + INPE)/20,0)) + INOB
         });
+		setAttrs({
+			catchlimit: (ETFull / 2)
+		});
+		setAttrs({
+			available_et: (ETFull - totwgt)
+		});
 	});
 });
 //Page Buttons
@@ -1921,7 +2219,7 @@ buttonlist.forEach(button => {
     });
 });
 //Derived Page Buttons
-const derivedbuttonlist = ['derivedstats', 'hitchart', 'pacechart'];
+const derivedbuttonlist = ['derivedstats', 'hitchart', 'pacechart', 'armorchart'];
 derivedbuttonlist.forEach(button => {
     on(`clicked:${button}`, function () {
         setAttrs({
@@ -1929,8 +2227,334 @@ derivedbuttonlist.forEach(button => {
         });
     });
 });
+//Set Full Base Armor
+on('change:basearmortype', function () {
+    getAttrs(['basearmortype'], function(values) {
+        const base_armor = {
+			'None': {headarmor: 'None', neckarmor: 'None',torsoarmor: 'None',ulaarmor: 'None',uraarmor: 'None',llaarmor: 'None',lraarmor: 'None',lhandarmor: 'None',rhandarmor: 'None',absarmor: 'None',ullarmor: 'None',urlarmor: 'None',lllarmor: 'None',lrlarmor: 'None',lfootarmor: 'None',rfootarmor: 'None',},
+            'Heavy Duty Work Clothes': {headarmor: 'None', neckarmor: 'None',torsoarmor: 'Heavy Cloth',ulaarmor: 'Heavy Cloth',uraarmor: 'Heavy Cloth',llaarmor: 'Heavy Cloth',lraarmor: 'Heavy Cloth',lhandarmor: 'Heavy Cloth',rhandarmor: 'Heavy Cloth',absarmor: 'Heavy Cloth',ullarmor: 'Heavy Cloth',urlarmor: 'Heavy Cloth',lllarmor: 'Heavy Cloth',lrlarmor: 'Heavy Cloth',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Gambeson': {headarmor: 'None', neckarmor: 'Padded Cloth',torsoarmor: 'Padded Cloth',ulaarmor: 'Padded Cloth',uraarmor: 'Padded Cloth',llaarmor: 'Padded Cloth',lraarmor: 'Padded Cloth',lhandarmor: 'None',rhandarmor: 'None',absarmor: 'Padded Cloth',ullarmor: 'Padded Cloth',urlarmor: 'Heavy Cloth',lllarmor: 'Heavy Cloth',lrlarmor: 'Heavy Cloth',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Animal Hide': {headarmor: 'Hide', neckarmor: 'Hide',torsoarmor: 'Hide',ulaarmor: 'Hide',uraarmor: 'Hide',llaarmor: 'Hide',lraarmor: 'Hide',lhandarmor: 'Hide',rhandarmor: 'Hide',absarmor: 'Hide',ullarmor: 'Hide',urlarmor: 'Hide',lllarmor: 'Hide',lrlarmor: 'Hide',lfootarmor: 'Hide',rfootarmor: 'Hide',},
+			'Leather Vest': {headarmor: 'None', neckarmor: 'None',torsoarmor: 'Leather',ulaarmor: 'None',uraarmor: 'None',llaarmor: 'None',lraarmor: 'None',lhandarmor: 'None',rhandarmor: 'None',absarmor: 'Leather',ullarmor: 'Heavy Cloth',urlarmor: 'Heavy Cloth',lllarmor: 'Heavy Cloth',lrlarmor: 'Heavy Cloth',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Leather Coat': {headarmor: 'None', neckarmor: 'None',torsoarmor: 'Hardened Leather',ulaarmor: 'Leather',uraarmor: 'Leather',llaarmor: 'Leather',lraarmor: 'Leather',lhandarmor: 'None',rhandarmor: 'None',absarmor: 'Leather',ullarmor: 'Heavy Cloth',urlarmor: 'Heavy Cloth',lllarmor: 'Heavy Cloth',lrlarmor: 'Heavy Cloth',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Studded Leather': {headarmor: 'None', neckarmor: 'Reinforced Leather',torsoarmor: 'Reinforced Leather',ulaarmor: 'Reinforced Leather',uraarmor: 'Reinforced Leather',llaarmor: 'Reinforced Leather',lraarmor: 'Reinforced Leather',lhandarmor: 'Leather',rhandarmor: 'Leather',absarmor: 'Reinforced Leather',ullarmor: 'Leather',urlarmor: 'Leather',lllarmor: 'Leather',lrlarmor: 'Leather',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Brigandine': {headarmor: 'None', neckarmor: 'Reinforced Leather',torsoarmor: 'Metal Scale',ulaarmor: 'Reinforced Leather',uraarmor: 'Reinforced Leather',llaarmor: 'Reinforced Leather',lraarmor: 'Reinforced Leather',lhandarmor: 'Leather',rhandarmor: 'Leather',absarmor: 'Metal Scale',ullarmor: 'Metal Scale',urlarmor: 'Metal Scale',lllarmor: 'Leather',lrlarmor: 'Leather',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Chain Hauberk': {headarmor: 'None', neckarmor: 'Padded Cloth',torsoarmor: 'Metal Chain',ulaarmor: 'Metal Chain',uraarmor: 'Metal Chain',llaarmor: 'Padded Cloth',lraarmor: 'Padded Cloth',lhandarmor: 'Leather',rhandarmor: 'Leather',absarmor: 'Metal Chain',ullarmor: 'Metal Chain',urlarmor: 'Metal Chain',lllarmor: 'Leather',lrlarmor: 'Leather',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Full Chainmail': {headarmor: 'Metal Chain', neckarmor: 'Metal Chain',torsoarmor: 'Metal Chain',ulaarmor: 'Metal Chain',uraarmor: 'Metal Chain',llaarmor: 'Metal Chain',lraarmor: 'Metal Chain',lhandarmor: 'Leather',rhandarmor: 'Leather',absarmor: 'Metal Chain',ullarmor: 'Metal Chain',urlarmor: 'Metal Chain',lllarmor: 'Metal Chain',lrlarmor: 'Metal Chain',lfootarmor: 'Leather',rfootarmor: 'Leather',},
+			'Breastplate with Chainmail': {headarmor: 'Metal Chain', neckarmor: 'Metal Chain',torsoarmor: 'Metal Plate',ulaarmor: 'Metal Chain',uraarmor: 'Metal Chain',llaarmor: 'Metal Chain',lraarmor: 'Metal Chain',lhandarmor: 'Leather',rhandarmor: 'Leather',absarmor: 'Metal Plate',ullarmor: 'Metal Chain',urlarmor: 'Metal Chain',lllarmor: 'Metal Chain',lrlarmor: 'Metal Chain',lfootarmor: 'Hardened Leather',rfootarmor: 'Hardened Leather',},
+			'Breastplate with Greaves': {headarmor: 'Metal Chain', neckarmor: 'Metal Chain',torsoarmor: 'Metal Plate',ulaarmor: 'Metal Plate',uraarmor: 'Metal Plate',llaarmor: 'Metal Plate',lraarmor: 'Metal Plate',lhandarmor: 'Reinforced Leather',rhandarmor: 'Reinforced Leather',absarmor: 'Metal Plate',ullarmor: 'Metal Plate',urlarmor: 'Metal Plate',lllarmor: 'Metal Plate',lrlarmor: 'Metal Plate',lfootarmor: 'Reinforced Leather',rfootarmor: 'Reinforced Leather',},
+			'Full Platemail': {headarmor: 'Metal Plate', neckarmor: 'Metal Plate',torsoarmor: 'Metal Plate',ulaarmor: 'Metal Plate',uraarmor: 'Metal Plate',llaarmor: 'Metal Plate',lraarmor: 'Metal Plate',lhandarmor: 'Metal Plate',rhandarmor: 'Metal Plate',absarmor: 'Metal Plate',ullarmor: 'Metal Plate',urlarmor: 'Metal Plate',lllarmor: 'Metal Plate',lrlarmor: 'Metal Plate',lfootarmor: 'Metal Plate',rfootarmor: 'Metal Plate',}			
+        };
+        let basearmortype = values.basearmortype;
+        if (!base_armor.hasOwnProperty( basearmortype )) {
+            console.log('Error: The item ' + basearmortype + ' is not found within the basearmortype Object.');
+            return;
+        }
+        setAttrs(base_armor[basearmortype]);
+    });
+});
 
-
+//Set Armor Pieces
+on('change:lllarmor change:lrlarmor change:ullarmor change:urlarmor change:lhandarmor change:rhandarmor change:lfootarmor change:rfootarmor change:headarmor change:neckarmor change:torsoarmor change:absarmor change:ulaarmor change:uraarmor change:llaarmor change:lraarmor change:basearmortype sheet:opened', function () {
+    getAttrs(['lllarmor', 'lrlarmor', 'ullarmor', 'urlarmor','lhandarmor','rhandarmor','lfootarmor','rfootarmor','headarmor', 'neckarmor', 'torsoarmor', 'absarmor','ulaarmor','uraarmor','llaarmor','lraarmor'], function(values) {
+        const head_armor = {
+			'None': {headpv: 0},
+            'Heavy Cloth': {headpv: 1},
+			'Padded Cloth': {headpv: 2},
+			'Hide': {headpv: 3},
+			'Leather': {headpv: 4},
+			'Hardened Leather': {headpv: 5},
+			'Reinforced Leather': {headpv: 6},
+			'Metal Chain': {headpv: 8},
+			'Metal Scale': {headpv: 9},
+			'Metal Plate': {headpv: 10}
+        };
+        const neck_armor = {
+			'None': {neckpv: 0},
+            'Heavy Cloth': {neckpv: 1},
+			'Padded Cloth': {neckpv: 2},
+			'Hide': {neckpv: 3},
+			'Leather': {neckpv: 4},
+			'Hardened Leather': {neckpv: 5},
+			'Reinforced Leather': {neckpv: 6},
+			'Metal Chain': {neckpv: 8},
+			'Metal Scale': {neckpv: 9},
+			'Metal Plate': {neckpv: 10}
+        };
+        const torso_armor = {
+			'None': {torsopv: 0},
+            'Heavy Cloth': {torsopv: 1},
+			'Padded Cloth': {torsopv: 2},
+			'Hide': {torsopv: 3},
+			'Leather': {torsopv: 4},
+			'Hardened Leather': {torsopv: 5},
+			'Reinforced Leather': {torsopv: 6},
+			'Metal Chain': {torsopv: 8},
+			'Metal Scale': {torsopv: 9},
+			'Metal Plate': {torsopv: 10}
+        };
+        const abs_armor = {
+			'None': {abspv: 0},
+            'Heavy Cloth': {abspv: 1},
+			'Padded Cloth': {abspv: 2},
+			'Hide': {abspv: 3},
+			'Leather': {abspv: 4},
+			'Hardened Leather': {abspv: 5},
+			'Reinforced Leather': {abspv: 6},
+			'Metal Chain': {abspv: 8},
+			'Metal Scale': {abspv: 9},
+			'Metal Plate': {abspv: 10}
+        };
+        const ula_armor = {
+			'None': {ulapv: 0},
+            'Heavy Cloth': {ulapv: 1},
+			'Padded Cloth': {ulapv: 2},
+			'Hide': {ulapv: 3},
+			'Leather': {ulapv: 4},
+			'Hardened Leather': {ulapv: 5},
+			'Reinforced Leather': {ulapv: 6},
+			'Metal Chain': {ulapv: 8},
+			'Metal Scale': {ulapv: 9},
+			'Metal Plate': {ulapv: 10}
+        };
+        const ura_armor = {
+			'None': {urapv: 0},
+            'Heavy Cloth': {urapv: 1},
+			'Padded Cloth': {urapv: 2},
+			'Hide': {urapv: 3},
+			'Leather': {urapv: 4},
+			'Hardened Leather': {urapv: 5},
+			'Reinforced Leather': {urapv: 6},
+			'Metal Chain': {urapv: 8},
+			'Metal Scale': {urapv: 9},
+			'Metal Plate': {urapv: 10}
+        };
+        const lla_armor = {
+			'None': {llapv: 0},
+            'Heavy Cloth': {llapv: 1},
+			'Padded Cloth': {llapv: 2},
+			'Hide': {llapv: 3},
+			'Leather': {llapv: 4},
+			'Hardened Leather': {llapv: 5},
+			'Reinforced Leather': {llapv: 6},
+			'Metal Chain': {llapv: 8},
+			'Metal Scale': {llapv: 9},
+			'Metal Plate': {llapv: 10}
+        };
+        const lra_armor = {
+			'None': {lrapv: 0},
+            'Heavy Cloth': {lrapv: 1},
+			'Padded Cloth': {lrapv: 2},
+			'Hide': {lrapv: 3},
+			'Leather': {lrapv: 4},
+			'Hardened Leather': {lrapv: 5},
+			'Reinforced Leather': {lrapv: 6},
+			'Metal Chain': {lrapv: 8},
+			'Metal Scale': {lrapv: 9},
+			'Metal Plate': {lrapv: 10}
+        };
+        const lhand_armor = {
+			'None': {lhandpv: 0},
+            'Heavy Cloth': {lhandpv: 1},
+			'Padded Cloth': {lhandpv: 2},
+			'Hide': {lhandpv: 3},
+			'Leather': {lhandpv: 4},
+			'Hardened Leather': {lhandpv: 5},
+			'Reinforced Leather': {lhandpv: 6},
+			'Metal Chain': {lhandpv: 8},
+			'Metal Scale': {lhandpv: 9},
+			'Metal Plate': {lhandpv: 10}
+        };
+        const rhand_armor = {
+			'None': {rhandpv: 0},
+            'Heavy Cloth': {rhandpv: 1},
+			'Padded Cloth': {rhandpv: 2},
+			'Hide': {rhandpv: 3},
+			'Leather': {rhandpv: 4},
+			'Hardened Leather': {rhandpv: 5},
+			'Reinforced Leather': {rhandpv: 6},
+			'Metal Chain': {rhandpv: 8},
+			'Metal Scale': {rhandpv: 9},
+			'Metal Plate': {rhandpv: 10}
+        };
+        const lfoot_armor = {
+			'None': {lfootpv: 0},
+            'Heavy Cloth': {lfootpv: 1},
+			'Padded Cloth': {lfootpv: 2},
+			'Hide': {lfootpv: 3},
+			'Leather': {lfootpv: 4},
+			'Hardened Leather': {lfootpv: 5},
+			'Reinforced Leather': {lfootpv: 6},
+			'Metal Chain': {lfootpv: 8},
+			'Metal Scale': {lfootpv: 9},
+			'Metal Plate': {lfootpv: 10}
+        };
+        const rfoot_armor = {
+			'None': {rfootpv: 0},
+            'Heavy Cloth': {rfootpv: 1},
+			'Padded Cloth': {rfootpv: 2},
+			'Hide': {rfootpv: 3},
+			'Leather': {rfootpv: 4},
+			'Hardened Leather': {rfootpv: 5},
+			'Reinforced Leather': {rfootpv: 6},
+			'Metal Chain': {rfootpv: 8},
+			'Metal Scale': {rfootpv: 9},
+			'Metal Plate': {rfootpv: 10}
+        };
+        const ull_armor = {
+			'None': {ullpv: 0},
+            'Heavy Cloth': {ullpv: 1},
+			'Padded Cloth': {ullpv: 2},
+			'Hide': {ullpv: 3},
+			'Leather': {ullpv: 4},
+			'Hardened Leather': {ullpv: 5},
+			'Reinforced Leather': {ullpv: 6},
+			'Metal Chain': {ullpv: 8},
+			'Metal Scale': {ullpv: 9},
+			'Metal Plate': {ullpv: 10}
+        };
+        const url_armor = {
+			'None': {urlpv: 0},
+            'Heavy Cloth': {urlpv: 1},
+			'Padded Cloth': {urlpv: 2},
+			'Hide': {urlpv: 3},
+			'Leather': {urlpv: 4},
+			'Hardened Leather': {urlpv: 5},
+			'Reinforced Leather': {urlpv: 6},
+			'Metal Chain': {urlpv: 8},
+			'Metal Scale': {urlpv: 9},
+			'Metal Plate': {urlpv: 10}
+        };
+        const lll_armor = {
+			'None': {lllpv: 0},
+            'Heavy Cloth': {lllpv: 1},
+			'Padded Cloth': {lllpv: 2},
+			'Hide': {lllpv: 3},
+			'Leather': {lllpv: 4},
+			'Hardened Leather': {lllpv: 5},
+			'Reinforced Leather': {lllpv: 6},
+			'Metal Chain': {lllpv: 8},
+			'Metal Scale': {lllpv: 9},
+			'Metal Plate': {lllpv: 10}
+        };
+        const lrl_armor = {
+			'None': {lrlpv: 0},
+            'Heavy Cloth': {lrlpv: 1},
+			'Padded Cloth': {lrlpv: 2},
+			'Hide': {lrlpv: 3},
+			'Leather': {lrlpv: 4},
+			'Hardened Leather': {lrlpv: 5},
+			'Reinforced Leather': {lrlpv: 6},
+			'Metal Chain': {lrlpv: 8},
+			'Metal Scale': {lrlpv: 9},
+			'Metal Plate': {lrlpv: 10}
+        };
+        let headarmor = values.headarmor;
+		let neckarmor = values.neckarmor;
+		let torsoarmor = values.torsoarmor;
+		let absarmor = values.absarmor;
+		let ulaarmor = values.ulaarmor;
+		let uraarmor = values.uraarmor;
+		let llaarmor = values.llaarmor;
+		let lraarmor = values.lraarmor;
+		let lhandarmor = values.lhandarmor
+		let rhandarmor = values.rhandarmor;
+		let ullarmor = values.ullarmor;
+		let urlarmor = values.urlarmor;
+		let lllarmor = values.lllarmor;
+		let lrlarmor = values.lrlarmor;
+		let lfootarmor = values.lfootarmor;
+		let rfootarmor = values.rfootarmor;
+        if (!head_armor.hasOwnProperty( headarmor )) {
+            console.log('Error: The item ' + headarmor + ' is not found within the headarmor Object.');
+            return;
+        }
+        setAttrs(neck_armor[neckarmor]);
+        if (!neck_armor.hasOwnProperty( neckarmor )) {
+            console.log('Error: The item ' + neckarmor + ' is not found within the neckarmor Object.');
+            return;
+        }
+        setAttrs(torso_armor[torsoarmor]);
+        if (!torso_armor.hasOwnProperty( torsoarmor )) {
+            console.log('Error: The item ' + torsoarmor + ' is not found within the torsoarmor Object.');
+            return;
+        }
+        if (!abs_armor.hasOwnProperty( absarmor )) {
+            console.log('Error: The item ' + absarmor + ' is not found within the absarmor Object.');
+            return;
+        }
+        if (!ula_armor.hasOwnProperty( ulaarmor )) {
+            console.log('Error: The item ' + ulaarmor + ' is not found within the ulaarmor Object.');
+            return;
+        }
+        setAttrs(ura_armor[uraarmor]);
+        if (!ura_armor.hasOwnProperty( uraarmor )) {
+            console.log('Error: The item ' + uraarmor + ' is not found within the uraarmor Object.');
+            return;
+        }
+        setAttrs(lla_armor[llaarmor]);
+        if (!lla_armor.hasOwnProperty( llaarmor )) {
+            console.log('Error: The item ' + llaarmor + ' is not found within the llaarmor Object.');
+            return;
+        }
+        if (!lra_armor.hasOwnProperty( lraarmor )) {
+            console.log('Error: The item ' + lraarmor + ' is not found within the lraarmor Object.');
+            return;
+        }
+        if (!lhand_armor.hasOwnProperty( lhandarmor )) {
+            console.log('Error: The item ' + lhandarmor + ' is not found within the lhandarmor Object.');
+            return;
+        }
+        setAttrs(rhand_armor[rhandarmor]);
+        if (!rhand_armor.hasOwnProperty( rhandarmor )) {
+            console.log('Error: The item ' + rhandarmor + ' is not found within the rhandarmor Object.');
+            return;
+        }
+        if (!lfoot_armor.hasOwnProperty( lfootarmor )) {
+            console.log('Error: The item ' + lfootarmor + ' is not found within the lfootarmor Object.');
+            return;
+        }
+        setAttrs(rfoot_armor[rfootarmor]);
+        if (!rfoot_armor.hasOwnProperty( rfootarmor )) {
+            console.log('Error: The item ' + rfootarmor + ' is not found within the rfootarmor Object.');
+            return;
+        }
+        if (!ull_armor.hasOwnProperty( ullarmor )) {
+            console.log('Error: The item ' + ullarmor + ' is not found within the ullarmor Object.');
+            return;
+        }
+        setAttrs(url_armor[urlarmor]);
+        if (!url_armor.hasOwnProperty( urlarmor )) {
+            console.log('Error: The item ' + urlarmor + ' is not found within the urlarmor Object.');
+            return;
+        }
+        if (!lll_armor.hasOwnProperty( lllarmor )) {
+            console.log('Error: The item ' + lllarmor + ' is not found within the lllarmor Object.');
+            return;
+        }
+        setAttrs(lrl_armor[lrlarmor]);
+        if (!lrl_armor.hasOwnProperty( lrlarmor )) {
+            console.log('Error: The item ' + lrlarmor + ' is not found within the lrlarmor Object.');
+            return;
+        }	
+        setAttrs(head_armor[headarmor]);
+		setAttrs(neck_armor[neckarmor]);
+		setAttrs(torso_armor[torsoarmor]);
+		setAttrs(abs_armor[absarmor]);
+        setAttrs(ula_armor[ulaarmor]);
+		setAttrs(ura_armor[uraarmor]);
+		setAttrs(lla_armor[llaarmor]);
+		setAttrs(lra_armor[lraarmor]);
+        setAttrs(lhand_armor[lhandarmor]);
+		setAttrs(rhand_armor[rhandarmor]);	
+        setAttrs(lfoot_armor[lfootarmor]);
+		setAttrs(rfoot_armor[rfootarmor]);		
+        setAttrs(ull_armor[ullarmor]);
+		setAttrs(url_armor[urlarmor]);
+        setAttrs(lll_armor[lllarmor]);
+		setAttrs(lrl_armor[lrlarmor]);
+    });		
+});
 </script>
 
 

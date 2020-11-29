@@ -53,18 +53,24 @@ select {
 /*Hitchart formatting start*/
 .sheet-wounds{
   display: inline-grid;
-	grid-template-columns: 35% 15% 10% 15% 105px;
-	grid-template-rows: 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px;
+	grid-template-columns: 30% 15% 10% 40%;
+	grid-template-rows: 32px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px;
 	grid-gap: 1px;
+	width: 100%;
 }
 
-.sheet-wounds > input[type="number"]{
-	width: 35px;
-	height: 100%;
-}
-
+.sheet-wounds > input[type="number"],
 .sheet-wounds > input[type='text']{
-	width: 200%;
+	height: 100%;
+	width: 100%;
+}
+
+.sheet-wounds > span {
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	width: 100%;
+	justify-content: space-between;
 }
 
 
@@ -75,15 +81,54 @@ select {
 	grid-template-columns: 80px 70px 50px 50px 80px;
 	grid-template-rows: 22px;
 }
+
+.sheet-pacechart > div{
+	padding-left: 70px;
+}
+
 .sheet-pace > span{
 	width: 100%;
 	height: 22px;
 	padding-top: 10px;
 }
-.sheet-pacechart > div{
-	padding-left: 70px;
+
+
+/*Armorchart Formatting*/
+.sheet-armorpieces {
+	display: inline-grid;
+	grid-template-columns: 22% 28% 7% 42%;
+	grid-template-rows: 30px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px;
+	grid-gap: 2px;
+	width: 100%;
 }
 
+
+.sheet-armorpieces > span {
+	width: 100%;
+	height: 22px;
+	padding-top: 5px;
+	justify-content: space-between;
+	text-align: center;
+}
+.sheet-armorpieces > label {
+	width: 100%;
+	height: 18px;
+	font-size: small;
+}
+.sheet-armorpieces > input[type="number"],
+.sheet-armorpieces > input[type='text'] {
+	height: 100%;
+	width: 100%;
+}
+.sheet-pvfield > input[type="text"] {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.sheet-armorpieces > select {
+	width: 100%;
+}
 /*Main Div Formatting*/
 .sheet-main{
 	display: flex;
@@ -112,15 +157,19 @@ select {
 
 .sheet-derived-section{
   display: grid;
-	  grid-template-columns: 40% 15%;
-	  margin-right: 10px;
+	width: 100%;
+	grid-template-columns: 40% 15% 20% 15%;
+	margin-right: 10px;
+	grid-gap: 5px;
 }
 
-.sheet-derived-section > input[type="number"] {
+.sheet-derived-section > input[type="number"],
+.sheet-derived-section > input[type="text"]{
 	display: inline-block;
 	border: black solid 1px;
 	margin: 2px;
-	width: 99%;
+	width: 100%;
+	text-align: center;
 }
 .sheet-derived-section > span {
 	width: 100%;
@@ -149,6 +198,12 @@ select {
 	font-size: small;
 }
 
+div.sheet-quickview_weight {
+	display: flex;
+	flex-flow: nowrap;
+	padding-top: 10px;
+	align-content: center;
+}
 
 
 /*WeaponCatLabel*/
@@ -274,6 +329,9 @@ select {
 	display: grid;
 		grid-template-columns: 35px 130px 40px 40px 40px;
 }
+.sheet-skills-section > button {
+	text-align: left;
+}
 
 input[type="text"].sheet-skill-total{
   text-align: center;
@@ -342,7 +400,6 @@ div.sheet-gear_and_equipment{
 		grid-template-rows: 24px;
 		grid-gap: 2px;
 }
-
 .sheet-spells-section{
 	display: grid;
 		grid-template-columns: 150px 6% 10% 1fr 50%; 
@@ -350,7 +407,6 @@ div.sheet-gear_and_equipment{
 		margin-bottom: 10px; 
 		grid-gap: 2px;
 }
-
 input.spellpage{
 	width: 100%;
 	margin: 1px;
@@ -358,12 +414,10 @@ input.spellpage{
 .sheet-spellpages > div {
 	margin: 10px;
 }
-
 .sheet-spells-section > span {
 	text-align: center;
 	margin-bottom: 0px;
 }
-
 .sheet-spells-section > input[type="text"],
 .sheet-spells-section > select {
 	display: inline-block;
@@ -372,7 +426,6 @@ input.spellpage{
 	margin: 0px;
 	width: 99%;
 }
-
 .sheet-spells-section > textarea {
 	display: inline-block;
 	margin: 0px;
@@ -401,8 +454,6 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
     display: none;
 }
 
-
-
 /*Configure the tab buttons*/
 .sheet-skillpages,
 .sheet-combatpages,
@@ -425,14 +476,16 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 /*Configure the derived tab buttons*/
 .sheet-derivedstats,
 .sheet-hitchart,
-.sheet-pacechart {
+.sheet-pacechart,
+.sheet-armorchart {
 	display: none;
 }
 
 /* show the selected derived tab */
 .sheet-derivedtabstoggle[value="derivedstats"] ~ div.sheet-derivedstats,
 .sheet-derivedtabstoggle[value="hitchart"] ~ div.sheet-hitchart,
-.sheet-derivedtabstoggle[value="pacechart"] ~ div.sheet-pacechart {
+.sheet-derivedtabstoggle[value="pacechart"] ~ div.sheet-pacechart,
+.sheet-derivedtabstoggle[value="armorchart"] ~ div.sheet-armorchart {
 	display: block;
 }
 
