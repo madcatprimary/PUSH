@@ -1,7 +1,11 @@
+<!DOCTYPE html>
 <html lang='en'>
-<label style='width: 200px;'>Vital Attributes<input type='checkbox' name='attr_hidevitals' class='toggle-show'/></label>
-<label style='width: 300px;'>Description and Advantages<input type='checkbox' name='attr_hidedescription' class='toggle-show'/></label>
-<label style='width: 100px;'>NPC<input type='checkbox' name='attr_hidenpc' class='toggle-hide'/></label>
+<head><title>PUSH</title></head>
+<div>
+	<input type='checkbox' name='attr_hidevitals' class='toggle-show'/><span>Vital Statistics</span>
+	<input type='checkbox' name='attr_hidedescription' class='toggle-show'/><span>Description and Advantages</span>
+	<input type='checkbox' name='attr_hidenpc' class='toggle-hide'/><span>NPC</span>
+</div>
 <input type='checkbox' name='attr_hidenpc' class='toggle-hide' style='display: none;'/>
 <div class='body'>
 <input type='checkbox' name='attr_hidevitals' class='toggle-show' style='display: none;'/>
@@ -9,13 +13,13 @@
 <div title='Vital Statistics' class='vitalinfo-section'>
   <label>Name:</label><input type='text' name='attr_character_name'/>
   <label>Aliases:</label><input type='text' name='attr_alias'/>
-  <label for 'Race Selector'>Race/Heritage:</label><select id='Race Selector' name='attr_Race'/>
-	<option title='Androids can assign a +5% bonus to any one skill at creation. They can reassign it with an hour of configuration, but suffer a -5% penalty to a random Social skill which changes when they reconfigure.' value='Android' selected='selected'>Android</option>
-	<option title='Mana-touched humans can assign a +5% bonus to any one Mystic skill at character creation, have the Innate Spell advantage for free and suffer a -5% penalty to Negotiation skill tests.' value='Mana-touched' selected='selected'>Human, Mana-touched</option>
+  <label for='Race_Selector'>Race/Heritage:</label><select id='Race_Selector' name='attr_Race'>
+	<option title='Androids can assign a +5% bonus to any one skill at creation. They can reassign it with an hour of configuration, but suffer a -5% penalty to a random Social skill which changes when they reconfigure.' value='Android'>Android</option>
+	<option title='Mana-touched humans can assign a +5% bonus to any one Mystic skill at character creation, have the Innate Spell advantage for free and suffer a -5% penalty to Negotiation skill tests.' value='Mana-touched'>Human, Mana-touched</option>
 	<option title='Humans can assign a +5% bonus to any one skill at character creation' value='Human' selected='selected'>Human</option>
-	<option title='Transgenic humans are gene-tailored, but are susceptible to suggestion. +5% bonus to any two skills and a -5% penalty to Willpower.' value='Transgenic' selected='selected'>Human, Transgenic</option>
-	<option title='Short for Thellis elf; descended from low-g humans. +5% Science, +5% Tech, -5% Resist KO, Low-Light Vision.' value='Thelf' selected='selected'>Thelf</option>
-	<option title='Xathene are a race of wasp-like humanoids. +5% to one Athletic skill, +5% to one Ranged skill, and -5% to Negotiation' value='Xathene' selected='selected'>Xathene</option>
+	<option title='Transgenic humans are gene-tailored, but are susceptible to suggestion. +5% bonus to any two skills and a -5% penalty to Willpower.' value='Transgenic'>Human, Transgenic</option>
+	<option title='Short for Thellis elf; descended from low-g humans. +5% Science, +5% Tech, -5% Resist KO, Low-Light Vision.' value='Thelf'>Thelf</option>
+	<option title='Xathene are a race of wasp-like humanoids. +5% to one Athletic skill, +5% to one Ranged skill, and -5% to Negotiation' value='Xathene'>Xathene</option>
 	</select>
   <label>Profession:</label><input type='text' name='attr_profession'/>
   <label>Gender/Sex:</label><input type='text' name='attr_gender'/>
@@ -25,23 +29,23 @@
   <label>Height (m):</label>
 	  <div>
 		<input type='text' name='attr_height' style='width: 40%'/>
-		<select name='attr_size' style='width: 50%' style='display: inline-block'/>
-			<option title='Less than 6cm' value='.03125' selected='selected'>Miniscule</option>
-			<option title='Less than 12cm'value='.0625' selected='selected'>Fine</option>
-			<option title='Less than 25cm'value='.125' selected='selected'>Diminuitive</option>
-			<option title='Less than 50cm'value='.25' selected='selected'>Tiny</option>
-			<option title='Less than 1m'value='.5' selected='selected'>Small</option>
-			<option title='Less than 2m'value='1' selected='selected'>Medium</option>
-			<option title='Less than 4m'value='2' selected='selected'>Large</option>
-			<option title='Less than 8m'value='4' selected='selected'>Huge</option>
-			<option title='Less than 16m'value='16' selected='selected'>Gargantuan</option>
-			<option title='Less than 32m'value='256' selected='selected'>Colossal</option>
-			<option title='Less than 64m'value='65536' selected='selected'>Titanic</option>
+		<select name='attr_size' style='width: 50%; display: inline-block'>
+			<option title='Less than 6cm' value='.03125'>Miniscule</option>
+			<option title='Less than 12cm' value='.0625'>Fine</option>
+			<option title='Less than 25cm' value='.125'>Diminuitive</option>
+			<option title='Less than 50cm' value='.25'>Tiny</option>
+			<option title='Less than 1m' value='.5'>Small</option>
+			<option title='Less than 2m' value='1' selected='selected'>Medium</option>
+			<option title='Less than 4m' value='2'>Large</option>
+			<option title='Less than 8m' value='4'>Huge</option>
+			<option title='Less than 16m' value='16'>Gargantuan</option>
+			<option title='Less than 32m' value='256'>Colossal</option>
+			<option title='Less than 64m' value='65536'>Titanic</option>
 		</select>
 		<input readonly type='number' name='attr_armorsizemod' style='display: none'/>
 	  </div>
   <label>Age:</label><input type='text' name='attr_age'/>
-  <label>Race Notes:</label><textarea name='attr_racenotes' style='width: 240%; height: 28px; margin: 0px; align-self: top;'></textarea>
+  <label>Race Notes:</label><textarea name='attr_racenotes' style='width: 240%; height: 28px; margin: 0px;'></textarea>
 </div>
 </div>
 <div>
@@ -60,7 +64,7 @@
 			<label>Advantage</label>
 			<label>Cost</label>
 			<label>Disadvantage</label>
-			<label>Refund</span>
+			<label>Refund</label>
 		</div>
 		<fieldset class='repeating_advantage'>
 		<div class='advantage-section'>
@@ -73,7 +77,7 @@
 	</div>
 	<div class='col' style='min-width: 46%; margin-right: 5px; margin-top: 5px; padding: 5px; box-shadow: 2px 2px SlateGrey;'>
 		<div title='Character Description and notes'>
-			<img src='https://github.com/madcatprimary/PUSH/blob/main/PushlogoRectangleStatic.png?raw=true' />
+			<img src='https://github.com/madcatprimary/PUSH/blob/main/PushlogoRectangleStatic.png?raw=true' alt=""/>
 		</div>
 	</div>
 </div>
@@ -81,13 +85,13 @@
 </div>
 <div class='main' title='Attribute and Derived Stats'>
 		<div class='col' style='min-width: 50%; margin-right: 5px; margin-top: 5px; padding: 5px;'>
-		<div style='padding: 4px; justify: left;'>
+		<div style='padding: 4px;'>
 			<label style='width: 200px;'>Attributes<input type='checkbox' name='attr_hidepools' class='toggle-show'/></label>		
 			<span>Total Skill Ranks Spent</span>
-			<em><b><span style='border: 1px black solid; padding: 2px; color: green;' name='attr_TotalSkillRanks' readonly value='0'></span></b></em>
+			<em><b><input type='text' style='border: 1px black solid; padding: 2px; color: green;' name='attr_TotalSkillRanks' readonly value='0'/></b></em>
 		</div>
 			<input type='checkbox' name='attr_hidepools' class='toggle-show' style='display: none;'/>
-			<div title='Push Pools' class='body' padding: 3px'>
+			<div title='Push Pools' class='body' style='padding: 3px'>
 				<div class='pool-section' >
 				  <span>Prime</span>
 				  <span>Ability</span><span></span>				 
@@ -112,7 +116,7 @@
 				  <input type='checkbox' value='1' name='attr_Em_Prime'/>
 				  <span>Empathy (Em)</span><span></span>
 				  <input type='number' name='attr_Em' readonly value='0'><span></span>
-				  <input type='number' name='attr_Em_Spent' value='0' title='Apathetic - The character just doesn't give a damn at the moment.  Character is prone to bouts of hopelessness.  An apathetic character cannot lend assistance or receive assistance on skill checks.'><span></span>
+				  <input type='number' name='attr_Em_Spent' value='0' title='Apathetic - The character just does not give a damn at the moment.  Character is prone to bouts of hopelessness.  An apathetic character cannot lend assistance or receive assistance on skill checks.'><span></span>
 				  <span>Expression, Mystic, Social</span>
 				  <input type='checkbox' value='1' name='attr_En_Prime' />
 				  <span>Endurance (Em)</span><span></span>
@@ -137,7 +141,7 @@
 				  <input type='checkbox' value='1' name='attr_Pr_Prime' />
 				  <span>Presence (Pr)</span><span></span>
 				  <input type='number' name='attr_Pr' readonly value='0'><span></span>
-				  <input type='number' name='attr_Pr_Spent' value='0' title='Grouchy - Character becomes very snarky, grumpy, passive aggressive or otherwise disagreeable.  Failed social skill checks are twice as negative as they might otherwise be due to character's negativity.'><span></span>
+				  <input type='number' name='attr_Pr_Spent' value='0' title='Grouchy - Character becomes very snarky, grumpy, passive aggressive or otherwise disagreeable.  Failed social skill checks are twice as negative as they might otherwise be due to the negativity of the character.'><span></span>
 				  <span>Business, Mystic, Social</span>
 				  <input type='checkbox' value='1' name='attr_St_Prime'/>
 				  <span>Strength (St)</span><span></span>
@@ -148,17 +152,17 @@
 			</div>
 			<div class='conditiontracker-section' style='padding-top: 5px;'>
 				<label for='rested'>Rested</label>
-				<label for='winded' title='Winded characters suffer a -10 penalty to all skill checks while winded.'>Winded</label>	
-				<label for='fatigued' title='A fatigued character can recover by resting for 1 hour.  While fatigued, a character takes a -10 to all skill checks.'>Fatigued</label>					
-				<label for='exhausted' title='Once exhausted, a character takes a long time to recover.  Resting one hour reduces the character to Winded for the rest of the day.  A character that is exhausted takes a -20 to all skill checks and may not run.'>Exhausted</label>		
-				<label for='immobilized' title='An exhausted character becomes immobilized if further drained or wounded.  Immobilization quickly reduces to Exhausted if the character is not further injured.  After a minute of disorientation and nausea, an Immobilized character becomes Exhausted.  An immobilized character is incoherent and cannot associate with his surroundings, and cannot make any skill checks, including Refresh Body.  An immobilized character may even have hallucinations or seem to be unconscious.'>Immobilized</label>							
-				<label for='knockedout' title='A KO’d character can regain consciousness after 1d10 minutes, after which time he is considered Immobilized and can recover from there.  A character can make a Resist KO check when first KO’d, and if successful, remains conscious.'>Knocked Out</label>
+				<label for='winded' title="Winded characters suffer a -10 penalty to all skill checks while winded.">Winded</label>	
+				<label for='fatigued' title="A fatigued character can recover by resting for 1 hour.  While fatigued, a character takes a -10 to all skill checks.">Fatigued</label>					
+				<label for='exhausted' title="Once exhausted, a character takes a long time to recover.  Resting one hour reduces the character to Winded for the rest of the day.  A character that is exhausted takes a -20 to all skill checks and may not run.">Exhausted</label>		
+				<label for='immobilized' title="An exhausted character becomes immobilized if further drained or wounded.  Immobilization quickly reduces to Exhausted if the character is not further injured.  After a minute of disorientation and nausea, an Immobilized character becomes Exhausted.  An immobilized character is incoherent and cannot associate with his surroundings, and cannot make any skill checks, including Refresh Body.  An immobilized character may even have hallucinations or seem to be unconscious.">Immobilized</label>							
+				<label for='knockedout' title="A KO’d character can regain consciousness after 1d10 minutes, after which time he is considered Immobilized and can recover from there.  A character can make a Resist KO check when first KO’d, and if successful, remains conscious.">Knocked Out</label>
 				<input id='rested' type='radio' name='attr_condition' value='0' checked>
-				<input id='winded' type='radio' name='attr_condition' value='-10' checked>
-				<input id='fatigued' type='radio' name='attr_condition' value='-10.0' checked>
-				<input id='exhausted' type='radio' name='attr_condition' value='-20' checked>
-				<input id='immobilized' type='radio' name='attr_condition' value='-20.0' checked>
-				<input id='knockedout' type='radio' name='attr_condition' value='-20.00' checked>
+				<input id='winded' type='radio' name='attr_condition' value='-10'>
+				<input id='fatigued' type='radio' name='attr_condition' value='-10.0'>
+				<input id='exhausted' type='radio' name='attr_condition' value='-20'>
+				<input id='immobilized' type='radio' name='attr_condition' value='-20.0'>
+				<input id='knockedout' type='radio' name='attr_condition' value='-20.00'>
 			</div>	
 		</div>
 		<div title='Derived Stats and Charts' class='col' style='padding: 10px; min-width: 45%; margin-right: 0px; margin-left: 0px; margin-top: 5px;'>
@@ -173,10 +177,10 @@
 				 <input type='checkbox' name='attr_hidederivedstats' class='toggle-show' style='display: none'/>
 					<div class='body'>
 						<div class='derived-section'>
-							<label title='A character's encumbrance tolerance is how much weight he can carry without being overburdened.'>Encumberance Tolerance (ET)</label>
+							<label title='Encumbrance tolerance is how much weight you can carry without being overburdened.'>Encumberance Tolerance (ET)</label>
 							<input title='(St+En)/4 plus portage ranks' type='text' name='attr_ET' readonly value='0'/>
 							<span title='This is how many kilograms left that you can easily carry'>Available ET</span>
-							<input type='text' title='This is how many kilograms left that you can easily carry' readonly name='attr_available_et' value='0'></input>
+							<input type='text' readonly name='attr_available_et' value='0' title='This is how many kilograms left that you can easily carry'/>
 							<label>Throw Limit</label>
 							<input type='text' readonly name='attr_ThrowLimit' value='0'/>
 							<span style='border-top: dotted 1px black; border-left: dotted 1px black' title='How heavy is the item you are trying to throw?'>Thrown Item</span>
@@ -185,19 +189,13 @@
 							<input type='text' readonly name='attr_MKOB' value='0' title='MKOB adds to your KO chance with melee weapons. Can substitute for RKOB on thrown weapon attacks.'/>
 							<span style='border-bottom: dotted 1px black; border-left: dotted 1px black' title='For every increment of this value you suffer a -10% penalty to attacks with thrown weapons'>Throw Range</span>
 							<div title='For every increment of this value you suffer a -10% penalty to attacks with thrown weapons'>
-								<input 									
-									type='text' 
-									readonly 
-									name='attr_thrownitemrange' 
-									value='0' 
-									style='width: 50%; height: 100%;'>
+								<input type='text' readonly name='attr_thrownitemrange' value='0' style='width: 50%; height: 100%;'/>
 								<span>m.</span>
-								</input>
 							</div>
 							<label title='RKOB adds to your KO chance with ranged weapons.'>Ranged KO Bonus</label>
 							<input readonly name='attr_RKOB' value='0' title='RKOB adds to your KO chance with ranged weapons.' type='text'/>
 							<span title='This is the weight in kg of the heaviest item you can hope to catch. Use Sports skill to resolve'>Catch Limit</span>
-							<input type='text' readonly name='attr_catchlimit' value='0' title='This is the weight in kg of the heaviest item you can hope to catch. Use Sports skill to resolve'></input>
+							<input type='text' readonly name='attr_catchlimit' value='0' title='This is the weight in kg of the heaviest item you can hope to catch. Use Sports skill to resolve'/>
 							<label title='This is how many kilograms you can deadlift'>Lift Limit</label>
 							<input type='text' readonly name='attr_LiftLimit' value='0' title='This is how many kilograms you can deadlift'/>
 							<span></span>
@@ -208,16 +206,16 @@
 							<span></span>
 							<label>Universal Bonuses and Penalties</label>
 							<input type='number' name='attr_penaltybox' value='0' title='Enter any miscellaneous skill modifiers you may have before rolling.'/>							
-							<input type='number' readonly name='attr_penaltyfull' title='This shows the total of your miscellaneous modifiers and condition modifiers.'value='0'/>
+							<input type='number' readonly name='attr_penaltyfull' title='This shows the total of your miscellaneous modifiers and condition modifiers.' value='0'/>
 							<span></span>
 							<span></span>
 							<span style='width: 100%; text-align: center'>Manual</span>
 							<span style='width: 100%; margin-top: 0px; text-align: center'>Total</span>
 						</div>					
-						<div class='quickview_weight' >
-							<label name='attr_totalvalue' title='The combined value of all your gear and weapons'>Net Worth</label>
+						<div class='quickview_weight'>
+							<label title='The combined value of all your gear and weapons'>Net Worth</label>
 							<input readonly name='attr_totalvalue' type='text' value='0'/>
-							<label name='attr_totalweight' title='The combined weight of everything you are carrying'>Total Weight</label>
+							<label title='The combined weight of everything you are carrying'>Total Weight</label>
 							<input readonly name='attr_totalweight' type='text' value='0'/>
 						</div>
 					</div>	
@@ -226,7 +224,7 @@
 					<input type='checkbox' id='hidederivedstats' name='attr_hidederivedstats' class='toggle-show' style='display: none'/>
 					<div class='body'>
 						<div class='wounds'>
-							<span title='Roll 1d100 to see where you've been hit.'>Wound Location</span>
+							<span title='Roll 1d100 to see where you have been hit.'>Wound Location</span>
 							<span>Roll</span>
 							<span>KOT</span>
 							<span>PV</span>
@@ -412,7 +410,7 @@
 							<input type='number' readonly name='attr_mysticarmorcheckpenalty' value='0' style='display:none;'/>
 							<span name='attr_armorcheckpenalty'></span>
 							<span></span>
-							<input type='text' style='height: 24px;' name='attr_armor_otherdetails' value='Other Details'></input>
+							<input type='text' style='height: 24px;' name='attr_armor_otherdetails' value='Other Details'/>
 							<span title='The location this piece of armor is covering' style='text-align: left'>Armor Location</span>
 							<span title='Select the armor for this location'>Armor Type</span>
 							<span title='Protective Value'>PV</span>
@@ -868,7 +866,7 @@
 
 <div title='All Skills' class='skillpages' style='border: black solid 2px; padding: 5px'>
 
-	<label for='SkillRankToggle' style='width: 90px; font-size: 85% margin: 0px; padding: 0px;'>Edit Ranks:</label>
+	<label for='SkillRankToggle' style='width: 90px; font-size: 85%; margin: 0px; padding: 0px;'>Edit Ranks:</label>
 	<input id='SkillRankToggle' class='toggle' type='checkbox' name='attr_toggle_editing' value='1' style='height: 13px; width: 13px; margin-left: 10px;'/>
 	<div class='cat-hide'>
 		<label>Athletics (Ag/En/St)<input name='attr_HideAth' type='checkbox' class='toggle-show'/></label>
@@ -1614,7 +1612,7 @@
 		<div title='Social skills'>
 		<input name='attr_HideSoc' type='checkbox' class='toggle-show' style='display: none'/>
 			<div class='body'>	
-				<div class='skills-section' style='border: 2px solid black; border-bottom: none; padding-top: 3px; paddint-right: 3px; padding-left: 3px; margin-top: 3px;'>
+				<div class='skills-section' style='border: 2px solid black; border-bottom: none; padding-top: 3px; padding-right: 3px; padding-left: 3px; margin-top: 3px;'>
 				<input id='SkillRankToggle' class='toggle' type='checkbox' name='attr_toggle_editing' value='1' style='display: none'/>
 				<Span>Roll</Span>
 				<label>Social</label>
@@ -1670,7 +1668,7 @@
 					<input type='number' value='0' name='attr_LieDetectionBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_LieDetection'/>
 					<button type='roll' name='roll_Linguistics' value='&{template:default} {{name=@{character_name}}} {{skillname="Linguistics"}} {{result=[[({1d100cs>96cf<5}) + @{Linguistics}]]}} {{PUSH=Social Skills use Cr, Em and Pr}}'></button>
-					<div><span>Linguistics</span><input type='checkbox' name='attr_hidelang' class='toggle-show'></input></div>
+					<div><span>Linguistics</span><input type='checkbox' name='attr_hidelang' class='toggle-show'/></div>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_LinguisticsRanks'/>
 					<span class='inputs-readonly' name='attr_LinguisticsRanks'>-</span></div>
 					<input type='number' value='0' name='attr_LinguisticsBonus'/>
@@ -1683,8 +1681,8 @@
 						<input title='Are you literate in this language?' type='checkbox' name='attr_literate' value='50'/>
 						<input type='text' name='attr_language' style='width: 100%'/>
 						<input disabled type='text' name='attr_langpen' value='{{-50 + @{literate} + @{Linguistics}}}' style='width: 100%'/>
-						<span/>
-						<span/>							
+						<span></span>
+						<span></span>					
 					</div>
 					</fieldset>
 				</div>
@@ -1851,85 +1849,85 @@
 					<span class='inputs-readonly' name='attr_ComputersRanks'>-</span></div>
 					<input type='number' value='0' name='attr_ComputersBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Computers'/>
-					<button type='roll' name='roll_Construction' value='&{template:default} {{name=@{character_name}}} {{skillname="Construction"}} {{result=[[({1d100cs>96cf<5}) + @{Construction}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Construction' value='&{template:default} {{name=@{character_name}}} {{skillname="Construction"}} {{result=[[({1d100cs>96cf<5}) + @{Construction}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Construction</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_ConstructionRanks'/>
 					<span class='inputs-readonly' name='attr_ConstructionRanks'>-</span></div>
 					<input type='number' value='0' name='attr_ConstructionBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Construction'/>
-					<button type='roll' name='roll_Demolition' value='&{template:default} {{name=@{character_name}}} {{skillname="Demolition"}} {{result=[[({1d100cs>96cf<5}) + @{Demolition}]]}}' {{PUSH='Tech Skills use Cr, Int, or Pe'}}></button>
+					<button type='roll' name='roll_Demolition' value='&{template:default} {{name=@{character_name}}} {{skillname="Demolition"}} {{result=[[({1d100cs>96cf<5}) + @{Demolition}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Demolition</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_DemolitionRanks'/>
 					<span class='inputs-readonly' name='attr_DemolitionRanks'>-</span></div>
 					<input type='number' value='0' name='attr_DemolitionsBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Demolition'/>
-					<button type='roll' name='roll_Electronics' value='&{template:default} {{name=@{character_name}}} {{skillname="Electronics"}} {{result=[[({1d100cs>96cf<5}) + @{Electronics}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Electronics' value='&{template:default} {{name=@{character_name}}} {{skillname="Electronics"}} {{result=[[({1d100cs>96cf<5}) + @{Electronics}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span style='color: blue'>Electronics</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_ElectronicsRanks'/>
 					<span class='inputs-readonly' name='attr_ElectronicsRanks'>-</span></div>
 					<input type='number' value='0' name='attr_ElectronicsBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Electronics'/>
-					<button type='roll' name='roll_Engineering' value='&{template:default} {{name=@{character_name}}} {{skillname="Engineering"}} {{result=[[({1d100cs>96cf<5}) + @{Engineering}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Engineering' value='&{template:default} {{name=@{character_name}}} {{skillname="Engineering"}} {{result=[[({1d100cs>96cf<5}) + @{Engineering}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Engineering</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_EngineeringRanks'/>
 					<span class='inputs-readonly' name='attr_EngineeringRanks'>-</span></div>
 					<input type='number' value='0' name='attr_EngineeringBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Engineering'/>
-					<button type='roll' name='roll_Lockpick' value='&{template:default} {{name=@{character_name}}} {{skillname="Lockpick"}} {{result=[[({1d100cs>96cf<5}) + @{Lockpick}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Lockpick' value='&{template:default} {{name=@{character_name}}} {{skillname="Lockpick"}} {{result=[[({1d100cs>96cf<5}) + @{Lockpick}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Lockpick</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_LockpickRanks'/>
 					<span class='inputs-readonly' name='attr_LockpickRanks'>-</span></div>
 					<input type='number' value='0' name='attr_LockpickBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Lockpick'/>
-					<button type='roll' name='roll_Mechanic' value='&{template:default} {{name=@{character_name}}} {{skillname="Mechanic"}} {{result=[[({1d100cs>96cf<5}) + @{Mechanic}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Mechanic' value='&{template:default} {{name=@{character_name}}} {{skillname="Mechanic"}} {{result=[[({1d100cs>96cf<5}) + @{Mechanic}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Mechanic</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_MechanicRanks'/>
 					<span class='inputs-readonly' name='attr_MechanicRanks'>-</span></div>
 					<input type='number' value='0' name='attr_MechanicBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Mechanic'/>
-					<button type='roll' name='roll_PilotAircraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Aircraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotAircraft}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_PilotAircraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Aircraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotAircraft}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span style='color: blue'>Pilot Aircraft</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_PilotAircraftRanks'/>
 					<span class='inputs-readonly' name='attr_PilotAircraftRanks'>-</span></div>
 					<input type='number' value='0' name='attr_PilotAircraftBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_PilotAircraft'/>
-					<button type='roll' name='roll_PilotGroundcraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Groundcraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotGroundcraft}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_PilotGroundcraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Groundcraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotGroundcraft}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Pilot Groundcraft</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_PilotGroundcraftRanks'/>
 					<span class='inputs-readonly' name='attr_PilotGroundcraftRanks'>-</span></div>
 					<input type='number' value='0' name='attr_PilotGroundcraftBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_PilotGroundcraft'/>
-					<button type='roll' name='roll_PilotSpacecraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Spacecraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotSpacecraft}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_PilotSpacecraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Spacecraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotSpacecraft}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span style='color: blue'>Pilot Spacecraft</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_PilotSpacecraftRanks'/>
 					<span class='inputs-readonly' name='attr_PilotSpacecraftRanks'>-</span></div>
 					<input type='number' value='0' name='attr_PilotSpacecraftBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_PilotSpacecraft'/>
-					<button type='roll' name='roll_PilotWatercraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Watercraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotWatercraft}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_PilotWatercraft' value='&{template:default} {{name=@{character_name}}} {{skillname="Pilot Watercraft"}} {{result=[[({1d100cs>96cf<5}) + @{PilotWatercraft}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span>Pilot Watercraft</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_PilotWatercraftRanks'/>
 					<span class='inputs-readonly' name='attr_PilotWatercraftRanks'>-</span></div>
 					<input type='number' value='0' name='attr_PilotWatercraftBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_PilotWatercraft'/>
-					<button type='roll' name='roll_PowerArmor' value='&{template:default} {{name=@{character_name}}} {{skillname="Power Armor"}} {{result=[[({1d100cs>96cf<5}) + @{PowerArmor}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_PowerArmor' value='&{template:default} {{name=@{character_name}}} {{skillname="Power Armor"}} {{result=[[({1d100cs>96cf<5}) + @{PowerArmor}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span style='color: blue'>Power Armor</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_PowerArmorRanks'/>
 					<span class='inputs-readonly' name='attr_PowerArmorRanks'>-</span></div>
 					<input type='number' value='0' name='attr_PowerArmorBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_PowerArmor'/>
-					<button type='roll' name='roll_Software' value='&{template:default} {{name=@{character_name}}} {{skillname="Software_Name"}} {{result=[[({1d100cs>96cf<5}) + @{Software}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_Software' value='&{template:default} {{name=@{character_name}}} {{skillname="Software_Name"}} {{result=[[({1d100cs>96cf<5}) + @{Software}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<span style='color: blue'>Software</span>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_SoftwareRanks'/>
 					<span class='inputs-readonly' name='attr_SoftwareRanks'>-</span></div>
 					<input type='number' value='0' name='attr_SoftwareBonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_Software'/>
-					<button type='roll' name='roll_CustomTech1' value='&{template:default} {{name=@{character_name}}} {{skillname="@{CustomTech1_Name}"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech1}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_CustomTech1' value='&{template:default} {{name=@{character_name}}} {{skillname="@{CustomTech1_Name}"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech1}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<input class='skill-custom' type='text' value='CustomTech1' name='attr_CustomTech1_Name'/>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_CustomTech1Ranks'/>
 					<span class='inputs-readonly' name='attr_CustomTech1Ranks'>-</span></div>
 					<input type='number' value='0' name='attr_CustomTech1Bonus'/>
 					<input class='skill-total' type='text' value='0' readonly name='attr_CustomTech1'/>
-					<button type='roll' name='roll_CustomTech2' value='&{template:default} {{name=@{character_name}}} {{skillname="@{CustomTech2_Name}"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech2}]]}} {{PUSH='Tech Skills use Cr, Int, or Pe'}}'></button>
+					<button type='roll' name='roll_CustomTech2' value='&{template:default} {{name=@{character_name}}} {{skillname="@{CustomTech2_Name}"}} {{result=[[({1d100cs>96cf<5}) + @{CustomTech2}]]}} {{PUSH=Tech Skills use Cr, Int and Pe}}'></button>
 					<input class='skill-custom' type='text' value='CustomTech2' name='attr_CustomTech2_Name'/>
 					<div class='row'><input type='number' value='0' class='inputs-edit' name='attr_CustomTech2Ranks'/>
 					<span class='inputs-readonly' name='attr_CustomTech2Ranks'>-</span></div>
@@ -1970,7 +1968,7 @@
 		<div title='Stored Money' class='money-section'>
 			<span>Credits</span>
 			<input name='attr_storedcredits' value='0' type='text'/>
-			<button type='action' name='act_spendstoredcredits' value=>Spend Credits</button>
+			<button type='action' name='act_spendstoredcredits'>Spend Credits</button>
 			<input name='attr_pendingstoredcred' value='0' type='number'/>
 <!--		<span>PP</span>
 			<input name='attr_storedplatinum' type='text'/>
@@ -1985,8 +1983,8 @@
 	  </div>
 	</div>
 	<div title='Ranged Weapons: Because this section contains weight, quanitity and value attributes you do not need to also track these weapons in gear.' class='rangedweapon' style='padding: 5px;'>
-	<div class='WeaponCatLabel'><label name='attr_RangedCheckbox'>Ranged Weapons<input type='checkbox' name='attr_RangedCheckbox' class='toggle-show'/></label>
-	<label name='attr_MeleeCheckbox'>Melee Weapons<input type='checkbox' name='attr_MeleeCheckbox' class='toggle-show'/></label></div>
+	<div class='WeaponCatLabel'><label for='RangedCheckbox'>Ranged Weapons<input id="RangedCheckbox" type='checkbox' name='attr_RangedCheckbox' class='toggle-show'/></label>
+	<label for='MeleeCheckbox'>Melee Weapons<input id="MeleeCheckbox" type='checkbox' name='attr_MeleeCheckbox' class='toggle-show'/></label></div>
 	<input type='checkbox' name='attr_RangedCheckbox' class='toggle-show' style='display: none'/>
 	<div class='body' >
 		<div class='rangedweaponlabel'>
@@ -2014,34 +2012,39 @@
             <input type='text' name='attr_rwpn_weaponname' class='rangedweapon' style='width: 99%; border: solid black 1px;' title='What is the weapon type or name?'/>
             <input type='number' name='attr_rwpn_kov' title='Add this value to the KOT of the target to determine the bonus for your Knock Out roll'/>
             <input type='number' name='attr_rwpn_speed' title='This is how many beats of initiative it will cost to attack with this weapon.'/>
-			<input type='number' name='attr_rwpn_range' title='Enter the weapon's range increment in meters here. For each increment of this value your attacks suffer a -10% penalty to hit'/>
+			<input type='number' name='attr_rwpn_range' title='Enter the range increment in meters here. For each increment of this value your attacks suffer a -10% penalty to hit'/>
             <input type='text' name='attr_rwpn_ammotype' title='What type of ammo does this weapon use?'/>
             <input type='number' name='attr_rwpn_magazine' title='Current ammunition loaded in this weapon'/>
-			<span style='padding-left: 2px; font-size: very large;'>/</span>
+			<span style='padding-left: 2px; font-size: 24px;'>/</span>
 			<input style='display: inline-block' type='number' name='attr_rwpn_magazine_max' title='Maximum ammunition capacity for this weapon'/>
-            <select type='text' name='attr_rwpn_skill' title='What skill do you use with this weapon?'/>
-				<option value='@{Archery}' selected='selected'>Archery</option>
-				<option value='@{Artillery}' selected='selected'>Artillery</option>
-				<option value='@{ExoticRanged}' selected='selected'>Exotic Ranged Weapon</option>
-				<option value='@{Gunnery}' selected='selected'>Gunnery</option>
-				<option value='@{Lobbing}' selected='selected'>Lobbing</option>
-				<option value='@{Machineguns}' selected='selected'>Machineguns</option>
-				<option value='@{Pistols}' selected='selected'>Pistols</option>
-				<option value='@{Rifles}' selected='selected'>Rifles</option>
-				<option value='@{SprayWeapons}' selected='selected'>SprayWeapons</option>
-				<option value='@{Submachineguns}' selected='selected'>Submachineguns</option>
-				<option value='@{Throwing}' selected='selected'>Throwing</option>
-				<option value='@{CustomRan1}' selected='selected'>CustomRan1</option>
-				<option value='@{CustomRan2}' selected='selected'>CustomRan2</option>
-				<option value='@{CustomRan3}' selected='selected'>CustomRan3</option></select>
-			<span style='font-size: very large;'>=</span>
+            <select name='attr_rwpn_skill' title='What skill do you use with this weapon?'>
+				<option value='0' selected='selected'>(Choose One)</option>
+				<option value='@{Archery}'>Archery</option>
+				<option value='@{Artillery}'>Artillery</option>
+				<option value='@{ExoticRanged}'>Exotic Ranged Weapon</option>
+				<option value='@{Gunnery}'>Gunnery</option>
+				<option value='@{Lobbing}'>Lobbing</option>
+				<option value='@{Machineguns}'>Machineguns</option>
+				<option value='@{Pistols}'>Pistols</option>
+				<option value='@{Rifles}'>Rifles</option>
+				<option value='@{SprayWeapons}'>SprayWeapons</option>
+				<option value='@{Submachineguns}'>Submachineguns</option>
+				<option value='@{Throwing}'>Throwing</option>
+				<option value='@{CustomRan1}'>CustomRan1</option>
+				<option value='@{CustomRan2}'>CustomRan2</option>
+				<option value='@{CustomRan3}'>CustomRan3</option></select>
+			<span style='font-size: 24px;'>=</span>
 			<input type='text' disabled name='attr_rwpn_skillbonus' value='@{rwpn_skill}' title='This is your bonus to attacks with this weapon.'/>
             <input type='text' name='attr_rwpn_value' title='How much is this weapon worth?'/>
             <input type='text' name='attr_rwpn_weight' title='How much does this weapon weigh(kg)?'/>
-            <input type='number' name='attr_rwpn_quantity' title='How many of these weapons do you have on you? If you have multiple but aren't carrying them all, make sure to put the extras in your gear page.'/>
-			<input type='text' name='attr_rwpn_type' value='B/P/S' title='What type of damage does this weapon do? (B)ludgeoning, (S)lashing or (P)iercing?'/>
-			<input type='number' name='attr_rwpn_bleed' value='0' title='If weapon is piercing, Bleed = KOV/10, if slashing Bleed = KOV/20, if bludgeoning Bleed = 0'/>
-			<input type='number' name='attr_rwpn_impact' value='0' title='If weapon is bludgeoning Impact = KOV/2, if slashing Impact = KOV/4, if piercing Impact = 0'/>
+            <input type='number' name='attr_rwpn_quantity' title='How many of these weapons do you have on you? If you have multiple but are not carrying them all, make sure to put the extras in your gear page.'/>
+			<select name='attr_mwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>				
+				<option value='B' selected='selected'>B</option>
+				<option value='P'>P</option>
+				<option value='S'>S</option>
+			</select>
+			<input readonly type='number' name='attr_rwpn_bleed' value='0' title='If weapon is piercing, Bleed = KOV/10, if slashing Bleed = KOV/20, if bludgeoning Bleed = 0'/>
+			<input readonly type='number' name='attr_rwpn_impact' value='0' title='If weapon is bludgeoning Impact = KOV/2, if slashing Impact = KOV/4, if piercing Impact = 0'/>
 		  </div>	
 			<textarea name='attr_rwpn_weaponnotes' title='Put any weapon notes here.' style='width: 98%; height: 18px; margin-top: -8px; margin-bottom: 0px;' >Weapon Notes</textarea>
           </fieldset>
@@ -2076,31 +2079,33 @@
 					<input type='number' name='attr_mwpn_kov' value="0"/>
 					<select name='attr_mwpn_kovbonuspick'>
 						<option value='@{mkob}' selected='selected'>MKOB</option>
-						<option value='@{rkob}' selected='selected'>RKOB</option>
+						<option value='@{rkob}'>RKOB</option>
+					</select>
 					<input type='text' disabled name='attr_mwpn_kovbonus' value='@{mwpn_kovbonuspick}'/>
 					<input type='number' name='attr_mwpn_speed' value="0"/>
 					<input type='text' name='attr_mwpn_reach' value="0"/>
 						<select name='attr_mwpn_skill'>
-							<option value='@{Blades}' selected='selected'>Blades</option>
-							<option value='@{Brawl}' selected='selected'>Brawl</option>
-							<option value='@{Clubs}' selected='selected'>Clubs</option>
-							<option value='@{ExoticMelee}' selected='selected'>Exotic Melee</option>
-							<option value='@{Grapple}' selected='selected'>Grapple</option>
-							<option value='@{Polearms}' selected='selected'>Polearms</option>
-							<option value='@{Striking}' selected='selected'>Striking</option>
-							<option value='@{CustomCC1}' selected='selected'>CustomCC1</option>
-							<option value='@{CustomCC2}' selected='selected'>CustomCC2</option>
-							<option value='@{CustomCC3}' selected='selected'>CustomCC3</option>
+							<option value='0' selected='selected'>(Choose One)</option>
+							<option value='@{Blades}'>Blades</option>
+							<option value='@{Brawl}'>Brawl</option>
+							<option value='@{Clubs}'>Clubs</option>
+							<option value='@{ExoticMelee}'>Exotic Melee</option>
+							<option value='@{Grapple}'>Grapple</option>
+							<option value='@{Polearms}'>Polearms</option>
+							<option value='@{Striking}'>Striking</option>
+							<option value='@{CustomCC1}'>CustomCC1</option>
+							<option value='@{CustomCC2}'>CustomCC2</option>
+							<option value='@{CustomCC3}'>CustomCC3</option>
 						</select>
-						<span style='font-size: very large;'>=</span>
+						<span style='font-size: 24px;'>=</span>
 						<input type='text' disabled name='attr_mwpn_skillbonus' value='@{mwpn_skill}'/>
 					<input type='text' name='attr_mwpn_value'/>
 					<input type='text' name='attr_mwpn_weight'/>
 					<input type='number' name='attr_mwpn_quantity'/>	
-					<select name='attr_mwpn_type' value='B/P/S' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>
+					<select name='attr_mwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>
 						<option value='B' selected='selected'>B</option>
-						<option value='P' selected='selected'>P</option>
-						<option value='S' selected='selected'>S</option>
+						<option value='P'>P</option>
+						<option value='S'>S</option>
 					</select>
 					<input readonly type='number' name='attr_mwpn_bleed' value='0' title='If weapon is piercing, Bleed = KOV/10, if slashing Bleed = KOV/20, if bludgeoning Bleed = 0'/>
 					<input readonly type='number' name='attr_mwpn_impact' value='0' title='If weapon is bludgeoning Impact = KOV/2, if slashing Impact = KOV/4, if piercing Impact = 0'/>					
@@ -2139,7 +2144,7 @@
 		<div title='Stored Money' class='money-section'>
 			<span>Credits</span>
 			<input name='attr_storedcredits' value='0' type='text'/>
-			<button type='action' name='act_spendstoredcredits' value=>Spend Credits</button>
+			<button type='action' name='act_spendstoredcredits'>Spend Credits</button>
 			<input name='attr_pendingstoredcred' value='0' type='number'/>
 <!--		<span>PP</span>
 			<input name='attr_storedplatinum' type='text'/>
@@ -2181,167 +2186,169 @@
 				<input type='text' name='attr_gear_powertype'/>
 				<input type='number' name='attr_gear_charges'/>
 				<input type='number' name='attr_gear_charges_max'/>
-				<select name='attr_gear_skill'/>
-					<option value='ATHLETIC SKILLS' selected='selected'>ATHLETIC SKILLS</option>
-					<option value='@{Climbing}' selected='selected'>Climbing</option>
-					<option value='@{Contortions}' selected='selected'>Contortions</option>
-					<option value='@{EnduranceRunning}' selected='selected'>Endurance Running</option>
-					<option value='@{Freefall}' selected='selected'>Freefall</option>
-					<option value='@{Freerunning}' selected='selected'>Freerunning</option>
-					<option value='@{Jumping}' selected='selected'>Jumping</option>
-					<option value='@{Portage}' selected='selected'>Portage</option>
-					<option value='@{Sneaking}' selected='selected'>Sneaking</option>
-					<option value='@{Sports}' selected='selected'>Sports</option>
-					<option value='@{Sprinting}' selected='selected'>Sprinting</option>
-					<option value='@{Swimming}' selected='selected'>Swimming</option>
-					<option value='@{Weightlifting}' selected='selected'>Weightlifting</option>
-					<option value='@{CustomAth1}' selected='selected'>CustomAth1</option>
-					<option value='@{CustomAth2}' selected='selected'>CustomAth2</option>
-					<option value='@{CustomAth3}' selected='selected'>CustomAth3</option>
-					<option value='BUSINESS SKILLS' selected='selected'>BUSINESS SKILLS</option>
-					<option value='@{Accounting}' selected='selected'>Accounting</option>
-					<option value='@{Advertising}' selected='selected'>Advertising</option>
-					<option value='@{Appraisal}' selected='selected'>Appraisal</option>
-					<option value='@{Bargain}' selected='selected'>Bargain</option>
-					<option value='@{Barter}' selected='selected'>Barter</option>
-					<option value='@{Economics}' selected='selected'>Economics</option>
-					<option value='@{Forgery}' selected='selected'>Forgery</option>
-					<option value='@{Gambling}' selected='selected'>Gambling</option>
-					<option value='@{Investment}' selected='selected'>Investment</option>
-					<option value='@{Logistics}' selected='selected'>Logistics</option>
-					<option value='@{Procurement}' selected='selected'>Procurement</option>
-					<option value='@{Racketeering}' selected='selected'>Racketeering</option>
-					<option value='@{CustomBus1}' selected='selected'>CustomBus1</option>
-					<option value='@{CustomBus2}' selected='selected'>CustomBus2</option>
-					<option value='@{CustomBus3}' selected='selected'>CustomBus3</option>
-					<option value='CLOSE COMBAT SKILLS' selected='selected'>CLOSE COMBAT SKILLS</option>
-					<option value='@{ArmorTraining}' selected='selected'>Armor Training</option>
-					<option value='@{Blades}' selected='selected'>Blades</option>
-					<option value='@{Block}' selected='selected'>Block</option>
-					<option value='@{Brawl}' selected='selected'>Brawl</option>
-					<option value='@{Clubs}' selected='selected'>Clubs</option>
-					<option value='@{Counter}' selected='selected'>Counter</option>
-					<option value='@{Escape}' selected='selected'>Escape</option>
-					<option value='@{Exotic Melee}' selected='selected'>Exotic Melee</option>
-					<option value='@{Grapple}' selected='selected'>Grapple</option>
-					<option value='@{Parry}' selected='selected'>Parry</option>
-					<option value='@{Polearms}' selected='selected'>Polearms</option>
-					<option value='@{Striking}' selected='selected'>Striking</option>
-					<option value='@{CustomCC1}' selected='selected'>CustomCC1</option>
-					<option value='@{CustomCC2}' selected='selected'>CustomCC2</option>
-					<option value='@{CustomCC3}' selected='selected'>CustomCC3</option>
-					<option value='EXPRESSION SKILLS' selected='selected'>EXPRESSION SKILLS</option>
-					<option value='@{Acting}' selected='selected'>Acting</option>
-					<option value='@{Art}' selected='selected'>Art</option>
-					<option value='@{Composing}' selected='selected'>Composing</option>
-					<option value='@{Dance}' selected='selected'>Dance</option>
-					<option value='@{Fashion}' selected='selected'>Fashion</option>
-					<option value='@{Metalwork}' selected='selected'>Metalwork</option>
-					<option value='@{Musical Instrument}' selected='selected'>Musical Instrument</option>
-					<option value='@{Sculpting}' selected='selected'>Sculpting</option>
-					<option value='@{Singing}' selected='selected'>Singing</option>
-					<option value='@{SpellDesign}' selected='selected'>Spell Design</option>
-					<option value='@{Woodwork}' selected='selected'>Woodwork</option>
-					<option value='@{Writing}' selected='selected'>Writing</option>
-					<option value='@{CustomExp1}' selected='selected'>CustomExp1</option>
-					<option value='@{CustomExp2}' selected='selected'>CustomExp2</option>
-					<option value='@{CustomExp3}' selected='selected'>CustomExp3</option>
-					<option value='MYSTIC SKILLS' selected='selected'>MYSTIC SKILLS</option>
-					<option value='@{AuraSense}' selected='selected'>Aura Sense</option>
-					<option value='@{Binding}' selected='selected'>Binding</option>
-					<option value='@{Celerity}' selected='selected'>Celerity</option>
-					<option value='@{Conjuring}' selected='selected'>Conjuring</option>
-					<option value='@{Divining}' selected='selected'>Divining</option>
-					<option value='@{Enchanting}' selected='selected'>Enchanting</option>
-					<option value='@{ManaSense}' selected='selected'>Mana Sense</option>
-					<option value='@{ManifestWill}' selected='selected'>Manifest Will</option>
-					<option value='@{Meditation}' selected='selected'>Meditation</option>
-					<option value='@{Precognition}' selected='selected'>Precognition</option>
-					<option value='@{Rituals}' selected='selected'>Rituals</option>
-					<option value='@{Runes}' selected='selected'>Runes</option>
-					<option value='@{Spellcasting}' selected='selected'>Spellcasting</option>
-					<option value='@{CustomMys1}' selected='selected'>CustomMys1</option>
-					<option value='@{CustomMys2}' selected='selected'>CustomMys2</option>
-					<option value='RANGED SKILLS' selected='selected'>RANGED SKILLS</option>
-					<option value='@{Archery}' selected='selected'>Archery</option>
-					<option value='@{Artillery}' selected='selected'>Artillery</option>
-					<option value='@{Dodge}' selected='selected'>Dodge</option>
-					<option value='@{ExoticRanged}' selected='selected'>Exotic Ranged</option>
-					<option value='@{Gunnery}' selected='selected'>Gunnery</option>
-					<option value='@{Lobbing}' selected='selected'>Lobbing (Indirect)</option>
-					<option value='@{Machineguns}' selected='selected'>Machine Guns</option>
-					<option value='@{Pistols}' selected='selected'>Pistols</option>
-					<option value='@{Rifles}' selected='selected'>Rifles</option>
-					<option value='@{SprayWeapons}' selected='selected'>Spray Weapons</option>
-					<option value='@{Submachinguns}' selected='selected'>Submachine Guns</option>
-					<option value='@{Throwing}' selected='selected'>Throwing (Direct)</option>
-					<option value='@{CustomRan1}' selected='selected'>CustomRan1</option>
-					<option value='@{CustomRan2}' selected='selected'>CustomRan2</option>
-					<option value='@{CustomRan3}' selected='selected'>CustomRan3</option>
-					<option value='SCIENCE SKILLS' selected='selected'>SCIENCE SKILLS</option>
-					<option value='@{Biology}' selected='selected'>Biology</option>
-					<option value='@{Botany}' selected='selected'>Botany</option>
-					<option value='@{Chemistry}' selected='selected'>Chemistry</option>
-					<option value='@{Eidetics}' selected='selected'>Eidetics</option>
-					<option value='@{History}' selected='selected'>History</option>
-					<option value='@{Literature}' selected='selected'>Literature</option>
-					<option value='@{Mathematics}' selected='selected'>Mathematics</option>
-					<option value='@{Medicine}' selected='selected'>Medicine</option>
-					<option value='@{Navigation}' selected='selected'>Navigation</option>
-					<option value='@{Occult}' selected='selected'>Occult</option>
-					<option value='@{Physics}' selected='selected'>Physics</option>
-					<option value='@{Xenology}' selected='selected'>Xenology</option>
-					<option value='@{Zoology}' selected='selected'>Zoology</option>
-					<option value='@{CustomSci1}' selected='selected'>CustomSci1</option>
-					<option value='@{CustomSci2}' selected='selected'>CustomSci2</option>
-					<option value='SOCIAL SKILLS' selected='selected'>SOCIAL SKILLS</option>
-					<option value='@{Con}' selected='selected'>Con</option>
-					<option value='@{Disguise}' selected='selected'>Disguise</option>
-					<option value='@{Etiquette}' selected='selected'>Etiquette</option>
-					<option value='@{Instruction}' selected='selected'>Instruction</option>
-					<option value='@{Interrogation}' selected='selected'>Interrogation</option>
-					<option value='@{Intimidate}' selected='selected'>Intimidate</option>
-					<option value='@{Leadership}' selected='selected'>Leadership</option>
-					<option value='@{LieDetection}' selected='selected'>Lie Detection</option>
-					<option value='@{Linguistics}' selected='selected'>Linguistics</option>
-					<option value='@{Negotiate}' selected='selected'>Negotiate</option>
-					<option value='@{Willpower}' selected='selected'>Willpower</option>
-					<option value='@{Seduction}' selected='selected'>Seduction</option>
-					<option value='@{SleightofHand}' selected='selected'>Sleight of Hand</option>
-					<option value='@{CustomSoc1}' selected='selected'>CustomSoc1</option>
-					<option value='@{CustomSoc2}' selected='selected'>CustomSoc2</option>
-					<option value='SURVIVAL' selected='selected'>SURVIVAL SKILLS</option>
-					<option value='@{AnimalHandling}' selected='selected'>Animal Handling</option>
-					<option value='@{FindShelter}' selected='selected'>Find Shelter</option>
-					<option value='@{Forage}' selected='selected'>Forage</option>
-					<option value='@{Observation}' selected='selected'>Observation</option>
-					<option value='@{Orienteering}' selected='selected'>Orienteering</option>
-					<option value='@{RefreshBody}' selected='selected'>Refresh Body</option>
-					<option value='@{RefreshMind}' selected='selected'>Refresh Mind</option>
-					<option value='@{ResistKO}' selected='selected'>Resist KO</option>
-					<option value='@{ResistPain}' selected='selected'>Resist Pain</option>
-					<option value='@{Ride}' selected='selected'>Ride</option>
-					<option value='@{Snare}' selected='selected'>Snare</option>
-					<option value='@{Track}' selected='selected'>Track</option>
-					<option value='@{WeatherSense}' selected='selected'>Weather Sense</option>
-					<option value='@{CustomSur1}' selected='selected'>CustomSur1</option>
-					<option value='@{CustomSur2}' selected='selected'>CustomSur2</option>
-					<option value='TECHNOLOGY SKILLS' selected='selected'>TECHNOLOGY SKILLS</option>
-					<option value='@{Computers}' selected='selected'>Computers</option>
-					<option value='@{Construction}' selected='selected'>Construction</option>
-					<option value='@{Demolition}' selected='selected'>Demolition</option>
-					<option value='@{Electronics}' selected='selected'>Electronics</option>
-					<option value='@{Engineering}' selected='selected'>Engineering</option>
-					<option value='@{Lockpick}' selected='selected'>Lockpick</option>
-					<option value='@{Mechanic}' selected='selected'>Mechanic</option>
-					<option value='@{PilotAircraft}' selected='selected'>Pilot Aircraft</option>
-					<option value='@{PilotGroundcraft}' selected='selected'>Pilot Groundcraft</option>
-					<option value='@{PilotSpacecraft}' selected='selected'>Pilot Spacecraft</option>
-					<option value='@{PilotWatercraft}' selected='selected'>Pilot Watercraft</option>
-					<option value='@{PowerArmor}' selected='selected'>Power Armor</option>
-					<option value='@{Software}' selected='selected'>Software</option>
-					<option value='@{CustomTech1}' selected='selected'>CustomTech1</option>
-					<option value='@{CustomTech2}' selected='selected'>CustomTech2</option>
+				<select name='attr_gear_skill'>
+					<option value='0' selected='selected'>(Pick A Skill)</option>
+					<option value='ATHLETIC SKILLS'>ATHLETIC SKILLS</option>
+					<option value='@{Climbing}'>Climbing</option>
+					<option value='@{Contortions}'>Contortions</option>
+					<option value='@{EnduranceRunning}'>Endurance Running</option>
+					<option value='@{Freefall}'>Freefall</option>
+					<option value='@{Freerunning}'>Freerunning</option>
+					<option value='@{Jumping}'>Jumping</option>
+					<option value='@{Portage}'>Portage</option>
+					<option value='@{Sneaking}'>Sneaking</option>
+					<option value='@{Sports}'>Sports</option>
+					<option value='@{Sprinting}'>Sprinting</option>
+					<option value='@{Swimming}'>Swimming</option>
+					<option value='@{Weightlifting}'>Weightlifting</option>
+					<option value='@{CustomAth1}'>CustomAth1</option>
+					<option value='@{CustomAth2}'>CustomAth2</option>
+					<option value='@{CustomAth3}'>CustomAth3</option>
+					<option value='BUSINESS SKILLS'>BUSINESS SKILLS</option>
+					<option value='@{Accounting}'>Accounting</option>
+					<option value='@{Advertising}'>Advertising</option>
+					<option value='@{Appraisal}'>Appraisal</option>
+					<option value='@{Bargain}'>Bargain</option>
+					<option value='@{Barter}'>Barter</option>
+					<option value='@{Economics}'>Economics</option>
+					<option value='@{Forgery}'>Forgery</option>
+					<option value='@{Gambling}'>Gambling</option>
+					<option value='@{Investment}'>Investment</option>
+					<option value='@{Logistics}'>Logistics</option>
+					<option value='@{Procurement}'>Procurement</option>
+					<option value='@{Racketeering}'>Racketeering</option>
+					<option value='@{CustomBus1}'>CustomBus1</option>
+					<option value='@{CustomBus2}'>CustomBus2</option>
+					<option value='@{CustomBus3}'>CustomBus3</option>
+					<option value='CLOSE COMBAT SKILLS'>CLOSE COMBAT SKILLS</option>
+					<option value='@{ArmorTraining}'>Armor Training</option>
+					<option value='@{Blades}'>Blades</option>
+					<option value='@{Block}'>Block</option>
+					<option value='@{Brawl}'>Brawl</option>
+					<option value='@{Clubs}'>Clubs</option>
+					<option value='@{Counter}'>Counter</option>
+					<option value='@{Escape}'>Escape</option>
+					<option value='@{Exotic Melee}'>Exotic Melee</option>
+					<option value='@{Grapple}'>Grapple</option>
+					<option value='@{Parry}'>Parry</option>
+					<option value='@{Polearms}'>Polearms</option>
+					<option value='@{Striking}'>Striking</option>
+					<option value='@{CustomCC1}'>CustomCC1</option>
+					<option value='@{CustomCC2}'>CustomCC2</option>
+					<option value='@{CustomCC3}'>CustomCC3</option>
+					<option value='EXPRESSION SKILLS'>EXPRESSION SKILLS</option>
+					<option value='@{Acting}'>Acting</option>
+					<option value='@{Art}'>Art</option>
+					<option value='@{Composing}'>Composing</option>
+					<option value='@{Dance}'>Dance</option>
+					<option value='@{Fashion}'>Fashion</option>
+					<option value='@{Metalwork}'>Metalwork</option>
+					<option value='@{Musical Instrument}'>Musical Instrument</option>
+					<option value='@{Sculpting}'>Sculpting</option>
+					<option value='@{Singing}'>Singing</option>
+					<option value='@{SpellDesign}'>Spell Design</option>
+					<option value='@{Woodwork}'>Woodwork</option>
+					<option value='@{Writing}'>Writing</option>
+					<option value='@{CustomExp1}'>CustomExp1</option>
+					<option value='@{CustomExp2}'>CustomExp2</option>
+					<option value='@{CustomExp3}'>CustomExp3</option>
+					<option value='MYSTIC SKILLS'>MYSTIC SKILLS</option>
+					<option value='@{AuraSense}'>Aura Sense</option>
+					<option value='@{Binding}'>Binding</option>
+					<option value='@{Celerity}'>Celerity</option>
+					<option value='@{Conjuring}'>Conjuring</option>
+					<option value='@{Divining}'>Divining</option>
+					<option value='@{Enchanting}'>Enchanting</option>
+					<option value='@{ManaSense}'>Mana Sense</option>
+					<option value='@{ManifestWill}'>Manifest Will</option>
+					<option value='@{Meditation}'>Meditation</option>
+					<option value='@{Precognition}'>Precognition</option>
+					<option value='@{Rituals}'>Rituals</option>
+					<option value='@{Runes}'>Runes</option>
+					<option value='@{Spellcasting}'>Spellcasting</option>
+					<option value='@{CustomMys1}'>CustomMys1</option>
+					<option value='@{CustomMys2}'>CustomMys2</option>
+					<option value='RANGED SKILLS'>RANGED SKILLS</option>
+					<option value='@{Archery}'>Archery</option>
+					<option value='@{Artillery}'>Artillery</option>
+					<option value='@{Dodge}'>Dodge</option>
+					<option value='@{ExoticRanged}'>Exotic Ranged</option>
+					<option value='@{Gunnery}'>Gunnery</option>
+					<option value='@{Lobbing}'>Lobbing (Indirect)</option>
+					<option value='@{Machineguns}'>Machine Guns</option>
+					<option value='@{Pistols}'>Pistols</option>
+					<option value='@{Rifles}'>Rifles</option>
+					<option value='@{SprayWeapons}'>Spray Weapons</option>
+					<option value='@{Submachinguns}'>Submachine Guns</option>
+					<option value='@{Throwing}'>Throwing (Direct)</option>
+					<option value='@{CustomRan1}'>CustomRan1</option>
+					<option value='@{CustomRan2}'>CustomRan2</option>
+					<option value='@{CustomRan3}'>CustomRan3</option>
+					<option value='SCIENCE SKILLS'>SCIENCE SKILLS</option>
+					<option value='@{Biology}'>Biology</option>
+					<option value='@{Botany}'>Botany</option>
+					<option value='@{Chemistry}'>Chemistry</option>
+					<option value='@{Eidetics}'>Eidetics</option>
+					<option value='@{History}'>History</option>
+					<option value='@{Literature}'>Literature</option>
+					<option value='@{Mathematics}'>Mathematics</option>
+					<option value='@{Medicine}'>Medicine</option>
+					<option value='@{Navigation}'>Navigation</option>
+					<option value='@{Occult}'>Occult</option>
+					<option value='@{Physics}'>Physics</option>
+					<option value='@{Xenology}'>Xenology</option>
+					<option value='@{Zoology}'>Zoology</option>
+					<option value='@{CustomSci1}'>CustomSci1</option>
+					<option value='@{CustomSci2}'>CustomSci2</option>
+					<option value='SOCIAL SKILLS'>SOCIAL SKILLS</option>
+					<option value='@{Con}'>Con</option>
+					<option value='@{Disguise}'>Disguise</option>
+					<option value='@{Etiquette}'>Etiquette</option>
+					<option value='@{Instruction}'>Instruction</option>
+					<option value='@{Interrogation}'>Interrogation</option>
+					<option value='@{Intimidate}'>Intimidate</option>
+					<option value='@{Leadership}'>Leadership</option>
+					<option value='@{LieDetection}'>Lie Detection</option>
+					<option value='@{Linguistics}'>Linguistics</option>
+					<option value='@{Negotiate}'>Negotiate</option>
+					<option value='@{Willpower}'>Willpower</option>
+					<option value='@{Seduction}'>Seduction</option>
+					<option value='@{SleightofHand}'>Sleight of Hand</option>
+					<option value='@{CustomSoc1}'>CustomSoc1</option>
+					<option value='@{CustomSoc2}'>CustomSoc2</option>
+					<option value='SURVIVAL'>SURVIVAL SKILLS</option>
+					<option value='@{AnimalHandling}'>Animal Handling</option>
+					<option value='@{FindShelter}'>Find Shelter</option>
+					<option value='@{Forage}'>Forage</option>
+					<option value='@{Observation}'>Observation</option>
+					<option value='@{Orienteering}'>Orienteering</option>
+					<option value='@{RefreshBody}'>Refresh Body</option>
+					<option value='@{RefreshMind}'>Refresh Mind</option>
+					<option value='@{ResistKO}'>Resist KO</option>
+					<option value='@{ResistPain}'>Resist Pain</option>
+					<option value='@{Ride}'>Ride</option>
+					<option value='@{Snare}'>Snare</option>
+					<option value='@{Track}'>Track</option>
+					<option value='@{WeatherSense}'>Weather Sense</option>
+					<option value='@{CustomSur1}'>CustomSur1</option>
+					<option value='@{CustomSur2}'>CustomSur2</option>
+					<option value='TECHNOLOGY SKILLS'>TECHNOLOGY SKILLS</option>
+					<option value='@{Computers}'>Computers</option>
+					<option value='@{Construction}'>Construction</option>
+					<option value='@{Demolition}'>Demolition</option>
+					<option value='@{Electronics}'>Electronics</option>
+					<option value='@{Engineering}'>Engineering</option>
+					<option value='@{Lockpick}'>Lockpick</option>
+					<option value='@{Mechanic}'>Mechanic</option>
+					<option value='@{PilotAircraft}'>Pilot Aircraft</option>
+					<option value='@{PilotGroundcraft}'>Pilot Groundcraft</option>
+					<option value='@{PilotSpacecraft}'>Pilot Spacecraft</option>
+					<option value='@{PilotWatercraft}'>Pilot Watercraft</option>
+					<option value='@{PowerArmor}'>Power Armor</option>
+					<option value='@{Software}'>Software</option>
+					<option value='@{CustomTech1}'>CustomTech1</option>
+					<option value='@{CustomTech2}'>CustomTech2</option>
+				</select>
 				<input type='number' disabled name='attr_gear_skillbonus' value='@{gear_skill}'/>
 				<input type='text' name='attr_gear_value'/>
 				<input type='text' name='attr_gear_weight'/>
@@ -2386,7 +2393,7 @@
 				<Input type='text' name='attr_spelldiff'/>
 				<Input type='text' name='attr_spelldrain'/>
 				<Input type='text' name='attr_spellmaint'/>
-				<textarea id='SpellDescriptions' name='attr_spelldesc'/></textarea>
+				<textarea id='SpellDescriptions' name='attr_spelldesc'></textarea>
 			</div>
 			</fieldset>
 		</div>
@@ -2394,9 +2401,9 @@
 </div>
 <div title='Experience Points' class='xppages' style='border: solid black 2px; margin-top: 5px; padding: 5px;'>
 	<label>Total XP</label>
-	<input readonly type='text' name='attr_totalxp'></input>
+	<input readonly type='text' name='attr_totalxp'/>
 	<label>Availalable XP</label>
-	<input readonly type='text' name='attr_availablexp'></input>
+	<input readonly type='text' name='attr_availablexp'/>
 	<div class='xppages-section'>
 	<div title='Experience Earned' class='xpearn'>
 	<div class='xplabels'>
@@ -2440,6 +2447,15 @@
 	</div>
 	</div>
 </div>
+</div>
+<div>
+<input type='checkbox' name='attr_hidenpc' class='toggle-show' style='display: none;'/>
+<div class='body'>
+<input type='checkbox' name='attr_hidenpc' class='toggle-show' style='display: none;'/>
+	<span>NPC!!!!</span>
+</div>
+</div>
+</html>
 <!-- ---------------------------SHEET WORKERS----------------- -->
 <script type='text/worker'>
 
@@ -2452,8 +2468,10 @@ const skillAttrs = skills.map(skill => `${skills}`);
 const hitloc = ['head','torso','neck','abs','ula','lla','ura','lra','ull','lll','url','lrl','lhand','rhand','lfoot','rfoot'];
 const hitlocAttrs = hitloc.map(location => `${hitloc}`);
 
-const weapons = ['rwpn_','mwpn_'];
-const weaponAttrs = weapons.map(weapon => `${weapon}`);
+const weapons = {
+    melee: {prefix: 'mwpn_', section: 'melee'},
+    ranged: {prefix: 'rwpn_', section: 'ranged'}
+};
 
 const repeatingSum = (destinations, section, fields) => {
     if (!Array.isArray(destinations)) destinations = [destinations.replace(/\s/g, '').split(',')];
@@ -3384,26 +3402,18 @@ on('sheet:opened change:ArmorTrainingRanks change:headpv change:torsopv change:n
    });
 });
 //Weapon Type Stat Filler
-weapons.forEach(weapon => {
-on(`sheet:opened change:${weapon}type change:${weapon}kov`, function () {
-	getAttrs([`${weapon}type`,`${weapon}bleed`,`${weapon}impact`,`${weapon}kov`], values => {
-	let wtype = int(values[`${weapon}type`]);
-	let wkov = float(values[`${weapon}kov`]);
-	if (wtype = "S") 
-	setAttrs({
-		`${weapon}bleed`: wkov/4
-		});
-	else if (wtype = "P") 
-	setAttrs ({
-		`${weapon}bleed`: wkov/2
-	});
-	else if (wtype = "B") 
-	setAttrs ({
-		`${weapon}bleed`: 0
-	});
-	});
+object.keys(weapons).forEach(which => {
+    on(`change:repeating_${which.section}weapon:${which.prefix}type change:repeating_${which.section}weapon:${which.prefix}kov`, function () {
+        getAttrs([`repeating_${which.section}weapon:${which.prefix}type`,`repeating_${which.section}weapon:${which.prefix}kov`], values => {
+            let wtype = values[`repeating_${which.section}weapon:${which.prefix}type`];
+            let wkov = float(values[`repeating_${which.section}weapon:${which.prefix}kov`]);
+            const output = {};
+            output[`repeating_${which.section}weapon:${which.prefix}bleed`] = (wtype === "B") ? 0 : Math.floor(wkov / (wtype === "P" ? 10 : 20));
+            output[`repeating_${which.section}weapon:${which.prefix}impact`] = (wtype === "P") ? 0 : Math.floor(wkov / (wtype === "B" ? 2 : 4));
+            setAttrs(output);
+        });
+    });
 });
-})
 </script>
 
 
