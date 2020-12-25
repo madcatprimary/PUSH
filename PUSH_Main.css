@@ -3,6 +3,7 @@
 	background-color: #ddd;
 	min-width: 600px;
 	max-width: 1550px;
+	width: 900px;
 }
 
 /* Universal styling applied to all elements of these types */
@@ -415,7 +416,7 @@ div.sheet-gear_and_equipment{
 }
 .sheet-gearpagelabel{
 	display: grid;
-		grid-template-columns: 5% 3% 13% 5% 7.5% 5% 5% 10% 5% 5% 5% 5% 23%;
+		grid-template-columns: 5% 3% 13% 5% 7.5% 10% 10% 5% 5% 5% 5% 23%;
 		grid-gap: 1px;
 }
 .sheet-gearpagelabel > span {
@@ -425,7 +426,7 @@ div.sheet-gear_and_equipment{
 }
 .sheet-gearpage-section{
 	display: grid;
-		grid-template-columns:  5% 3% 13% 5% 7.5% 5% 5% 10% 5% 5% 5% 5% 23%;
+		grid-template-columns:  5% 3% 13% 5% 7.5% 5% 1% 5% 10% 5% 5% 5% 5% 22%;
 		grid-template-rows: 28px;
 		grid-gap: 1px;
 		margin-bottom: 10px;
@@ -503,6 +504,7 @@ div.sheet-gear_and_equipment{
 		grid-template-rows: 24px;
 		margin-bottom: 10px; 
 		grid-gap: 2px;
+		padding-left: 5px;
 }
 input.spellpage{
 	width: 100%;
@@ -527,18 +529,87 @@ input.spellpage{
 	display: inline-block;
 	margin: 0px;
 	border: black solid 1px;
-	width: 99%;
+	width: 97%;
 	min-width: 30%;
-	max-width: 100%;
+	max-width: 99%;
 	height: 19px;
 	min-height: 19px;
 	max-height: 50px; 
 }
+/*Conjuring formatting start*/
+.sheet-conjuringpagelabel{
+		grid-template-columns: 20% 6% 10% 1fr 50%; 
+		grid-template-rows: 24px;
+		grid-gap: 2px;
+}
+.sheet-conjuring-section{
+	display: grid;
+		grid-template-columns: 150px 6% 10% 1fr 50%; 
+		grid-template-rows: 24px;
+		margin-bottom: 10px; 
+		grid-gap: 2px;
+		padding-left: 5px;
+}
+input.conjuringpage{
+	width: 100%;
+	margin: 1px;
+}
+.sheet-conjuringpages > div {
+	margin: 10px;
+}
+.sheet-conjuring-section > span {
+	text-align: center;
+	margin-bottom: 0px;
+}
+.sheet-conjuring-section > input[type="text"],
+.sheet-conjuring-section > select {
+	display: inline-block;
+	border: black solid 1px;
+	height: 28px;
+	margin: 0px;
+	width: 99%;
+}
+.sheet-conjuring-section > textarea {
+	display: inline-block;
+	margin: 0px;
+	border: black solid 1px;
+	width: 97%;
+	min-width: 30%;
+	max-width: 99%;
+	height: 19px;
+	min-height: 19px;
+	max-height: 50px; 
+}
+/*Notes Page Formatting*/
+.sheet-notespages {
+	border: solid Grey 2px; 
+	margin-top: 5px; 
+	box-shadow: 4px 6px DarkGrey;
+}
+.sheet-notes-section {
+	padding: 3px; 
+	margin-top: 3px;
+}
 
+.sheet-notestextarea {
+	width: 97%; 
+	max-width: 99%; 
+	max-height: 150px; 
+	min-height: 22px; 
+	height: 22px; 
+	margin:0px;'
+}
 /*Experience Pages Formatting*/
+.sheet-xppages {
+	margin-top: 5px; 
+	padding: 5px;
+	border: solid DarkGrey 2px; 
+	margin-top: 5px; 
+	box-shadow: 4px 6px Black;
+}
 .sheet-xppages-section {
 	display: grid;
-	grid-template-columns: 48% 48%;
+	grid-template-columns: 50% 50%;
 	padding: 5px;
 	grid-gap: 5px; 
 }
@@ -573,7 +644,19 @@ input.spellpage{
 	max-height: 40px; 
 	max-width: 95%; 
 }
+.sheet-xpearn {
+	border: solid Grey 2px; 
+	margin-top: 5px; 
+	box-shadow: 4px 6px DarkGrey;
+	padding: 2px; 
+}
 
+.sheet-xpspent {
+	border: solid Grey 2px; 
+	margin-top: 5px; 
+	box-shadow: 4px 6px DarkGrey;
+	padding: 2px; 
+}
 /*Columns formatting start*/
 .sheet-columns {
   display: flex;

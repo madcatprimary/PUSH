@@ -88,7 +88,7 @@
 		<div style='padding: 4px;'>
 			<label style='width: 200px;'>Attributes<input type='checkbox' name='attr_hidepools' class='toggle-show'/></label>		
 			<span>Total Skill Ranks Spent</span>
-			<em><b><input type='text' style='border: 1px black solid; padding: 2px; color: green;' name='attr_TotalSkillRanks' readonly value='0'/></b></em>
+			<em><b><span style='border: 1px black solid; padding: 2px; color: green;' name='attr_TotalSkillRanks' readonly value='0'/></b></em>
 		</div>
 			<input type='checkbox' name='attr_hidepools' class='toggle-show' style='display: none;'/>
 			<div title='Push Pools' class='body' style='padding: 3px'>
@@ -1986,7 +1986,7 @@
 	<div class='WeaponCatLabel'><label for='RangedCheckbox'>Ranged Weapons<input id="RangedCheckbox" type='checkbox' name='attr_RangedCheckbox' class='toggle-show'/></label>
 	<label for='MeleeCheckbox'>Melee Weapons<input id="MeleeCheckbox" type='checkbox' name='attr_MeleeCheckbox' class='toggle-show'/></label></div>
 	<input type='checkbox' name='attr_RangedCheckbox' class='toggle-show' style='display: none'/>
-	<div class='body' >
+	<div class='body' style='border: CornFlowerBlue solid 2px; box-shadow: 4px 6px Blue;'>
 		<div class='rangedweaponlabel'>
 		<span>Roll</span>
 		<span>Equip</span>
@@ -2004,19 +2004,19 @@
 		<span>Bleed</span>
 		<span>Impact</span>
 		</div>
-		<div style='border: CornFlowerBlue solid 2px; box-shadow: 4px 6px Blue;'>
+		<div>
           <fieldset class='repeating_rangedweapon'>
 		  <div class='rangedweapon-section'>
 			<button type='roll' name='roll_rwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{rwpn_weaponname}}} {{skillbonus=[[@{rwpn_skill}+@{armorcheckpenalty}]]}} {{Range=@{rwpn_range} meters}} {{Attack Roll=[[({1d100cs>96cf<5}) + @{rwpn_skillbonus} + @{penaltybox}+@{armorcheckpenalty}]]}} {{Hit Location=[[1t[Hit-Chart] ]]}} {{KOV=[[@{rwpn_kov}+@{rkob}]]}} {{beats=[[@{rwpn_speed}&{tracker:+}]]}} {{Notes=@{rwpn_weaponnotes}}} '></button>
 			<input type='checkbox' value='1' name='attr_rwpn_carried' title='Check this if you have the weapon on you.' style='margin-left: 2px; margin-right: 1px;'/>
-            <input type='text' name='attr_rwpn_weaponname' class='rangedweapon' style='width: 99%; border: solid black 1px;' title='What is the weapon type or name?'/>
-            <input type='number' name='attr_rwpn_kov' title='Add this value to the KOT of the target to determine the bonus for your Knock Out roll'/>
-            <input type='number' name='attr_rwpn_speed' title='This is how many beats of initiative it will cost to attack with this weapon.'/>
-			<input type='number' name='attr_rwpn_range' title='Enter the range increment in meters here. For each increment of this value your attacks suffer a -10% penalty to hit'/>
-            <input type='text' name='attr_rwpn_ammotype' title='What type of ammo does this weapon use?'/>
-            <input type='number' name='attr_rwpn_magazine' title='Current ammunition loaded in this weapon'/>
+            <input type='text' name='attr_rwpn_weaponname' value='(Ranged Weapon)' class='rangedweapon' style='width: 99%; border: solid black 1px;' title='What is the weapon type or name?'/>
+            <input type='number' name='attr_rwpn_kov' value='0' title='Add this value to the KOT of the target to determine the bonus for your Knock Out roll'/>
+            <input type='number' name='attr_rwpn_speed' value='0' title='This is how many beats of initiative it will cost to attack with this weapon.'/>
+			<input type='number' name='attr_rwpn_range' value='0' title='Enter the range increment in meters here. For each increment of this value your attacks suffer a -10% penalty to hit'/>
+            <input type='text' name='attr_rwpn_ammotype' value='(Ammo Type)' title='What type of ammo does this weapon use?'/>
+            <input type='number' name='attr_rwpn_magazine' value='0' title='Current ammunition loaded in this weapon'/>
 			<span style='padding-left: 2px; font-size: 24px;'>/</span>
-			<input style='display: inline-block' type='number' name='attr_rwpn_magazine_max' title='Maximum ammunition capacity for this weapon'/>
+			<input type='number' name='attr_rwpn_magazine_max' value='1' style='display: inline-block' title='Maximum ammunition capacity for this weapon'/>
             <select name='attr_rwpn_skill' title='What skill do you use with this weapon?'>
 				<option value='0' selected='selected'>(Choose One)</option>
 				<option value='@{Archery}'>Archery</option>
@@ -2035,9 +2035,9 @@
 				<option value='@{CustomRan3}'>CustomRan3</option></select>
 			<span style='font-size: 24px;'>=</span>
 			<input type='text' disabled name='attr_rwpn_skillbonus' value='@{rwpn_skill}' title='This is your bonus to attacks with this weapon.'/>
-            <input type='text' name='attr_rwpn_value' title='How much is this weapon worth?'/>
-            <input type='text' name='attr_rwpn_weight' title='How much does this weapon weigh(kg)?'/>
-            <input type='number' name='attr_rwpn_quantity' title='How many of these weapons do you have on you? If you have multiple but are not carrying them all, make sure to put the extras in your gear page.'/>
+            <input type='text' name='attr_rwpn_value'  value='0' title='How much is this weapon worth?'/>
+            <input type='text' name='attr_rwpn_weight'  value='0' title='How much does this weapon weigh(kg)?'/>
+            <input type='number' name='attr_rwpn_quantity'  value='0' title='How many of these weapons do you have on you? If you have multiple but are not carrying them all, make sure to put the extras in your gear page.'/>
 			<select name='attr_mwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>				
 				<option value='B' selected='selected'>B</option>
 				<option value='P'>P</option>
@@ -2046,14 +2046,14 @@
 			<input readonly type='number' name='attr_rwpn_bleed' value='0' title='If weapon is piercing, Bleed = KOV/10, if slashing Bleed = KOV/20, if bludgeoning Bleed = 0'/>
 			<input readonly type='number' name='attr_rwpn_impact' value='0' title='If weapon is bludgeoning Impact = KOV/2, if slashing Impact = KOV/4, if piercing Impact = 0'/>
 		  </div>	
-			<textarea name='attr_rwpn_weaponnotes' title='Put any weapon notes here.' style='width: 98%; height: 18px; margin-top: -8px; margin-bottom: 0px;' >Weapon Notes</textarea>
+			<textarea name='attr_rwpn_weaponnotes' title='Put any weapon notes here.' style='width: 98%; height: 18px; margin-top: -8px; margin-bottom: 0px;'>Weapon Notes</textarea>
           </fieldset>
 		</div>
 	</div>	
 	</div>
 	<div title='Melee Weapons' class='meleeweapon' style='padding: 5px;'>
 	<input type='checkbox' name='attr_MeleeCheckbox' class='toggle-show' style='display: none'/>
-		<div class='body'>
+		<div class='body' style='border: FireBrick solid 2px; box-shadow: 4px 6px Maroon;'>
 			<div class='meleeweaponlabel'>
 			<span>Roll</span>
 			<span>Equip</span>
@@ -2070,12 +2070,12 @@
 			<span>Bleed</span>
 			<span>Impact</span>
 			</div>
-			<div style='border: FireBrick solid 2px; box-shadow: 4px 6px Maroon;'>
+			<div>
 			  <fieldset class='repeating_meleeweapon'>
 				  <div class='meleeweapon-section'>
 					<button type='roll' name='roll_mwpn_skillcheck' value='&{template:default} {{name=@{character_name}}} {{weapon=@{mwpn_weaponname}}} {{skillbonus=[[@{mwpn_skill} + @{armorcheckpenalty}]]}} {{Attack Roll=[[({1d100cs>96cf<5}) + @{mwpn_skillbonus} + @{armorcheckpenalty}]]}} {{Hit Location=[[1t[Hit-Chart] ]]}} {{KOV Bonus=[[@{mwpn_kov}+@{mwpn_kovbonus}]]}} {{Notes=@{mwpn_weaponnotes}}} {{beats=[[@{mwpn_speed}&{tracker:+}]]}}'></button>
 					<input type='checkbox' value='1' name='attr_mwpn_carried'/>
-					<input type='text' name='attr_mwpn_weaponname' class='rangedweapon'/>
+					<input type='text' name='attr_mwpn_weaponname' class='rangedweapon' value='(Melee Weapon)'/>
 					<input type='number' name='attr_mwpn_kov' value="0"/>
 					<select name='attr_mwpn_kovbonuspick'>
 						<option value='@{mkob}' selected='selected'>MKOB</option>
@@ -2099,9 +2099,9 @@
 						</select>
 						<span style='font-size: 24px;'>=</span>
 						<input type='text' disabled name='attr_mwpn_skillbonus' value='@{mwpn_skill}'/>
-					<input type='text' name='attr_mwpn_value'/>
-					<input type='text' name='attr_mwpn_weight'/>
-					<input type='number' name='attr_mwpn_quantity'/>	
+					<input type='text' name='attr_mwpn_value' value='0'/>
+					<input type='text' name='attr_mwpn_weight' value='0'/>
+					<input type='number' name='attr_mwpn_quantity' value='0'/>	
 					<select name='attr_mwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>
 						<option value='B' selected='selected'>B</option>
 						<option value='P'>P</option>
@@ -2159,7 +2159,7 @@
 	  </div>
 	</div>
 	<div class='gear_and_equipment'>
-		<div class='body'>
+		<div class='body' style='border: LightGreen solid 2px; box-shadow: 4px 6px Green;'>
 			<div class='gearpagelabel'>
 				<span>Roll</span>
 				<span>Carried</span>
@@ -2167,8 +2167,7 @@
 				<span style='display: none'>KOV</span>
 				<span>Speed</span>
 				<span>Power Type</span>
-				<span>Used</span>
-				<span>Max</span>
+				<span>Used / Max</span>
 				<span>Skill</span>
 				<span>Bonus</span>
 				<span>Value</span>
@@ -2178,14 +2177,14 @@
 			</div>
 			  <fieldset class='repeating_gearpage'>
 			  <div class='gearpage-section'>
-				<button type='roll' name='roll_gear_skillcheck' value='&{template:default} {{name=@{character_name}}} {{Gear=@{gearname}}} {{skillname=@{gear_skill}}} {{result=[[({1d100cs>96cf<5}) + @{gear_skillbonus}]]}} {{Notes=@{gear_notes}}}'></button>
+				<button type='roll' name='roll_gear_skillcheck' value='&{template:default} {{name=@{character_name}}} {{Gear=@{gearname}}} {{Skill Bonus=@{gear_skill}}} {{result=[[({1d100cs>96cf<5}) + @{gear_skillbonus}]]}}  {{Uses Left=[[@{gear_charges_max} - @{gear_charges}]] out of @{gear_charges_max}}} {{Notes=@{gear_notes}}}'></button>
 				<input type='checkbox' value='1' name='attr_gear_carried'/>
-				<input type='text' name='attr_gearname'/>
-				<input style='display: none' type='text' name='attr_gear_kov'/>
-				<input type='text' name='attr_gear_speed'/>
-				<input type='text' name='attr_gear_powertype'/>
-				<input type='number' name='attr_gear_charges'/>
-				<input type='number' name='attr_gear_charges_max'/>
+				<input type='text' name='attr_gearname' value='Gear'/>				
+				<input type='text' name='attr_gear_speed' value='0'/>
+				<input type='text' name='attr_gear_powertype' value='Power Type'/>
+				<input type='number' name='attr_gear_charges' value='0'/>
+				<span style='font-size: 24px;'>/</span>
+				<input type='number' name='attr_gear_charges_max' value='1'/>
 				<select name='attr_gear_skill'>
 					<option value='0' selected='selected'>(Pick A Skill)</option>
 					<option value='ATHLETIC SKILLS'>ATHLETIC SKILLS</option>
@@ -2350,10 +2349,10 @@
 					<option value='@{CustomTech2}'>CustomTech2</option>
 				</select>
 				<input type='number' disabled name='attr_gear_skillbonus' value='@{gear_skill}'/>
-				<input type='text' name='attr_gear_value'/>
-				<input type='text' name='attr_gear_weight'/>
-				<input type='number' name='attr_gear_quantity'/>
-				<textarea name='attr_gear_notes'></textarea>
+				<input type='text' name='attr_gear_value' value='0'/>
+				<input type='text' name='attr_gear_weight' value='0'/>
+				<input type='number' name='attr_gear_quantity' value='0'/>
+				<textarea name='attr_gear_notes'>Notes</textarea>
 			  </div>
 			  </fieldset>
 		</div>
@@ -2369,17 +2368,17 @@
 			<input type='number' disabled name='attr_earnedxp' class='calcfield'/>
 			<input type='number' disabled name='attr_spentxp' class='calcfield'/>
 		</div>	
-<div title='Notes and Journals' class='notespages' style='border: solid black 2px; margin-top: 5px;'>
-	<div style='padding: 3px; margin-top: 3px;'>
+<div title='Notes and Journals' class='notespages'>
+	<div class='notes-section'>
 		<label for='NotesTextarea'>Notes:</label>
 		<fieldset class='repeating_notesfield'>
-			<textarea name='attr_NotesTextarea' style='max-width: 960px; max-height: 150px; min-height: 22px; height: 44px;'></textarea>
+			<textarea class='notestextarea' name='attr_NotesTextarea'></textarea>
 		</fieldset>
 	</div>
 </div>
 <div title='Spells and Conjurings' class='spellpages'>
 	<div class='spells'>
-		<div class='body'>
+		<div class='body' style='border: Gold solid 2px; box-shadow: 4px 6px DarkGoldenRod;'>
 			<div class='spells-section'>
 				<Span>Spell Name</span>
 				<span>Difficulty</span>
@@ -2397,9 +2396,27 @@
 			</div>
 			</fieldset>
 		</div>
+		<div class='body' style='border: LightSteelBlue solid 2px; box-shadow: 4px 6px SteelBlue; margin-top: 10px;'>
+			<div class='conjuring-section'>
+				<Span>Conjuration Name</span>
+				<span>Difficulty</span>
+				<span>Drain</span>
+				<span>Something?</span>
+				<span>Conjuration Descripion</span>		
+			</div>
+			<fieldset class='repeating_conjuration'>
+			<div class='conjuring-section'>
+				<Input type='text' name='attr_conjuringname'/>
+				<Input type='text' name='attr_conjuringdiff'/>
+				<Input type='text' name='attr_conjuringdrain'/>
+				<Input type='text' name='attr_conjuringmaint'/>
+				<textarea id='conjuringDescriptions' name='attr_conjuringdesc'></textarea>
+			</div>
+			</fieldset>
+		</div>		
 	</div>
 </div>
-<div title='Experience Points' class='xppages' style='border: solid black 2px; margin-top: 5px; padding: 5px;'>
+<div title='Experience Points' class='xppages'>
 	<label>Total XP</label>
 	<input readonly type='text' name='attr_totalxp'/>
 	<label>Availalable XP</label>
