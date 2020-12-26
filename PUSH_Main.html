@@ -2038,7 +2038,7 @@
             <input type='text' name='attr_rwpn_value'  value='0' title='How much is this weapon worth?'/>
             <input type='text' name='attr_rwpn_weight'  value='0' title='How much does this weapon weigh(kg)?'/>
             <input type='number' name='attr_rwpn_quantity'  value='0' title='How many of these weapons do you have on you? If you have multiple but are not carrying them all, make sure to put the extras in your gear page.'/>
-			<select name='attr_mwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>				
+			<select name='attr_rwpn_type' title='What type of damage does this attack do? (B)ludgeoning, (S)lashing or (P)iercing? Set as needed for each attack'>				
 				<option value='B' selected='selected'>B</option>
 				<option value='P'>P</option>
 				<option value='S'>S</option>
@@ -2478,7 +2478,8 @@
 
 // Common Functions
 const int = score => parseInt(score) || 0;
-const float = score => parseFloat(score) || 0;
+//const float = score => parseFloat(score) || 0;
+const float = (value, error=0) => parseFloat(value) || error;
 const skills = ['Climbing', 'Contortions', 'EnduranceRunning', 'Freefall', 'Freerunning', 'Jumping', 'Portage', 'Sneaking', 'Sports', 'Sprinting', 'Swimming', 'Weightlifting', 'CustomAth1', 'CustomAth2', 'CustomAth3', 'Accounting', 'Advertising', 'Appraisal', 'Bargain', 'Barter', 'Economics', 'Forgery', 'Gambling', 'Investment', 'Logistics', 'Procurement', 'Racketeering', 'CustomBus1', 'CustomBus2', 'CustomBus3', 'ArmorTraining', 'Blades', 'Block', 'Brawl', 'Clubs', 'Counter', 'Escape', 'ExoticMelee', 'Grapple', 'Parry', 'Polearms', 'Striking', 'CustomCC1', 'CustomCC2', 'CustomCC3', 'Acting', 'Art', 'Composing', 'Dance', 'Fashion', 'Metalwork', 'MusicalInstrument', 'Sculpting', 'Singing', 'SpellDesign', 'Woodwork', 'Writing', 'CustomExp1', 'CustomExp2', 'CustomExp3', 'AuraSense', 'Binding', 'Celerity', 'Conjuring', 'Divining', 'Enchanting', 'ManaSense', 'ManifestWill', 'Meditation', 'Precognition', 'Rituals', 'Runes', 'Spellcasting', 'CustomMys1', 'CustomMys2', 'Archery', 'Artillery', 'Dodge', 'ExoticRanged', 'Gunnery', 'Lobbing', 'Machineguns', 'Pistols', 'Rifles', 'SprayWeapons', 'SubmachineGuns', 'Throwing', 'CustomRan1', 'CustomRan2', 'CustomRan3', 'Biology', 'Botany', 'Chemistry', 'Eidetics', 'History', 'Literature', 'Mathematics', 'Medicine', 'Navigation', 'Occult', 'Physics', 'Xenology', 'Zoology', 'CustomSci1', 'CustomSci2', 'Con', 'Disguise', 'Etiquette', 'Instruction', 'Interrogation', 'Intimidate', 'Leadership', 'LieDetection', 'Linguistics', 'Negotiate', 'Willpower', 'Seduction', 'SleightofHand', 'CustomSoc1', 'CustomSoc2', 'AnimalHandling', 'FindShelter', 'Forage', 'Observation', 'Orienteering', 'RefreshBody', 'RefreshMind', 'ResistKO', 'ResistPain', 'Ride', 'Snare', 'Track', 'WeatherSense', 'CustomSur1', 'CustomSur2', 'Computers', 'Construction', 'Demolition', 'Electronics', 'Engineering', 'Lockpick', 'Mechanic', 'PilotAircraft', 'PilotGroundcraft', 'PilotSpacecraft', 'PilotWatercraft', 'PowerArmor', 'Software', 'CustomTech1', 'CustomTech2'];
 const skillAttrs = skills.map(skill => `${skills}`);
 
@@ -3419,14 +3420,15 @@ on('sheet:opened change:ArmorTrainingRanks change:headpv change:torsopv change:n
    });
 });
 //Weapon Type Stat Filler
-object.keys(weapons).forEach(which => {
-    on(`change:repeating_${which.section}weapon:${which.prefix}type change:repeating_${which.section}weapon:${which.prefix}kov`, function () {
-        getAttrs([`repeating_${which.section}weapon:${which.prefix}type`,`repeating_${which.section}weapon:${which.prefix}kov`], values => {
-            let wtype = values[`repeating_${which.section}weapon:${which.prefix}type`];
-            let wkov = float(values[`repeating_${which.section}weapon:${which.prefix}kov`]);
+Object.keys(weapons).forEach(which => {
+    const choice = weapons[which];
+    on(`change:repeating_${choice.section}weapon:${choice.prefix}type change:repeating_${choice.section}weapon:${choice.prefix}kov`, function () {
+        getAttrs([`repeating_${choice.section}weapon_${choice.prefix}type`, `repeating_${choice.section}weapon_${choice.prefix}kov`], values => {
+            let wtype = values[`repeating_${choice.section}weapon_${choice.prefix}type`];
+            let wkov = float(values[`repeating_${choice.section}weapon_${choice.prefix}kov`]);
             const output = {};
-            output[`repeating_${which.section}weapon:${which.prefix}bleed`] = (wtype === "B") ? 0 : Math.floor(wkov / (wtype === "P" ? 10 : 20));
-            output[`repeating_${which.section}weapon:${which.prefix}impact`] = (wtype === "P") ? 0 : Math.floor(wkov / (wtype === "B" ? 2 : 4));
+            output[`repeating_${choice.section}weapon_${choice.prefix}bleed`] = (wtype === '0' || wtype === 'B') ? 0 : Math.floor(wkov / (wtype === 'P' ? 10 : 20));
+            output[`repeating_${choice.section}weapon_${choice.prefix}impact`] = (wtype === '0' || wtype === 'P') ? 0 : Math.floor(wkov / (wtype === 'B' ? 2 : 4));
             setAttrs(output);
         });
     });
